@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
+    
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../css/styles_navbar.css">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>navbar</title>
+        <link rel="stylesheet" href="./assets/css/styles_navbar.css">
+        <title>Navbar</title>
     </head>
+
     <nav>
         <ul class="sidebar">
 
@@ -19,7 +19,7 @@
         </ul>
 
         <ul>
-            <li><img src="{{asset('img/logo.png')}}" alt="Logo"></li>
+            <li><img src="./assets/img/logo.png" alt="Logo"></li>
             <li class="ocultarMobile"><a href="/v4_productos.html">Productos</a> </li>
             <li class="ocultarMobile"><a href="/v5_usuarios.html">Usuarios</a></li>
             <li class="ocultarMobile"><a href="/v6_gestor.html">Gestor</a></li>
