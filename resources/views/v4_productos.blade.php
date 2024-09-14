@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/styles_navbar.css">
-    <link rel="stylesheet" href="./assets/css/styles_productos.css">
+    <link rel="stylesheet" href="">
     <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
-
+    <link rel="stylesheet" href="{{asset('css/styles_productos.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles_navbar.css')}}">
     <title>Productos</title>
 </head>
 
@@ -89,7 +89,7 @@
     <div class="modal-overlay" id="productModal" style="display: none;">
         <div class="modal-content">
             
-            <img id="modalImage" src="" alt="Imagen del producto">
+            <img id="modalImage" src="{{asset('img/logo.png')}}" alt="Imagen del producto">
     
             
             <div class="modal-details">
@@ -124,9 +124,10 @@
         </div>
     </div>
 
-    <script src="./assets/js/simulacion.js"></script>
-    <script src="./assets/js/products.js"></script>
-    <script src="./assets/js/navbar_loader.js"></script>
-    <script src="./assets/js/script_navbar.js"></script>
+    <script src="{{asset('js/simulacion.js')}}"></script>
+    <script src="{{asset('js/products.js')}}"></script>
+    <script src="{{asset('js/navbar_loader.js')}}"></script>
+    <script src="{{asset('js/script_navbar.js')}}"></script>
+
 </body>
 </html>

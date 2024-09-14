@@ -5,9 +5,9 @@ const productos = [
       descripcion: "Camiseta de algodón de alta calidad.",
       talla: "XL",
       likes: 50,
-      vendedor: "La mama de abril",
+      vendedor: "Juan",
       precio: 19.99,
-      imagen: "/assets/img/camisa_roja.jpg"
+      imagen: "img/camisa_roja.jpg"
     },
     {
       nombre: "Zapatos Negros",

@@ -6,19 +6,15 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
-    return "hola";
-});
-
-Route::get('/products', function(){
-    return view('products');
-});
-
-Route::get('/navbar', function(){
     return view('navbar');
 });
 
-Route::get('/posts', [AdminController::class,  'index']);
+Route::get('/products', function(){
+    return view('v4_productos');
+});
+
 Route::get('/login',[AdminController::class,   'login']);
+
 
 
 
