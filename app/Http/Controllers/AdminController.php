@@ -7,14 +7,10 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     public function index(){
-        return 12 + 1;
+        return "hola";
     }
 
-    public function navbar(){
-        return view('navbar');
-    }
-
-    public function login(){
-        return view('inicio_sesion');
+    public function create(){
+        return view('v2_inicio_sesion');
     }
 }

@@ -20,18 +20,7 @@ Route::get('/app', function(){
 
 
 
-
-
-
-Route::get('/login',[AdminController::class,   'login']);
-
-
-
-
-
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/login',        [App\Http\Controllers\AdminController::class,   'create']);
+Route::get('/loginAdmin',   [App\Http\Controllers\AdminController::class,   'show'])->name('login');
+Route::get('/home',         [App\Http\Controllers\HomeController::class,    'index'])->name('home');
