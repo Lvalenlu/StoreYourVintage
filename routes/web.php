@@ -13,10 +13,11 @@ Route::get('/products', function(){
     return view('v4_productos');
 });
 
-
 Route::get('/app', function(){
     return view('layouts/app');
 });
+
+
 
 
 
