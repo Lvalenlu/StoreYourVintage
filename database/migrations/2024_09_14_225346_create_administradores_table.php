@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('contrasena', 255);  // Contraseña
             $table->string('cargo', 40);  // Cargo
             $table->boolean('gestor');  // Permisos de gestión avanzada
-            $table->unsignedBigInteger('id_usuario')->nullable();  // Referencia a usuario
             $table->timestamps();
 
         });

@@ -19,15 +19,15 @@ Route::get('/prueba', function(){
     //Crear un administrador 
     /*$admin = new Administrador;
 
-    $admin->nombre = "Felipe Bernal";
-    $admin->cedula = "12321312";
-    $admin->email = "Bernal0756@gmail.com";
-    $admin->contrasena = "ADFASDFASDF";
-    $admin->cargo = "Gestor";
+    $admin->nombre = "Andres Felipe";
+    $admin->cedula = "1014658714";
+    $admin->email = "abril0756@gmail.com";
+    $admin->contrasena = "123aa";
+    $admin->cargo = "un crack";
     $admin->gestor = "0";
 
-    $admin->save();
-    */
+    $admin->save();*/
+    
 
     // $admin = Administrador::find(1);   Buscar un regisrto
 
@@ -56,4 +56,4 @@ Route::post('/register',    [AuthController::class,     'storeRegister']);
 Route::get('/login',        [AuthController::class,     'createLogin'])->name('login');
 Route::post('/login',       [AuthController::class,     'storeLogin']);
 
-Route::get('/products',     [AuthController::class,  'index'])->name('products');
+Route::get('/products',     [ProductController::class,  'index'])->name('products');
