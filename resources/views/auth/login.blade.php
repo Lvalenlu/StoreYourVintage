@@ -22,13 +22,13 @@
                     <!-- Número de documento -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{ old('cedula') }}" required>
-                        @error('cedula')
+                        <input type="text" name="document" class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
+                        @error('document')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="cedula">Número de documento</label>
+                        <label for="document">Número de documento</label>
                     </div>
 
                     <!-- Contraseña -->
@@ -52,6 +52,10 @@
                     <!-- Botón de envío -->
                     <button type="submit">Ingresar</button>
 
+                    <!-- Link de registro -->
+                    <div class="link">
+                        <p>Registrate <a href="{{ route('register') }}">aquí</a></p>
+                    </div>
                 </form>
             </div>
         </div>

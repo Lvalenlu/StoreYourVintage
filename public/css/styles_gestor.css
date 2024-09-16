@@ -34,11 +34,11 @@
     border-radius: 4px;
     margin-right: 10px;
 }
-.admin-container {
+.user-container {
     padding: 20px;
 }
 
-.add-admin-btn {
+.add-user-btn {
     padding: 10px 20px;
     font-size: 16px;
     border: none;
@@ -48,31 +48,31 @@
     transition: .6s;
     cursor: pointer;
 }
-.add-admin-btn:hover {
+.add-user-btn:hover {
     background-color: var(--color-white);
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
 }
 
 
-.admin-table {
+.user-table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-.admin-table th, .admin-table td {
+.user-table th, .user-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid var(--gray-color);
 }
 
-.admin-table th {
+.user-table th {
     background-color: var(--secondary-color);
     color: var(--color-white);
 }
 
-.admin-table td button {
+.user-table td button {
     margin: 4px;
     padding: 5px 10px;
     font-size: 14px;
@@ -84,7 +84,7 @@
     border-radius: 4px;
     cursor: pointer;
 }
-.admin-table td button:hover {
+.user-table td button:hover {
     scale: 1.2;
     background-color: var(--primary-color);
     color: var(--color-white);

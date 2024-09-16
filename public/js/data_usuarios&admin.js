@@ -51,7 +51,7 @@ function getSellers() {
     ];
 }
 
-function getAdmins() {
+function getUsers() {
     return [
         { name: "X", position: "logistica", state: "Habilitado"},
         { name: "Y", position: "marketing", state: "Inactivo"},

@@ -26,16 +26,20 @@ class AuthController extends Controller
 
         $user = new User();
 
-        $user->name      =  $request->name;
-        $user->document      =  $request->document;
-        $user->email       =  $request->email;;
-        $user->password  =  "hola";
+        $user->name         =  $request->name;
+        $user->document     =  $request->document;
+        $user->email        =  $request->email;;
+        $user->password     =  "";
         $user->charge       =  $request->charge;
-        $user->is_manager      =  1;
+        $user->is_manager   =  0;
 
-        $user->save();
-
-        return redirect('/login');
+        if(!$validEmail = User::where('email', $user->email )
+                    ->first()){
+            $user->save();
+            return "Acabo de crearse";
+        }else{
+            return "El registro ya existe";
+        }
     }
 
     public function storeLogin(Request $request){
@@ -44,7 +48,6 @@ class AuthController extends Controller
 
         $user->document      = $request->document;
         $user->password  = $request->password;
-
         $credentials = $request->validate([
             'document'=>['required'],
             'password'=>['required']

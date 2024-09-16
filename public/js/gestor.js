@@ -1,27 +1,27 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const admins = getAdmins();
-    const adminTableBody = document.getElementById('admin-table-body');
-    const adminModal = document.getElementById('admin-modal');
+    const users = getUsers();
+    const userTableBody = document.getElementById('user-table-body');
+    const userModal = document.getElementById('user-modal');
     const confirmDeleteModal = document.getElementById('confirm-delete-modal');
     const modalTitle = document.getElementById('modal-title');
     const saveBtn = document.getElementById('save-btn');
-    const addAdminBtn = document.getElementById('add-admin-btn');
-    let editingAdmin = null;
+    const addUserBtn = document.getElementById('add-user-btn');
+    let editinguser = null;
 
     function renderTable() {
-        adminTableBody.innerHTML = '';
-        admins.forEach((admin, index) => {
+        userTableBody.innerHTML = '';
+        users.forEach((user, index) => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${admin.name}</td>
-                <td>${admin.position}</td>
-                <td>${admin.state}</td>
+                <td>${user.name}</td>
+                <td>${user.position}</td>
+                <td>${user.state}</td>
                 <td>
                     <button class="edit-btn" data-index="${index}">Editar</button>
                     <button class="delete-btn" data-index="${index}">Eliminar</button>
                 </td>
             `;
-            adminTableBody.appendChild(row);
+            userTableBody.appendChild(row);
         });
 
         document.querySelectorAll('.edit-btn').forEach(button => {
@@ -34,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openEditModal(index) {
-        editingAdmin = index;
-        const admin = admins[index];
-        modalTitle.textContent = 'Editar Administrador';
+        editinguser = index;
+        const user = users[index];
+        modalTitle.textContent = 'Editar useristrador';
         saveBtn.textContent = 'Guardar';
-        adminModal.style.display = 'block';
-        document.getElementById('name').value = admin.name;
-        document.getElementById('position').value = admin.position;
-        document.getElementById('state').value = admin.state;
+        userModal.style.display = 'block';
+        document.getElementById('name').value = user.name;
+        document.getElementById('position').value = user.position;
+        document.getElementById('state').value = user.state;
     }
 
     function openDeleteModal(index) {
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function closeModals() {
-        adminModal.style.display = 'none';
+        userModal.style.display = 'none';
         confirmDeleteModal.style.display = 'none';
     }
 
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTable();
     });
 
-    addAdminBtn.addEventListener('click', () => {
-        editingAdmin = null;
-        modalTitle.textContent = 'Añadir Administrador';
+    addUserBtn.addEventListener('click', () => {
+        editingUser = null;
+        modalTitle.textContent = 'Añadir administrador';
         saveBtn.textContent = 'Añadir';
-        adminModal.style.display = 'block';
+        userModal.style.display = 'block';
         document.getElementById('name').value = '';
         document.getElementById('position').value = '';
         document.getElementById('state').value = '';
