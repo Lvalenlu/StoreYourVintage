@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('/public/css/styles_forms.css')}}">
-    
+
     <title>Crear contraseña</title>
-    
+
 </head>
 <body>
-    
+
     <section>
         <div class="contenedor">
             <div class="formulario">
                 <form action="#">
 
                     <img src="{{asset('img/Logo.png')}}" alt="Logo">
-                    
+
                     <h2>Crear Contraseña</h2>
 
                     <div class="input-contenedor">
@@ -33,7 +33,7 @@
                     </div>
                 </form>
                 <div>
-                    <button onclick="location.href='/v2_inicio_sesion.html'">Guardar</button>
+                    <button onclick="location.href='/login.html'">Guardar</button>
                 </div>
             </div>
         </div>

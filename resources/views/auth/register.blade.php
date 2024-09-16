@@ -1,77 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+<section>
+    <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/styles_forms.css')}}">
+    <div class="contenedor">
+        <div class="formulario">
+            <form action="{{ route('register') }}" method="POST">
+                @csrf
+                <img src="{{ asset('img/Logo.png') }}" alt="Logo">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+                <h2>Registrar administrador</h2>
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                <!-- Nombre Completo -->
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="name" name="nombre" class="form-control @error('nombre') is-invalid @enderror" value="{{ old('nombre') }}" required autocomplete="name">
+                    @error('nombre')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="name">Nombre Completo</label>
                 </div>
-            </div>
+
+                <!-- Número de documento -->
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-id-card"></i>
+                    <input type="text" id="identity_document" name="cedula" class="form-control @error('cedula') is-invalid @enderror" value="{{ old('cedula') }}" required>
+                    @error('cedula')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="identity_document">Número de documento</label>
+                </div>
+
+                <!-- Correo electrónico -->
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="mail" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="mail">Correo electrónico</label>
+                </div>
+
+                <!-- Cargo -->
+                <div class="input-contenedor">
+                    <i class="fa-solid fa-circle-info"></i>
+                    <input type="text" id="cargo" name="cargo" class="form-control @error('cargo') is-invalid @enderror" value="{{ old('cargo') }}" required>
+                    @error('cargo')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                    <label for="cargo">Cargo</label>
+                </div>
+
+                <!-- Botón de registro -->
+                <button type="submit" class="btn btn-primary">Registrar</button>
+                <script src="/assets/js/script_form.js"></script>
+            </form>
         </div>
     </div>
-</div>
+</section>
 @endsection

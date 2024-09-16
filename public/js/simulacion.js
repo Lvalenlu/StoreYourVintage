@@ -1,5 +1,5 @@
-// Simulando productos de un JSON
-const productos = [
+// Simulando products de un JSON
+const products = [
     {
       nombre: "Camiseta Roja",
       descripcion: "Camiseta de algodón de alta calidad.",
@@ -8,6 +8,7 @@ const productos = [
       vendedor: "Juan",
       precio: 19.99,
       imagen: "img/camisa_roja.jpg"
+
     },
     {
       nombre: "Zapatos Negros",
@@ -64,19 +65,19 @@ const productos = [
         imagen: "https://via.placeholder.com/300x200?text=Pantalon+Azul"
       }
 ];
-  
+
   // Función que genera las tarjetas en HTML
 
 function generarTarjetas() {
-    let container = document.getElementById('productos-container');
-    
-    productos.forEach(producto => {
+    let container = document.getElementById('products-container');
+
+    products.forEach(product => {
         let cardHTML = `
         <div class="product-card">
-            <img src="${producto.imagen}" alt="${producto.nombre}">
-            <h3>${producto.nombre}</h3>
-            <p>${producto.descripcion}</p>
-            <button onclick="openModal('${producto.imagen}', '${producto.nombre}', '${producto.descripcion}', '${producto.precio}', '${producto.talla}', '${producto.likes}', '${producto.vendedor}')">Más información</button>
+            <img src="${product.imagen}" alt="${product.nombre}">
+            <h3>${product.nombre}</h3>
+            <p>${product.descripcion}</p>
+            <button onclick="openModal('${product.imagen}', '${product.nombre}', '${product.descripcion}', '${product.precio}', '${product.talla}', '${product.likes}', '${product.vendedor}')">Más información</button>
         </div>
         `;
         container.innerHTML += cardHTML;
@@ -99,11 +100,10 @@ function openModal(imageSrc, title, description, price, talla, likes, vendedor) 
 function closeModal() {
     document.getElementById('productModal').style.display = 'none';
 }
-  
+
 window.onload = generarTarjetas;
 
-  
+
 
   // para backend reemplacen la llamada con la API real
 
-  

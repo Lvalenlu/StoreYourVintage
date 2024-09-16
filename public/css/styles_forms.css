@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
 }
-
 section{
     display: flex;
     justify-content: center;
@@ -131,3 +130,11 @@ button:hover{
 .link p a:hover{
     opacity: .7;
 }
+
+.form-check{
+
+    margin:  20px 0;
+    color: white;
+
+}
+

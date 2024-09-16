@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Administrador;
+use App\Models\User;
 //use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,66 +12,66 @@ class AuthController extends Controller
 {
 
     public function indexLogin(){
-        return view('v2_inicio_sesion');
+        return view('login');
     }
 
     public function indexRegister()
     {
-        $admins = Administrador::all();
-        return view('v3_registro_admin', compact('admins'));
+        $users = User::all();
+        return view('register', compact('users'));
     }
 
     public function storeRegister(Request $request)
     {
 
-        $admin = new Administrador();
+        $user = new User();
 
-        $admin->nombre      =  $request->nombre;
-        $admin->cedula      =  $request->cedula;
-        $admin->email       =  $request->email;;
-        $admin->contrasena  =  "hola";
-        $admin->cargo       =  $request->cargo;
-        $admin->gestor      =  1;
+        $user->name      =  $request->name;
+        $user->document      =  $request->document;
+        $user->email       =  $request->email;;
+        $user->password  =  "hola";
+        $user->charge       =  $request->charge;
+        $user->is_manager      =  1;
 
-        $admin->save();
+        $user->save();
 
         return redirect('/login');
     }
 
     public function storeLogin(Request $request){
 
-        $admin = new Administrador();
+        $user = new User();
 
-        $admin->cedula      = $request->cedula;
-        $admin->contrasena  = $request->contrasena;
+        $user->document      = $request->document;
+        $user->password  = $request->password;
 
         $credentials = $request->validate([
-            'cedula'=>['required'],
-            'contrasena'=>['required']
+            'document'=>['required'],
+            'password'=>['required']
         ]);
 
         if (Auth::attempt([
-            'cedula'        => $credentials['cedula'],
-            'contrasena'    => $credentials['contrasena']
+            'document'        => $credentials['document'],
+            'password'    => $credentials['password']
             ])) {
             // Regenerar la sesión para evitar fijación de sesión
             $request->session()->regenerate();
-        
+
             // Redirigir o mostrar un mensaje de éxito
             return redirect('/products')->with('success', 'Inicio de sesión exitoso');
         } else {
             // Si la autenticación falla, devolver un error
             return back()->withErrors([
-                'cedula' => 'Las credenciales no coinciden con nuestros registros.',
+                'document' => 'Las credenciales no coinciden con nuestros registros.',
             ]);
 
-       
+
         }
     }
 
     public function createLogin()
     {
-        return view('v2_inicio_sesion');
+        return view('login');
     }
 
     public function createRegister()
@@ -82,7 +82,7 @@ class AuthController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Administrador $cr)
+    public function show(User $cr)
     {
         //
     }
@@ -90,7 +90,7 @@ class AuthController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Administrador $cr)
+    public function edit(User $cr)
     {
         //
     }
@@ -98,7 +98,7 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Administrador $cr)
+    public function update(Request $request, User $cr)
     {
         //
     }
@@ -106,12 +106,12 @@ class AuthController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Administrador $cr)
+    public function destroy(User $cr)
     {
         //
     }
 
-    public function logout($admins){
-        return "aqui se mostrara el admin $admins";
+    public function logout($users){
+        return "aqui se mostrara el admin $users";
     }
 }

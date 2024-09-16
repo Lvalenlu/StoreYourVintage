@@ -15,8 +15,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home',         [AdminController::class,     'index'])->name('home');
+
 Route::get('/prueba', function(){
-    //Crear un administrador 
+    //Crear un administrador
     $admin = new Administrador;
 
     $admin->nombre = "Laura henao";
@@ -27,7 +28,7 @@ Route::get('/prueba', function(){
     $admin->gestor = "0";
 
     $admin->save();
-    
+
 
     // $admin = Administrador::find(1);   Buscar un regisrto
 
@@ -39,7 +40,7 @@ Route::get('/prueba', function(){
     $admin->save();
      return $admin;*/
 
-    /* para traer registros por medio de un filtro 
+    /* para traer registros por medio de un filtro
     $admin =Administrador::where('id', '>','1')->get();
     return $admin; */
 
@@ -50,10 +51,10 @@ Route::get('/prueba', function(){
 });
 
 
-Route::get('/register',     [AuthController::class,     'indexRegister'])->name('register');
-Route::post('/register',    [AuthController::class,     'storeRegister']);
+// Route::get('/register',     [AuthController::class,     'indexRegister'])->name('register');
+// Route::post('/register',    [AuthController::class,     'storeRegister']);
 
-Route::get('/login',        [AuthController::class,     'createLogin'])->name('login');
+// Route::get('/login',        [AuthController::class,     'createLogin'])->name('login');
 Route::post('/login',       [AuthController::class,     'storeLogin']);
+Route::resource('products', ProductController::class)->names('products');
 
-Route::get('/products',     [ProductController::class,  'index'])->name('products');

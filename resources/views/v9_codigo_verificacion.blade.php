@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/styles_forms.css">
-    
+
     <title>Crear contraseña</title>
-    
+
 </head>
 <body>
-    
+
     <section>
         <div class="contenedor">
             <div class="formulario">
                 <form action="#">
 
                     <img src="./assets/img/Logo.png" alt="Logo">
-                    
+
                     <h2>Digita el codigo</h2>
                     <h2>de verificación</h2>
 
@@ -29,7 +29,7 @@
                     </div>
                 </form>
                 <div>
-                    <button onclick="location.href='/v4_productos.html'">Enviar</button>
+                    <button onclick="location.href='/products.html'">Enviar</button>
                     <div class="link">
                         <p><a href="#">Volver a enviar</a></p>
                     </div>
