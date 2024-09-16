@@ -22,8 +22,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_usuario')->nullable();  // Referencia a usuario
             $table->timestamps();
 
-
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
         });
     }
 

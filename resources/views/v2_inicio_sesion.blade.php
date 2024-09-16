@@ -10,30 +10,30 @@
     
 </head>
 <body>
-    
     <section>
         <div class="contenedor">
             <div class="formulario">
-                <form action="#">
-
+                <form action="/login" method="POST">
+                    @csrf
                     <img src="{{asset('img/logo.png')}}" alt="Logo">
                     
                     <h2>Ingreso</h2>
 
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" required>
+                        <input type="text" name="cedula" required>
                         <label for="#">Número de documento</label>
                     </div>
 
                     <div class="input-contenedor">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" required>
+                        <input type="password" name="contrasena" required>
                         <label for="#">Contraseña</label>
                     </div>
+                    <button type="submit">Ingresar</button>
                 </form>
                 <div>
-                    <button onclick="location.href='/v3_registro_admin.html'">Ingresar</button>
+                
 
                     <div class="link">
                         <p>Registrate <a href="#">aqui</a></p>

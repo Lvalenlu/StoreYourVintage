@@ -1,26 +1,59 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Models\Administrador;
 
 Route::get('/', function () {
     return view('navbar');
 });
 
-Route::get('/products', function(){
-    return view('v4_productos');
-});
-
-Route::get('/app', function(){
-    return view('layouts/app');
-});
-
-
-
-
 Auth::routes();
-Route::get('/login',        [App\Http\Controllers\AdminController::class,   'create']);
-Route::get('/loginAdmin',   [App\Http\Controllers\AdminController::class,   'show'])->name('login');
-Route::get('/home',         [App\Http\Controllers\HomeController::class,    'index'])->name('home');
+
+Route::get('/home',         [AdminController::class,     'index'])->name('home');
+Route::get('/prueba', function(){
+    //Crear un administrador 
+    /*$admin = new Administrador;
+
+    $admin->nombre = "Felipe Bernal";
+    $admin->cedula = "12321312";
+    $admin->email = "Bernal0756@gmail.com";
+    $admin->contrasena = "ADFASDFASDF";
+    $admin->cargo = "Gestor";
+    $admin->gestor = "0";
+
+    $admin->save();
+    */
+
+    // $admin = Administrador::find(1);   Buscar un regisrto
+
+    //   Encontrar un registro y modificarlo
+    /*$admin = Administrador::where('id', '5')
+                ->first();
+
+    $admin->contrasena = 'abril123';
+    $admin->save();
+     return $admin;*/
+
+    /* para traer registros por medio de un filtro 
+    $admin =Administrador::where('id', '>','1')->get();
+    return $admin; */
+
+    // Trae todos los registros
+    // $admin = Administrador::Where('nombre','Andres');
+    // $admin->delete();
+
+});
+
+
+Route::get('/register',     [AuthController::class,     'indexRegister'])->name('register');
+Route::post('/register',    [AuthController::class,     'storeRegister']);
+
+Route::get('/login',        [AuthController::class,     'createLogin'])->name('login');
+Route::post('/login',       [AuthController::class,     'storeLogin']);
+
+Route::get('/products',     [AuthController::class,  'index'])->name('products');

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="assets/css/styles_forms.css">
+    <link rel="stylesheet" href="{{asset('/public/css/styles_forms.css')}}">
     
     <title>Crear contraseña</title>
     
@@ -16,7 +16,7 @@
             <div class="formulario">
                 <form action="#">
 
-                    <img src="./assets/img/Logo.png" alt="Logo">
+                    <img src="{{asset('img/Logo.png')}}" alt="Logo">
                     
                     <h2>Crear Contraseña</h2>
 
