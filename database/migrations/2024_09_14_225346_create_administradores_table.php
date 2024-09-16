@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('administradores', function (Blueprint $table) {
             $table->id();  // ID del administrador
             $table->string('nombre', 40);  // Nombre del administrador
-            $table->string('cedula', 20);  // Cédula
+            $table->string('cedula', 20)->unique();  // Cédula
             $table->string('email', 50)->unique();  // Email único
             $table->string('contrasena', 255);  // Contraseña
             $table->string('cargo', 40);  // Cargo

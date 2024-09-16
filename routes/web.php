@@ -17,16 +17,16 @@ Auth::routes();
 Route::get('/home',         [AdminController::class,     'index'])->name('home');
 Route::get('/prueba', function(){
     //Crear un administrador 
-    /*$admin = new Administrador;
+    $admin = new Administrador;
 
-    $admin->nombre = "Andres Felipe";
-    $admin->cedula = "1014658714";
-    $admin->email = "abril0756@gmail.com";
+    $admin->nombre = "Laura henao";
+    $admin->cedula = "128937812";
+    $admin->email = "lbustos756@gmail.com";
     $admin->contrasena = "123aa";
-    $admin->cargo = "un crack";
+    $admin->cargo = "no se pero abril el mejor";
     $admin->gestor = "0";
 
-    $admin->save();*/
+    $admin->save();
     
 
     // $admin = Administrador::find(1);   Buscar un regisrto
@@ -44,8 +44,8 @@ Route::get('/prueba', function(){
     return $admin; */
 
     // Trae todos los registros
-    // $admin = Administrador::Where('nombre','Andres');
-    // $admin->delete();
+    //$admin = Administrador::Where('nombre','Andres');
+    //$admin->delete();
 
 });
 
