@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/products';
 
     /**
      * Create a new controller instance.
@@ -49,10 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            // 'document' => ['required', 'integer', 'unique:users'],
-            'charge' => ['required', 'string'],
+            'name'      => ['required', 'string', 'max:255'],
+            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'document'  => ['required', 'integer', 'max:10000000000', 'min:10000000'],
+            'charge'    => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -65,12 +65,15 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['document']),
-            'document' => $data['document'],
-            'charge' => $data['charge'],
-            'is_manager' => 0,
+            'name'      => $data['name'],
+
+
+            'email'     => $data['email'],
+            'password'  => Hash::make($data['document']
+        ),
+            'document'  => $data['document'],
+            'charge'    => $data['charge'],
+            'is_manager'=> 0,
         ]);
     }
 }
