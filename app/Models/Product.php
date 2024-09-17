@@ -13,8 +13,11 @@ class Product extends Model
 
     protected $fillable = [
         'name',
-        'prica',
         'description',
+        'image',
+        'size',
+        'prices',
+        'id_categories',
     ];
 
     protected $hidden = [
@@ -25,6 +28,11 @@ class Product extends Model
     public function getAuthPassword()
     {
         return $this->contrasena;
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'id_categories');
     }
 }
 
