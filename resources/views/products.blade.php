@@ -29,15 +29,15 @@
             <h3>Talla</h3>
             <div class="columnas">
                 <div class="opciones">
-                    <label><input type="checkbox" name="talla" value="XS"> XS</label><br>
-                    <label><input type="checkbox" name="talla" value="S"> S</label><br>
+                    <label><input type="checkbox" name="size" value="XS"> XS</label><br>
+                    <label><input type="checkbox" name="size" value="S"> S</label><br>
                 </div>
                 <div class="opciones">
-                    <label><input type="checkbox" name="talla" value="M"> M</label><br>
-                    <label><input type="checkbox" name="talla" value="L"> L</label><br>
+                    <label><input type="checkbox" name="size" value="M"> M</label><br>
+                    <label><input type="checkbox" name="size" value="L"> L</label><br>
                 </div>
                 <div class="opciones">
-                    <label><input type="checkbox" name="talla" value="XL"> XL</label><br>
+                    <label><input type="checkbox" name="size" value="XL"> XL</label><br>
                 </div>
             </div>
         </div>
@@ -73,10 +73,10 @@
 <section class="products-container" id="products-container">
     @foreach ($products as $product)
     <div class="product-card">
-        <img src="{{asset('img').$product->image}}" alt="{{$product->nombre}}">
-        <h3>{{$product->nombre}}</h3>
-        <p>{{$product->descripcion}}</p>
-        <button onclick="openModal('{{$product->imagen}}', '{{$product->nombre}}', '{{$product->descripcion}}', '{{$product->precio}}', '{{$product->talla}}', '{{$product->likes}}', '{{$product->vendedor}}')">Más información</button>
+        <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
+        <h3>{{$product->name}}</h3>
+        <p>{{$product->description}}</p>
+        <button onclick="openModal('{{$product->imagen}}', '{{$product->name}}', '{{$product->description}}', '{{$product->price}}', '{{$product->size}}', '{{$product->likes}}', '{{$product->seller_id}}')">Más información</button>
     </div>
     @endforeach
 
@@ -94,8 +94,8 @@
             <div class="modal-info">
                 <span id="modalPrice">$ Precio</span>
                 <span id="modalLikes">Likes: 0</span>
-                <span id="modalTalla">Talla: N/A</span>
-                <span id="modalVendedor">Vendedor: N/A</span>
+                <span id="modalSize">Size: N/A</span>
+                <span id="modalSeller">Vendedor: N/A</span>
             </div>
 
             <div class="modal-description" id="modalDescription">
@@ -132,23 +132,23 @@ function generarTarjetas() {
     products.forEach(product => {
         let cardHTML = `
         <div class="product-card">
-            <img src="${product.imagen}" alt="${product.nombre}">
-            <h3>${product.nombre}</h3>
-            <p>${product.descripcion}</p>
-            <button onclick="openModal('${product.imagen}', '${product.nombre}', '${product.descripcion}', '${product.precio}', '${product.talla}', '${product.likes}', '${product.vendedor}')">Más información</button>
+            <img src="${product.imagen}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.description}</p>
+            <button onclick="openModal('${product.imagen}', '${product.name}', '${product.description}', '${product.price}', '${product.size}', '${product.likes}', '${product.seller_id}')">Más información</button>
         </div>  `;
     container.innerHTML += cardHTML;
 });
 }
 
-function openModal(imageSrc, title, description, price, talla, likes, vendedor) {
+function openModal(imageSrc, title, description, price, size, likes, seller_id) {
 document.getElementById('modalImage').src = imageSrc;
 document.getElementById('modalTitle').innerText = title;
 document.getElementById('modalDescription').innerText = description;
 document.getElementById('modalPrice').innerText = `$ ${price}`;
-document.getElementById('modalTalla').innerText = `Talla: ${talla}`;
+document.getElementById('modalSize').innerText = `Talla: ${size}`;
 document.getElementById('modalLikes').innerText = `Likes: ${likes}`;
-document.getElementById('modalVendedor').innerText = `Vendedor: ${vendedor}`;
+document.getElementById('modalSeller').innerText = `Vendedor: ${seller_id}`;
 
 // Mostrar modal
 document.getElementById('productModal').style.display = 'flex';

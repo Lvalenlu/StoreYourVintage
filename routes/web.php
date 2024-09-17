@@ -36,7 +36,7 @@ Route::get('/prueba', function(){
     /*$User = User::where('id', '5')
                 ->first();
 
-    $User->contrasena = 'abril123';
+    $User->password = 'abril123';
     $User->save();
      return $User;*/
 
@@ -45,7 +45,7 @@ Route::get('/prueba', function(){
     return $User; */
 
     // Trae todos los registros
-    //$User = User::Where('nombre','Andres');
+    //$User = User::Where('name','Andres');
     //$User->delete();
 
 });

@@ -50,9 +50,6 @@
 
                     <button type="submit">Ingresar</button>
 
-                    <div class="link">
-                        <p>Registrate <a href="{{ route('register') }}">aquí</a></p>
-                    </div>
                 </form>
             </div>
         </div>

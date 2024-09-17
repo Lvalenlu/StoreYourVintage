@@ -18,7 +18,7 @@
             <div class="user-container">
                 <div class="contenedor-busqueda">
                     <input type="text" id="barra-busqueda" placeholder="Buscar...">
-                    <button id="add-user-btn" class="add-user-btn">Añadir useristrador</button>
+                    <button id="add-user-btn" class="add-user-btn">Añadir Administrador</button>
                 </div>
                 <table class="user-table">
                     <thead>

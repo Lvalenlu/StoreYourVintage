@@ -12,13 +12,13 @@ class Product extends Model
     protected $table = 'products';
 
     protected $fillable = [
-        'nombre',
-        'precio',
-        'descripcion',
+        'name',
+        'prica',
+        'description',
     ];
 
     protected $hidden = [
-        'contrasena',
+        'password',
         'remember_token',
     ];
 
