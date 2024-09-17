@@ -19,40 +19,37 @@
 
                     <h2>Ingreso</h2>
 
-                    <!-- Número de documento -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" name="document" class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
+                        <input type="text" name="document" placeholder=" " class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
+                        <label for="document">Número de documento</label>
                         @error('document')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="document">Número de documento</label>
                     </div>
 
-                    <!-- Contraseña -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-lock"></i>
-                        <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" required>
+                        <input type="password" name="password" placeholder=" " class="form-control @error('password') is-invalid @enderror" required>
+
+                        <label for="password">Contraseña</label>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="password">Contraseña</label>
+
                     </div>
 
-                    <!-- Recordarme -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                         <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
 
-                    <!-- Botón de envío -->
                     <button type="submit">Ingresar</button>
 
-                    <!-- Link de registro -->
                     <div class="link">
                         <p>Registrate <a href="{{ route('register') }}">aquí</a></p>
                     </div>

@@ -49,30 +49,55 @@ section{
     text-align: center;
 }
 
-.input-contenedor{
+.input-contenedor {
     position: relative;
     margin: 30px 0;
     width: 300px;
     border-bottom: 2px solid var(--color-white);
+    padding-bottom: 5px;
 }
 
-.input-contenedor label{
+.input-contenedor label {
     position: absolute;
-    top: 50%;
-    left: 5px;
-    transform: translateY(-50%);
+    top: 15px; /* Ajuste inicial para el label */
+    left: 10px;
     color: var(--color-white);
     font-size: 1rem;
     pointer-events: none;
-    transition: .6s;
+    transition: 0.3s ease;
     font-weight: bold;
 }
 
-.input-contenedor input.not-empty + label,
-.input-contenedor input:focus + label {
-    top: -5px;
-    font-size: 0.8rem;
+.input-contenedor input {
+    width: 100%;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    padding: 5px 0 5px 10px; /* Ajuste del padding interno */
+    color: var(--color-white);
 }
+
+.input-contenedor input:not(:placeholder-shown) + label,
+.input-contenedor input:focus + label {
+    top: -10px; /* Mueve el label arriba */
+    font-size: 0.8rem; /* Cambia el tamaño del label */
+}
+
+.input-contenedor input:focus {
+    border-bottom: 2px solid var(--primary-color); /* Cambia el color cuando el input está activo */
+}
+
+.input-contenedor i {
+    position: absolute;
+    color: var(--color-white);
+    font-size: 1.6rem;
+    top: 19px;
+    right: 8px;
+}
+
+
 
 .input-contenedor input{
     width: 100%;

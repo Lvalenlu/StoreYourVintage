@@ -21,49 +21,53 @@
                     <!-- Nombre Completo -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
-                        <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name">
+                        <input type="text" id="name" name="name" placeholder=" " class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name">
+                        <label for="name">Nombre Completo</label>
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="name">Nombre Completo</label>
+
                     </div>
 
                     <!-- Número de documento -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-id-card"></i>
-                        <input type="text" id="identity_document" name="document" class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
+                        <input type="text" id="identity_document" name="document"  placeholder=" " class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
+                        <label for="identity_document">Número de documento</label>
                         @error('document')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="identity_document">Número de documento</label>
+
                     </div>
 
                     <!-- Correo electrónico -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-envelope"></i>
-                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                        <input type="email" id="email" name="email"  placeholder=" " class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
+                        <label for="mail">Correo electrónico</label>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="mail">Correo electrónico</label>
+
                     </div>
 
                     <!-- Cargo -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-circle-info"></i>
-                        <input type="text" id="charge" name="charge" class="form-control @error('charge') is-invalid @enderror" value="{{ old('charge') }}" required>
+                        <input type="text" id="charge" name="charge"  placeholder=" " class="form-control @error('charge') is-invalid @enderror" value="{{ old('charge') }}" required>
+                        <label for="cargo">Cargo</label>
                         @error('charge')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                        <label for="cargo">Cargo</label>
+
                     </div>
 
                     <!-- Botón de registro -->
