@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{asset('css/styles_gestor.css')}}">
 
     <!-- Scripts -->
-    
+
 </head>
 <body>
     <div id="app">
@@ -27,8 +27,8 @@
             <ul>
                 <li><img src="{{asset('img/logo.png')}}" alt="Logo"></li>
                 <li><a href="{{ route('products.index') }}">Productos</a> </li>
-                <li><a href="{{ route('users.index') }}">Usuarios</a></li>
-                <li><a href="{{--{{ route('gestor.index') }}--}}">Gestor</a></li>
+                <li><a href="{{ route('customers.index') }}">Usuarios</a></li>
+                <li><a href="{{ route('users.index')}}">Gestor</a></li>
                 <a class="nav-item nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

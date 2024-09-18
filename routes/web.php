@@ -4,6 +4,7 @@ use App\Http\Controllers;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
@@ -59,6 +60,8 @@ Route::get('/prueba', function(){
 Route::post('/login',       [AuthController::class,     'storeLogin']);
 Route::resource('products', ProductController::class)->names('products');
 Route::resource('categories', CategoryController::class)->names('categories');
+Route::resource('users', UserController::class)->names('users');
+Route::resource('customers', CustomerController::class)->names('customer');
 
 
 Auth::routes();

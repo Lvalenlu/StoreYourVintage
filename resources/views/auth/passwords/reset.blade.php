@@ -21,7 +21,7 @@
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                        <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
+                        <label for="password" class="col-md-4 col-form-label text-md-end">{{     __('Contraseña') }}</label>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
