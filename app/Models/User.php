@@ -24,6 +24,7 @@ class User extends Authenticatable
         'password',
         'charge',
         'is_manager',
+        'code',
     ];
     /**
      * The attributes that should be hidden for serialization.
