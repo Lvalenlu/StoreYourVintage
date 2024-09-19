@@ -29,7 +29,7 @@ class UserController extends Controller
     }
     public function show(){
         $user = Auth::user();
-        return view('users.profile', compact('customer'));
+        return view('users.profile', compact('user'));
     }
 
 

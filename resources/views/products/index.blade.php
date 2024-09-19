@@ -108,6 +108,8 @@
 
                 <div class="modal-actions">
                     {{-- <button src="{{ route('products.edit')}}" class="btn-modificar">Modificar</button> --}}
+                    <button class="btn-eliminar">Modificar</button>
+                    {{-- <button src="{{ route('products.edit')}}" class="btn-modificar">Elimninar</button> --}}
                     <button class="btn-eliminar">Eliminar</button>
                 </div>
             </div>
@@ -123,8 +125,6 @@
 
 <script>
 // Simulando productos e un JSON src="{{asset('js/simulacion.js')}}"
-
-
 function openModal(image, title, description, price, size, likes, seller_id) {
     document.getElementById('modalImage').src = `{{ asset('img') }}/${image}`;
     document.getElementById('modalTitle').innerText = title;
@@ -137,14 +137,7 @@ function openModal(image, title, description, price, size, likes, seller_id) {
     // Mostrar modal
     document.getElementById('productModal').style.display = 'flex';
 }
-
-function closeModal() {
-document.getElementById('productModal').style.display = 'none';
-}
-
-
-
-// para backend reemplacen la llamada con la API real
+function closeModal() {document.getElementById('productModal').style.display = 'none';}
 
 </script>
 <script src="{{asset('js/products.js')}}"></script>

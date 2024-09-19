@@ -13,7 +13,7 @@ Route::get('/', function () {return redirect()->route('login');});
 Auth::routes();
 Route::get('/home',             [UserController::class,     'index'])->name('home');
 Route::post('/login',           [AuthController::class,     'storeLogin']);
-
+Route::get('/profile',          [UserController::class,     'show'])->name('profile');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
@@ -39,6 +39,7 @@ Route::get('/prueba', function(){
     //   Encontrar un registro y modificarlo
     /*$User = User::where('id', '5')
                 ->first();
+            
 
     $User->password = 'abril123';
     $User->save();
@@ -51,4 +52,8 @@ Route::get('/prueba', function(){
     // Trae todos los registros
     //$User = User::Where('name','Andres');
     //$User->delete();
+    
+
+    // $User = Auth::user();
+    // return $User;
 });

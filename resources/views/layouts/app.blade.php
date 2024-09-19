@@ -37,7 +37,7 @@
                         <div class="divider"></div>
                         <a href="{{route('profile')}}">Ver perfil</a>
                         <a href="{{route('change')}}">Cambiar contraseña</a>
-                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                        <a href="{{route('logout')}}" onclick="openLogoutModal()">Cerrar sesión</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
