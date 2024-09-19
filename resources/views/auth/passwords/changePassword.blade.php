@@ -12,8 +12,9 @@
     <section>
         <div class="contenedor">
             <div class="formulario">
-                <form method="POST" action="">
+                <form method="POST" action="{{route('update.password')}}">
                     @csrf
+                    @method('PUT')
                     <img src="{{asset('img/logo.png')}}" alt="Logo">
 
                     <h2>Cambiar Contraseña</h2>
@@ -38,15 +39,15 @@
 
                     <div class="input-contenedor">
                         <i class="fa-solid fa-lock"></i>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                        <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Codigo de usuario') }}</label>
-
+                        <input id="code" type="number" class="form-control" name="code" required autocomplete="code">
+                        <label for="code" class="col-md-4 col-form-label text-md-end">{{ __('Codigo de usuario') }}</label>
+                        <button type="submit" class="btn btn-primary">
+                            {{ __('Guardar') }}
+                        </button>
                     </div>
                 </form>
                 <div>
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Guardar') }}
-                    </button>
+                    
                 </div>
             </div>
         </div>

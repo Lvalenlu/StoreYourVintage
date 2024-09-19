@@ -11,8 +11,9 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {return redirect()->route('login');});
 
 Auth::routes();
+Route::get('/changes/password',             [AuthController::class,     'changes'])->name('changes.password');
+Route::put('/update/password',             [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [UserController::class,     'index'])->name('home');
-Route::post('/login',           [AuthController::class,     'storeLogin']);
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
 
 Route::resource('products',     ProductController::class)->names('products');
