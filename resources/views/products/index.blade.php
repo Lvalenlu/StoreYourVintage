@@ -76,17 +76,17 @@
         <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
         <h3>{{$product->name}}</h3>
         <p>{{$product->description}}</p>
-        <button onclick="openModal('{{$product->image}}', '{{$product->name}}', '{{$product->description}}', '{{$product->price}}', '{{$product->size}}', '{{$product->likes}}', '{{$product->seller_id}}')">Más información</button>
+        <button onclick="openModal('{{$product->id}}')">Más información</button>
     </div>
-    <div class="modal-overlay" id="productModal" style="display: none;">
+    <div class="modal-overlay" id="productModal{{$product->id}}" style="display: none;">
         <div class="modal-content">
 
             <img id="modalImage">
 
 
             <div class="modal-details">
-                <h3 id="modalTitle"></h3>
-
+                <h3 id="modalTitle">{{$product->name}}</h3>
+                
                 <div class="modal-info">
                     <span id="modalPrice"></span>
 
@@ -107,8 +107,8 @@
                 </div>
 
                 <div class="modal-actions"> <!-- Para Stiven: laravel como sabe que id esta tomando el id del producto ??? de que manera y en donde? -->
-                    <button onclick="location.href='{{ route('products.edit', ['product' => $product->id]) }}'" class="btn-modificar">Modificar</button>
-                    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
+                    <button onclick="location.href='{{ route('products.edit',$product->id) }}'" class="btn-modificar">Modificar</button>
+                    <form action="{{ route('products.destroy', $product->id)}}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn-eliminar">Eliminar</button>
@@ -117,29 +117,23 @@
             </div>
 
             <!-- Botón para cerrar el modal -->
-             <a onclick="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+             <a onclick="closeModal({{$product->id}})"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
         </div>
     </div>
     @endforeach
+    
+   
 </section>
 
 
 
 <script>
 // Simulando productos e un JSON src="{{asset('js/simulacion.js')}}"
-function openModal(image, title, description, price, size, likes, seller_id) {
-    document.getElementById('modalImage').src = `{{ asset('img') }}/${image}`;
-    document.getElementById('modalTitle').innerText = title;
-    document.getElementById('modalDescription').innerText = `Descripción del producto:${description}`;
-    document.getElementById('modalPrice').innerText = `Precio $${price}`;
-    document.getElementById('modalSize').innerText = `Talla: ${size}`;
-    document.getElementById('modalLikes').innerText = `Likes: ${likes}`;
-    document.getElementById('modalSeller').innerText = `Vendedor: ${seller_id}`;
-
+function openModal(id) {
     // Mostrar modal
-    document.getElementById('productModal').style.display = 'flex';
+    document.getElementById('productModal'+id).style.display = 'flex';
 }
-function closeModal() {document.getElementById('productModal').style.display = 'none';}
+function closeModal(id) {document.getElementById('productModal'+id).style.display = 'none';}
 
 </script>
 <script src="{{asset('js/products.js')}}"></script>

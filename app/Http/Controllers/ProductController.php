@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -12,10 +13,10 @@ use function PHPUnit\Framework\returnValue;
 
 class ProductController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function index()
     {
@@ -44,11 +45,11 @@ class ProductController extends Controller
 
         // Crear el nuevo producto
         Product::create([
-            'name' => $validatedData['name'],
-            'description' => $validatedData['description'],
-            'image' => '/productos.jpeg',
-            'size' => $validatedData['size'],
-            'prices' => $validatedData['prices'],
+            'name'          => $validatedData['name'],
+            'description'   => $validatedData['description'],
+            'image'         => '/productos.jpeg',
+            'size'          => $validatedData['size'],
+            'prices'        => $validatedData['prices'],
             'id_categories' => $validatedData['id_categories'],
         ]);
 
@@ -65,7 +66,6 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return "este tambien trae solo el primer registro pero no se por que -";
         $categories = Category::all(); // Obtener todas las categorías
         return view('products.edit', compact('product', 'categories'));
     }
@@ -83,10 +83,10 @@ class ProductController extends Controller
                 'max:255',
                 Rule::unique('products')->ignore($product->id),
             ],
-            'description' => 'nullable|string|max:500',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'size' => 'nullable|string|max:50',
-            'prices' => 'required|numeric|min:0',
+            'description'   => 'nullable|string|max:500',
+            'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'size'          => 'nullable|string|max:50',
+            'prices'        => 'required|numeric|min:0',
             'id_categories' => 'required|integer|exists:categories,id',
         ]);
 
@@ -100,8 +100,14 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $productDel = Product::all();   
-        return  "LA CONCHA DE LA PUTA LORA NO HE PODIDO TRAER INFORMACION Y DEBE SER POR QUE NO SE MANDA ESA MAMADA EN EL HTML O NOSEEEEEEE";
+        $user = Product::find($id);
+        if ($user) {
+            $user->delete();
+            return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
+        } else {
+            // Redirige con un mensaje de error si no se encontró el producto
+            return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
+        }
 
     }
 }
