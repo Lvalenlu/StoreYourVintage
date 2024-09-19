@@ -69,7 +69,7 @@ class ProductController extends Controller
     }
 
 
-    
+
     public function update(Request $request, $id)
     {
         // Validar los datos del producto

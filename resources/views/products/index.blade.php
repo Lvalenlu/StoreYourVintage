@@ -76,89 +76,71 @@
         <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
         <h3>{{$product->name}}</h3>
         <p>{{$product->description}}</p>
-        <button onclick="openModal('{{$product->imagen}}', '{{$product->name}}', '{{$product->description}}', '{{$product->price}}', '{{$product->size}}', '{{$product->likes}}', '{{$product->seller_id}}')">Más información</button>
+        <button onclick="openModal('{{$product->image}}', '{{$product->name}}', '{{$product->description}}', '{{$product->price}}', '{{$product->size}}', '{{$product->likes}}', '{{$product->seller_id}}')">Más información</button>
+    </div>
+    <div class="modal-overlay" id="productModal" style="display: none;">
+        <div class="modal-content">
+
+            <img id="modalImage">
+
+
+            <div class="modal-details">
+                <h3 id="modalTitle"></h3>
+
+                <div class="modal-info">
+                    <span id="modalPrice"></span>
+
+                    <span id="modalLikes"></span></span>
+                    <br>
+                    <span id="modalSize"></span>
+                    <br>
+                    <span id="modalSeller"></span>
+                </div>
+
+                <div class="modal-description" id="modalDescription"></div>
+
+                <div class="modal-registro-comprador">
+                    <p><strong>Publicado:</strong>Fecha de publicación</p>
+                    <p><strong>Vendido:</strong>Fecha de venta</p>
+                    <p><strong>Enviado:</strong>Fecha de envío</p>
+                    <p><strong>Entregado:</strong>Fecha de entrega</p>
+                </div>
+
+                <div class="modal-actions">
+                    {{-- <button src="{{ route('products.edit')}}" class="btn-modificar">Modificar</button> --}}
+                    <button class="btn-eliminar">Eliminar</button>
+                </div>
+            </div>
+
+            <!-- Botón para cerrar el modal -->
+             <a onclick="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
+        </div>
     </div>
     @endforeach
-
 </section>
 
-<div class="modal-overlay" id="productModal" style="display: none;">
-    <div class="modal-content">
 
-        <img id="modalImage" src="{{asset('img/logo.png')}}" alt="Imagen del producto">
-
-
-        <div class="modal-details">
-            <h3 id="modalTitle">Nombre del Producto</h3>
-
-            <div class="modal-info">
-                <span id="modalPrice">$ Precio</span>
-                <span id="modalLikes">Likes: 0</span>
-                <span id="modalSize">Size: N/A</span>
-                <span id="modalSeller">Vendedor: N/A</span>
-            </div>
-
-            <div class="modal-description" id="modalDescription">
-                Descripción del producto...
-            </div>
-
-            <div class="modal-registro-comprador">
-                <p><strong>Publicado:</strong> Fecha de publicación</p>
-                <p><strong>Vendido:</strong> Fecha de venta</p>
-                <p><strong>Enviado:</strong> Fecha de envío</p>
-                <p><strong>Entregado:</strong> Fecha de entrega</p>
-            </div>
-
-            <div class="modal-actions">
-                <button class="btn-modificar">Modificar</button>
-                <button class="btn-eliminar">Eliminar</button>
-            </div>
-        </div>
-
-        <!-- Botón para cerrar el modal -->
-         <a onclick="closeModal()"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#e8eaed"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a>
-    </div>
-</div>
 
 <script>
 // Simulando productos e un JSON src="{{asset('js/simulacion.js')}}"
 
 
-// Función que genera las tarjetas en HTML
+function openModal(image, title, description, price, size, likes, seller_id) {
+    document.getElementById('modalImage').src = `{{ asset('img') }}/${image}`;
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalDescription').innerText = `Descripción del producto:${description}`;
+    document.getElementById('modalPrice').innerText = `Precio $${price}`;
+    document.getElementById('modalSize').innerText = `Talla: ${size}`;
+    document.getElementById('modalLikes').innerText = `Likes: ${likes}`;
+    document.getElementById('modalSeller').innerText = `Vendedor: ${seller_id}`;
 
-function generarTarjetas() {
-    let container = document.getElementById('products-container');
-
-    products.forEach(product => {
-        let cardHTML = `
-        <div class="product-card">
-            <img src="${product.imagen}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <button onclick="openModal('${product.imagen}', '${product.name}', '${product.description}', '${product.price}', '${product.size}', '${product.likes}', '${product.seller_id}')">Más información</button>
-        </div>  `;
-    container.innerHTML += cardHTML;
-});
-}
-
-function openModal(imageSrc, title, description, price, size, likes, seller_id) {
-document.getElementById('modalImage').src = imageSrc;
-document.getElementById('modalTitle').innerText = title;
-document.getElementById('modalDescription').innerText = description;
-document.getElementById('modalPrice').innerText = `$ ${price}`;
-document.getElementById('modalSize').innerText = `Talla: ${size}`;
-document.getElementById('modalLikes').innerText = `Likes: ${likes}`;
-document.getElementById('modalSeller').innerText = `Vendedor: ${seller_id}`;
-
-// Mostrar modal
-document.getElementById('productModal').style.display = 'flex';
+    // Mostrar modal
+    document.getElementById('productModal').style.display = 'flex';
 }
 
 function closeModal() {
 document.getElementById('productModal').style.display = 'none';
 }
-
-window.onload = generarTarjetas;
 
 
 

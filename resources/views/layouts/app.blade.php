@@ -13,16 +13,15 @@
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <!-- enlaces-->
     <link rel="stylesheet" href="{{asset('css/styles_navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles_products.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles_gestor.css')}}">
 
-    <!-- Scripts -->
-
 </head>
 <body>
     <div id="app">
-        <!-- Aquí está tu barra de navegación personalizada -->
+        <!-- Aquí está tu barra de navegación   personalizada -->
         <nav>
             <ul>
                 <li><img src="{{asset('img/logo.png')}}" alt="Logo"></li>
