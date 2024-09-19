@@ -4,38 +4,44 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-body{
-
+body {
     min-height: 100vh;
     background-color: var(--alternative-color);
+    margin: 0;
 }
-
-nav{
+nav {
     background-color: var(--primary-color);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
-    height: auto;
+    height: 60px; /* Ajuste de altura del navbar */
+    display: flex;
+    align-items: center; /* Alinea el contenido verticalmente */
+    padding: 0 20px; /* Asegura espacio alrededor del contenido */
 }
 
-nav ul{
+nav ul {
     width: 100%;
     list-style: none;
     display: flex;
     justify-content: flex-end;
+    align-items: center; /* Alinea los elementos dentro del ul */
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    height: 60px; /* Ajusta la altura para ser igual que el navbar */
+    display: flex;
     align-items: center;
 }
 
-nav li{
-    height: 50px;
-}
-
-nav img{
+nav img {
     width: 116px;
     padding-left: 24px;
 }
 
-nav a{
+nav a {
     height: 100%;
-    padding: 0 30px;
+    padding: 0 20px;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -43,11 +49,11 @@ nav a{
     transition: .4s;
 }
 
-nav a:hover{
+nav a:hover {
     background-color: var(--secondary-color);
 }
 
-nav li:first-child{
+nav li:first-child {
     margin-right: auto;
 }
 
@@ -84,6 +90,24 @@ nav li:first-child{
 .boton-menu{
     display: none;
 }
+.user-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    padding-top: 5px; /* Ajuste el espaciado superior */
+    margin-top: 5px; /* Alternativa si prefieres usar margin */
+}
+
+.user-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
 
 @media (max-width: 800px){
     .ocultarMobile{
@@ -98,3 +122,55 @@ nav li:first-child{
         width: 100%;
     }
 }
+
+.dropdown {
+    position: relative;
+    display: inline-block; /* Mantén esto para que el dropdown funcione */
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 30px;
+    text-decoration: none;
+    display: block;
+    font-weight: normal;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content .divider {
+    border-top: 1px solid #ddd;
+    margin: 8px 0;
+}
+
+.dropdown-content .user-info {
+    margin: 0 13px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Muestra el contenido al hacer hover */
+}
+
+
+.dropdown-content .user-info strong {
+    padding: 10px 0; /* Agrega padding al nombre del usuario */
+    display: block; /* Asegura que ocupe el ancho completo */
+}
+
+
+

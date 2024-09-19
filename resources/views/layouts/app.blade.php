@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{asset('css/styles_navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles_products.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles_gestor.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles_perfil.css')}}">
+    <link rel="stylesheet" href="{{asset('css/styles_usuarios.css')}}">
+    <link rel="stylesheet" href="{{asset('css/variables.css')}}">
 
 </head>
 <body>
@@ -29,15 +32,19 @@
                 <li><a href="{{route('customers.index')}}">Usuarios</a></li>
                 <li><a href="{{route('users.index')}}">Gestor</a></li>
                 <li class="dropdown">
-                    <img src="{{ asset('img/user_icon.png') }}" alt="User Icon" class="user-icon">
+                    <div  class="user-icon" >
+                        <img src="{{asset('img/user_icon.png') }}" alt="UserIcon"/>
+                    </div>
+
                     <div class="dropdown-content">
-                        <div style="padding: 12px; font-weight: bold;">
-                            {{auth()->user()->name}}
+                        <div class="user-info">
+                            <strong>{{ Auth::user()->name }}</strong>
+                            <span>{{ Auth::user()->role }}</span>
                         </div>
                         <div class="divider"></div>
-                        <a href="{{route('profile')}}">Ver perfil</a>
-                        <a href="{{route('change')}}">Cambiar contraseña</a>
-                        <a href="{{route('logout')}}" onclick="openLogoutModal()">Cerrar sesión</a>
+                        <a href="{{ route('profile') }}">Ver perfil</a>
+                        <a href="{{ route('password.request') }}">Cambiar contraseña</a>
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
