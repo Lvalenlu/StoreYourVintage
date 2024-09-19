@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AuditController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +17,7 @@ Route::get('/changes/password',             [AuthController::class,     'changes
 Route::put('/update/password',             [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [UserController::class,     'index'])->name('home');
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
+Route::get('/audits/users',          [AuditController::class,     'index'])->name('audits.index');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');

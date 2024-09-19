@@ -25,4 +25,6 @@ class Customer extends Model
         'password',
         'remember_token',
     ];
+
+    public $timestamps = false;
 }
