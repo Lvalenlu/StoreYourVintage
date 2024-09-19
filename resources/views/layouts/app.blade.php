@@ -21,28 +21,66 @@
 </head>
 <body>
     <div id="app">
-        <!-- Aquí está tu barra de navegación   personalizada -->
+        <!-- Barra de navegación -->
         <nav>
             <ul>
                 <li><img src="{{asset('img/logo.png')}}" alt="Logo"></li>
-                <li><a href="{{ route('products.index') }}">Productos</a> </li>
-                <li><a href="{{ route('customers.index') }}">Usuarios</a></li>
-                <li><a href="{{ route('users.index')}}">Gestor</a></li>
-                <a class="nav-item nav-link" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                <i class="fa fa-window-close me-2"></i>Logout</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
+                <li><a href="{{route('products.index')}}">Productos</a> </li>
+                <li><a href="{{route('customers.index')}}">Usuarios</a></li>
+                <li><a href="{{route('users.index')}}">Gestor</a></li>
+                <li class="dropdown">
+                    <img src="{{ asset('img/user_icon.png') }}" alt="User Icon" class="user-icon">
+                    <div class="dropdown-content">
+                        <div style="padding: 12px; font-weight: bold;">
+                            {{auth()->user()->name}}
+                        </div>
+                        <div class="divider"></div>
+                        <a href="{{route('profile')}}">Ver perfil</a>
+                        <a href="{{route('change')}}">Cambiar contraseña</a>
+                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+
+
             </ul>
         </nav>
-        <!-- Fin de la barra de navegación personalizada -->
+
+        <!-- Modal para confirmar cierre de sesión -->
+        <div class="modal-overlay" id="logoutModal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-details">
+                    <p>¿Estás seguro de que quieres cerrar sesión?</p>
+                    <div class="modal-actions">
+                        <button class="btn-eliminar" onclick="confirmLogout()">Cerrar sesión</button>
+                        <button onclick="closeLogoutModal()">Cancelar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
+    <script>
+    // Funciónes para abrir, cerrar el modal
+    function openLogoutModal() {
+        document.getElementById('logoutModal').style.display = 'flex';
+    }
+
+    // Función para cerrar el modal
+    function closeLogoutModal() {
+        document.getElementById('logoutModal').style.display = 'none';
+    }
+
+    // Función para confirmar el cierre de sesión
+    function confirmLogout() {
+        document.getElementById('logout-form').submit();
+    }
+    </script>
     <script src={{asset('js/gestor.js')}}></script>
     <script src={{asset('js/data_usuarios&user.js')}}></script>
     <script src={{asset('js/navbar_loader.js')}}></script>

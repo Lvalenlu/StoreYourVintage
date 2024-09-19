@@ -31,7 +31,7 @@
 
                     <div class="input-contenedor">
                         <i class="fa-solid fa-lock"></i>
-                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                        <input id="password-confirm" type="password" class="form-control " name="password_confirmation" required autocomplete="new-password">
                         <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirmar contraseña') }}</label>
 
                     </div>
