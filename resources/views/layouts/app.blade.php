@@ -32,11 +32,11 @@
                 <li><a href="{{route('customers.index')}}">Usuarios</a></li>
                 <li><a href="{{route('users.index')}}">Gestor</a></li>
                 <li class="dropdown">
-                    <div  class="user-icon" >
+                    <div id="userIcon" class="user-icon">
                         <img src="{{asset('img/user_icon.png') }}" alt="UserIcon"/>
                     </div>
 
-                    <div class="dropdown-content">
+                    <div id="dropdownContent"  class="dropdown-content">
                         <div class="user-info">
                             <strong>{{ Auth::user()->name }}</strong>
                             <span>{{ Auth::user()->role }}</span>
@@ -44,13 +44,13 @@
                         <div class="divider"></div>
                         <a href="{{ route('profile') }}">Ver perfil</a>
                         <a href="{{ route('password.request') }}">Cambiar contraseña</a>
-                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar sesión</a>
+                        <a class="nav-item nav-link" onclick="openLogoutModal()">
+                        <i class="fa fa-window-close me-2"></i>Cerrar sesión</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
                     </div>
                 </li>
-
 
             </ul>
         </nav>
@@ -61,7 +61,9 @@
                 <div class="modal-details">
                     <p>¿Estás seguro de que quieres cerrar sesión?</p>
                     <div class="modal-actions">
-                        <button class="btn-eliminar" onclick="confirmLogout()">Cerrar sesión</button>
+                        <button class="btn-eliminar"  href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Cerrar sesión</button>
                         <button onclick="closeLogoutModal()">Cancelar</button>
                     </div>
                 </div>
