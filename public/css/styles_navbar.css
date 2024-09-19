@@ -39,7 +39,7 @@ nav img {
     padding-left: 24px;
 }
 
-nav a {
+nav a{
     height: 100%;
     padding: 0 20px;
     text-decoration: none;
@@ -49,7 +49,7 @@ nav a {
     transition: .4s;
 }
 
-nav a:hover {
+nav a:hover  {
     background-color: var(--secondary-color);
 }
 
@@ -100,6 +100,7 @@ nav li:first-child {
     padding-top: 5px; /* Ajuste el espaciado superior */
     margin-top: 5px; /* Alternativa si prefieres usar margin */
 }
+
 
 .user-icon img {
     width: 100%;

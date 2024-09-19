@@ -15,7 +15,7 @@ class UserController extends Controller
 
     public function index(){
         $users = User::all();
-        return view('users.manager', compact('users'));
+        return view('users.manager.manager', compact('users'));
     }
 
     public function edit(){
