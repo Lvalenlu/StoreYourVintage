@@ -106,11 +106,13 @@
                     <p><strong>Entregado:</strong>Fecha de entrega</p>
                 </div>
 
-                <div class="modal-actions">
-                    {{-- <button src="{{ route('products.edit')}}" class="btn-modificar">Modificar</button> --}}
-                    <button class="btn-eliminar">Modificar</button>
-                    {{-- <button src="{{ route('products.edit')}}" class="btn-modificar">Elimninar</button> --}}
-                    <button class="btn-eliminar">Eliminar</button>
+                <div class="modal-actions"> <!-- Para Stiven: laravel como sabe que id esta tomando el id del producto ??? de que manera y en donde? -->
+                    <button onclick="location.href='{{ route('products.edit', ['product' => $product->id]) }}'" class="btn-modificar">Modificar</button>
+                    <form action="{{ route('products.destroy', ['product' => $product->id]) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn-eliminar">Eliminar</button>
+                    </form>
                 </div>
             </div>
 

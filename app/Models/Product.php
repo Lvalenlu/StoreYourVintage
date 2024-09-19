@@ -13,11 +13,10 @@ class Product extends Model
 
     protected $fillable = [
         'name',
+        'price',
         'description',
         'image',
-        'size',
-        'prices',
-        'id_categories',
+        'likes',
     ];
 
     protected $hidden = [

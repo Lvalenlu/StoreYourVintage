@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -64,6 +65,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
+        return "este tambien trae solo el primer registro pero no se por que -";
         $categories = Category::all(); // Obtener todas las categorías
         return view('products.edit', compact('product', 'categories'));
     }
@@ -75,7 +77,7 @@ class ProductController extends Controller
         // Validar los datos del producto
         $product = Product::find($id);
         $validatedData = $request->validate([
-            'name' => [
+                'name' => [
                 'required',
                 'string',
                 'max:255',
@@ -96,8 +98,10 @@ class ProductController extends Controller
     }
 
 
-    public function destroy(Product $product)
+    public function destroy($id)
     {
+        $productDel = Product::all();   
+        return  "LA CONCHA DE LA PUTA LORA NO HE PODIDO TRAER INFORMACION Y DEBE SER POR QUE NO SE MANDA ESA MAMADA EN EL HTML O NOSEEEEEEE";
 
     }
 }
