@@ -6,6 +6,7 @@ editarPerfilBtn.onclick = function() {
     modalEditarPerfil.style.display = "block";
 }
 
+
 cerrarModal.onclick = function() {
     modalEditarPerfil.style.display = "none";
 }
