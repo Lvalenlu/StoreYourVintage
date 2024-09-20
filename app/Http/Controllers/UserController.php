@@ -32,10 +32,10 @@ class UserController extends Controller
             'charge'    => 'required|string|max:255',
         ]);
         $user->update($validatedData);
-        
+
         return redirect()->route('profile')->with('success', 'Perfil actualizado exitosamente.');
 
-    }    
+    }
     public function show(){
         $user = Auth::user();
         return view('users.profile', compact('user'));
