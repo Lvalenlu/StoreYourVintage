@@ -18,6 +18,7 @@ class Product extends Model
         'image',
         'size',
         'likes',
+        'publicationDate',
     ];
 
     protected $hidden = [
@@ -34,6 +35,11 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class, 'id_categories');
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class, 'product_id');
+    }
+
 }
 
 

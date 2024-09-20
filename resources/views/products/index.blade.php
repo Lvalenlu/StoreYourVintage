@@ -89,27 +89,25 @@
 
                 <div class="modal-info">
                     <span id="modalPrice">Precio: {{$product->price}}</span>
-                    <span id="modalLikes">Likes: {{$product->Likes}}</</span></span>
-                    <br>
-                    <span id="modalSize">Talla: {{$product->price}}</</span>
-                    <br>
-                    <span id="modalSeller">Vendedor: {{$product->price}}</</span>
+                    <span id="modalLikes">Likes: {{$product->likes}}</span>
+                    <span id="modalSize">Talla: {{$product->size}}</span>
+                    <span id="modalSeller">Vendedor: {{$product->seller_id}}</span>
                 </div>
+
+
 
                 <div class="modal-description" id="modalDescription"></div>
 
 
-                @foreach ($orders as $order)
-
-
                 <div class="modal-registro-comprador">
-                    <p><strong>Publicado:</strong>{{$product->created_at}}</p>
-                    <p><strong>Vendido:</strong></p>
-                    <p><strong>Enviado:</strong>Fecha de envío</p>
-                    <p><strong>Entregado:</strong>Fecha de entrega</p>
+                    @foreach ($product->orders as $order)
+                        <p><strong>Publicado:</strong> {{$product->publicationDate}}</p>
+                        <p><strong>Vendido:</strong> {{$order->saleDate}}</p>
+                        <p><strong>Enviado:</strong> {{$order->shippingDate}}</p>
+                        <p><strong>Entregado:</strong> {{$order->deliveryDate}}</p>
+                    @endforeach
                 </div>
 
-                @endforeach
 
                 <div class="modal-actions"> <!-- Para Stiven: laravel como sabe que id esta tomando el id del producto ??? de que manera y en donde? -->
                     <button onclick="location.href='{{ route('products.edit',$product->id) }}'" class="btn-modificar">Modificar</button>

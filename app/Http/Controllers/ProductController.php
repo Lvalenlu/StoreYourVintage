@@ -21,7 +21,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::with('orders')->get(); // Cargar productos junto con sus órdenes
+        $products = Product::with('orders')->get();
+
         return view('products.index', compact('products'));
     }
 
@@ -47,11 +48,12 @@ class ProductController extends Controller
 
         // Crear el nuevo producto
         Product::create([
-            'name'          => $validatedData['name'],
-            'description'   => $validatedData['description'],
-            'image'         => '/productos.jpeg',
-            'size'          => $validatedData['size'],
-            'prices'        => $validatedData['prices'],
+            'name'              => $validatedData['name'],
+            'description'       => $validatedData['description'],
+            'image'             => '/productos.jpeg',
+            'size'              => $validatedData['size'],
+            'prices'            => $validatedData['prices'],
+            // 'publicationDate'   => $validatedData['publicationDate'],
             'id_categories' => $validatedData['id_categories'],
         ]);
 
