@@ -126,7 +126,7 @@ nav li:first-child {
 
 .dropdown {
     position: relative;
-    display: inline-block; /* Mantén esto para que el dropdown funcione */
+    display: inline-block;
 }
 
 
@@ -139,7 +139,9 @@ nav li:first-child {
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    min-width: 200px;
+    min-width: 230px;
+    max-width: 400px;
+    cursor: pointer;
 }
 
 .dropdown-content a {
@@ -164,13 +166,13 @@ nav li:first-child {
 }
 
 .dropdown:hover .dropdown-content {
-    display: block; /* Muestra el contenido al hacer hover */
+    display: block;
 }
 
 
 .dropdown-content .user-info strong {
-    padding: 10px 0; /* Agrega padding al nombre del usuario */
-    display: block; /* Asegura que ocupe el ancho completo */
+    padding: 10px 0;
+    display: block;
 }
 
 

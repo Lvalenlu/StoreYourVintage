@@ -58,6 +58,7 @@
                     <div id="userIcon" class="user-icon">
                         <img src="{{asset('img/user_icon.png') }}" alt="UserIcon"/>
                     </div>
+
                     <div id="dropdownContent" class="dropdown-content">
                         <div class="user-info">
                             <strong>{{ Auth::user()->name }}</strong>
@@ -66,12 +67,13 @@
                         <div class="divider"></div>
                         <a href="{{ route('profile') }}">Ver perfil</a>
                         <a href="{{ route('password.request') }}">Cambiar contraseña</a>
-                        <a class="nav-item nav-link" onclick="openLogoutModal()">
-                            <i class="fa fa-window-close me-2"></i>Cerrar sesión
+                        <a onclick="openLogoutModal()">
+                            Cerrar sesión
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
+
                     </div>
                 </li>
 
@@ -96,6 +98,23 @@
             @yield('content')
         </main>
     </div>
+
+    <script>
+    // Función para abrir el modal
+    function openLogoutModal() {
+        document.getElementById('logoutModal').style.display = 'flex';
+    }
+
+    // Función para cerrar el modal
+    function closeLogoutModal() {
+        document.getElementById('logoutModal').style.display = 'none';
+    }
+
+    // Función para confirmar el cierre de sesión
+    function confirmLogout() {
+        document.getElementById('logout-form').submit();
+    }
+    </script>
 
     <script src="{{asset('js/gestor.js')}}"></script>
     <script src="{{asset('js/data_usuarios&user.js')}}"></script>
