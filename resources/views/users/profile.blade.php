@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{asset('css/styles_navbar.css')}}">
-    <link rel="stylesheet" href="{{asset('css/styles_perfil.css')}}">
+@extends('layouts.app')
 
-
-    <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
-
-    <title>Perfil</title>
-</head>
-
-<body>
-
-    <div id="navbar-container"></div>
+@section('content')
 
     <div class="contenedor-principal">
         <div class="contenedor-perfil">
@@ -33,7 +19,7 @@
             </div>
             <div class="botones">
                 <button id="editarPerfilBtn" class="btn">Editar Perfil</button>
-                <button id="cambiarContraseñaBtn" class="btn" onclick="location.href='/v8_cambiar_contraseña.html'">Cambiar Contraseña</button>
+                <button id="cambiarContraseñaBtn" class="btn" onclick="location.href=''">Cambiar Contraseña</button>
             </div>
         </div>
 
@@ -71,9 +57,4 @@
 
         <script src="/assets/js/perfil.js"></script>
     </div>
-
-
-    <script src="/assets/js/navbar_loader.js"></script>
-    <script src="/assets/js/script_navbar.js"></script>
-</body>
-</html>
+@endsection
