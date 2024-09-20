@@ -17,7 +17,7 @@ Route::get('/changes/password',             [AuthController::class,     'changes
 Route::put('/update/password',             [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [UserController::class,     'index'])->name('home');
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
-Route::get('/audits/users',          [AuditController::class,     'index'])->name('audits.index');
+Route::get('/customers/audit',          [AuditController::class,     'index'])->name('audits.index');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
@@ -43,7 +43,7 @@ Route::get('/prueba', function(){
     //   Encontrar un registro y modificarlo
     /*$User = User::where('id', '5')
                 ->first();
-            
+
 
     $User->password = 'abril123';
     $User->save();
@@ -56,7 +56,7 @@ Route::get('/prueba', function(){
     // Trae todos los registros
     //$User = User::Where('name','Andres');
     //$User->delete();
-    
+
 
     // $User = Auth::user();
     // return $User;

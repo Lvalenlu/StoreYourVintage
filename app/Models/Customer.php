@@ -18,7 +18,7 @@ class Customer extends Model
         'address',
         'email',
         'password',
-        'role   '
+        'status'
     ];
 
     protected $hidden = [

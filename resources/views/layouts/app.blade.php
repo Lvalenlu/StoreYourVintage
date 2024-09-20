@@ -40,7 +40,7 @@
                     <a href="#" id="usersButton">Usuarios</a>
                     <div id="usersDropdown" class="dropdown-content">
                         <a href="{{route('customers.index')}}">Ver usuarios</a>
-                        <a href="{{--{{route('users.restrictions')}}--}}">Restricciones a usuarios</a>
+                        <a href="{{route('audits.index')}}">Restricciones a usuarios</a>
                     </div>
                 </li>
 
@@ -62,7 +62,7 @@
                     <div id="dropdownContent" class="dropdown-content">
                         <div class="user-info">
                             <strong>{{ Auth::user()->name }}</strong>
-                            <span>{{ Auth::user()->role }}</span>
+                            <span>{{ Auth::user()->status }}</span>
                         </div>
                         <div class="divider"></div>
                         <a href="{{ route('profile') }}">Ver perfil</a>

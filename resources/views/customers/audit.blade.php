@@ -1,30 +1,40 @@
-@extends('layouts.app') <!-- Asegúrate de que extiendes del layout correcto -->
+@extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <h2>Listado de Auditoria</h2>
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-<div class="table-responsive">
-    <table  class="table table-primary">
+    <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col">Administrador</th>
-                <th scope="col">Descripción</th>
-                <th scope="col">Usuario restringido</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Razones</th>
+                <th>ID</th>
+                <th>Descripcion</th>
+                <th>Razon</th>
+                @if ($user->is_manager == 1)
+                <th>Administrador</th>
+                @endif
+                <th>Fecha de registro</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($audit as $audit)
-            <tr class="">
-                {{-- <td scope="row">{{$audit->users_id}}</td>
-                <td scope="row">{{$audit->description}}</td>
-                <td scope="row">{{$audit->created_at}}</td>
-                <td scope="row">{{$audit->customer_id}}</td>
-                <td scope="row">{{$audit->reasons}}</td> --}}
+            @foreach($audits as $audit)
+            <tr>
+                <td>{{ $audit->id }}</td>
+                <td>{{ $audit->description }}</td>
+                <td>{{ $audit->reason }}</td>
+                @if ($user->is_manager == 1)
+                <td>{{$audit->users->name}}</td>
+                @endif
+                <td>{{ $audit->created_at }}</td>
             </tr>
             @endforeach
         </tbody>
     </table>
-</div>
 
+</div>
 @endsection
