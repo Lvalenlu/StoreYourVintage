@@ -15,13 +15,15 @@ class CustomerController extends Controller
         return view('customers.customers', compact('customers'));
     }
 
-    public function destroy($id){
+    public function destroy($id, Request $request){
         $customers = Customer::find($id);
         $newStatus = ($customers->status == 0) ? 1 : 0;
         $customers->status = $newStatus;
         $customers->save();
         $audits = new Audit();
         $status = ($newStatus == 0) ? 'Desactivo' : 'Activo';
+        $audits->reason = $request->reason;
+        $audits->type = 2;
         $audits->description = 'Se '.$status.' al usuario con ID:'.$id;
         $audits->id_users = Auth::id();
         $audits->save();

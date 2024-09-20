@@ -50,14 +50,25 @@
                             Desactivo
                         @endif
                     </td>
-                    <td>
-                        <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" style="display: inline-block;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('¿Estás seguro de que deseas cambiar el estado a este usuario?');">Cambiar Estado</button>
-                        </form>
+                    <td><a onclick="openReasonsModal({{$customer->id}})">
+                            <button type="button" class="btn btn-danger show-delete-modal">Cambiar Estado</button>
+                    </a>
                     </td>
                 </tr>
+                <div class="modal-overlay" id="reasonsModal{{$customer->id}}" style="display: none;">
+                    <div class="modal-content">
+                        <form class="modal-details" method="POST" action="{{route('customers.destroy', $customer->id)}}">
+                            @csrf
+                            @method('DELETE')
+                            <h3>Razon de cambio: </j3>
+                            <div class="modal-actions">
+                                <input type="text" name="reason">
+                                <button class="btn-eliminar" type="submit">Realizar cambio</button>
+                                <button onclick="closeReasonsModal({{$customer->id}})">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 @endforeach
             </tbody>
         </table>
@@ -65,5 +76,8 @@
     
 </div>
 
+
+
 <script src="{{asset('js/usuarios.js')}}"></script>
+<script src="{{asset('js/reasons.js')}}"></script>
 @endsection
