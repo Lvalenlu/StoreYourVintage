@@ -15,16 +15,16 @@ Route::get('/', function () {return redirect()->route('login');});
 Auth::routes();
 Route::get('/changes/password', [AuthController::class,     'changes'])->name('changes.password');
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
-Route::get('/home',             [UserController::class,     'index'])->name('home');
+Route::get('/home',             [ProductController::class,  'index'])->name('home');
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
-Route::get('/customers/audit',  [AuditController::class,     'index'])->name('audits.index');
+Route::get('/customers/audit',  [AuditController::class,    'index'])->name('audits.index');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
 Route::resource('users',        UserController::class)->names('users');
 Route::resource('customers',    CustomerController::class)->names('customers');
-Route::get('/change',           function(){return view('auth.passwords.changePassword');})->name('change');
-Route::get('/prueba',           function(){
+Route::get('/change', function(){return view('auth.passwords.changePassword');})->name('change');
+Route::get('/prueba', function(){
     //Crear un User
     // $user = new User;
 
