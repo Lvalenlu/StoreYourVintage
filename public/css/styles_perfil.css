@@ -28,6 +28,14 @@
     margin: 4%;
 }
 
+.subtitulo{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 4%;
+}
+
 .columnas{
     display: flex;
     justify-content: space-around;

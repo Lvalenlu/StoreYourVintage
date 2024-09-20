@@ -26,20 +26,18 @@
         <table  class="table table-primary">
             <thead>
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Document</th>
-                    <th scope="col">Address</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Ciudad</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Actions</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($customers as $customer)
                 <tr class="">
-                    <td scope="row">{{$customer->name}}</td>
-                    <td scope="row">{{$customer->lastName}}</td>
+                    <td scope="row">{{$customer->name . ' ' .  $customer->lastName}}</td>
                     <td scope="row">{{$customer->document}}</td>
                     <td scope="row">{{$customer->address}}</td>
                     <td scope="row">{{$customer->email}}</td>
@@ -47,7 +45,7 @@
                         @if ($customer->status == 1)
                             Activo
                         @else
-                            Desactivo
+                            Desactivado
                         @endif
                     </td>
                     <td><a onclick="openReasonsModal({{$customer->id}})">
@@ -73,7 +71,7 @@
             </tbody>
         </table>
     </div>
-    
+
 </div>
 
 

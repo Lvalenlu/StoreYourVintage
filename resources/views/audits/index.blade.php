@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>Listado de Auditoria</h2>
+    <h2 class="subtitulo">Listado de Auditorias</h2>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}
@@ -25,10 +25,10 @@
             @foreach($audits as $audit)
             <tr>
                 <td>{{ $audit->id }}</td>
-                <td>{{ $audit->description }}</td>
+                <td>{!! nl2br($audit->description) !!}</td>
                 <td>{{ $audit->reason }}</td>
                 @if ($user->is_manager == 1)
-                <td>{{$audit->users->name}}</td>
+                    <td>{{$audit->users->name}}</td>
                 @endif
                 <td>{{ $audit->created_at }}</td>
             </tr>
