@@ -6,4 +6,6 @@ function abrirFiltros(){
 function cerrarFiltros(){
     const filtroOvl = document.getElementById('filtro-ovl');
     filtroOvl.style.display = 'none';
+
+
 }

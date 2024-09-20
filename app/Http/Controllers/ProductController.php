@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Container\Attributes\Auth;
@@ -20,9 +21,10 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('orders')->get(); // Cargar productos junto con sus órdenes
         return view('products.index', compact('products'));
     }
+
 
     public function create()
     {

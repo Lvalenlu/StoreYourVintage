@@ -72,39 +72,44 @@
 
 <section class="products-container" id="products-container">
     @foreach ($products as $product)
-    <div class="product-card">
+    <div class="product-card" onclick="openModal('{{$product->id}}')">
         <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
         <h3>{{$product->name}}</h3>
         <p>{{$product->description}}</p>
-        <button onclick="openModal('{{$product->id}}')">Más información</button>
+        {{-- <button onclick="openModal('{{$product->id}}')">Más información</button> --}}
     </div>
     <div class="modal-overlay" id="productModal{{$product->id}}" style="display: none;">
         <div class="modal-content">
 
-            <img id="modalImage">
+            <img id="modalImage" src="{{asset('img').$product->image}}" alt="{{$product->name}}">
 
 
             <div class="modal-details">
                 <h3 id="modalTitle">{{$product->name}}</h3>
-                
-                <div class="modal-info">
-                    <span id="modalPrice"></span>
 
-                    <span id="modalLikes"></span></span>
+                <div class="modal-info">
+                    <span id="modalPrice">Precio: {{$product->price}}</span>
+                    <span id="modalLikes">Likes: {{$product->Likes}}</</span></span>
                     <br>
-                    <span id="modalSize"></span>
+                    <span id="modalSize">Talla: {{$product->price}}</</span>
                     <br>
-                    <span id="modalSeller"></span>
+                    <span id="modalSeller">Vendedor: {{$product->price}}</</span>
                 </div>
 
                 <div class="modal-description" id="modalDescription"></div>
 
+
+                @foreach ($orders as $order)
+
+
                 <div class="modal-registro-comprador">
-                    <p><strong>Publicado:</strong>Fecha de publicación</p>
-                    <p><strong>Vendido:</strong>Fecha de venta</p>
+                    <p><strong>Publicado:</strong>{{$product->created_at}}</p>
+                    <p><strong>Vendido:</strong></p>
                     <p><strong>Enviado:</strong>Fecha de envío</p>
                     <p><strong>Entregado:</strong>Fecha de entrega</p>
                 </div>
+
+                @endforeach
 
                 <div class="modal-actions"> <!-- Para Stiven: laravel como sabe que id esta tomando el id del producto ??? de que manera y en donde? -->
                     <button onclick="location.href='{{ route('products.edit',$product->id) }}'" class="btn-modificar">Modificar</button>
@@ -121,8 +126,8 @@
         </div>
     </div>
     @endforeach
-    
-   
+
+
 </section>
 
 
@@ -134,6 +139,7 @@ function openModal(id) {
     document.getElementById('productModal'+id).style.display = 'flex';
 }
 function closeModal(id) {document.getElementById('productModal'+id).style.display = 'none';}
+// Función para cerrar el dropdown si se hace clic fuera de él
 
 </script>
 <script src="{{asset('js/products.js')}}"></script>
