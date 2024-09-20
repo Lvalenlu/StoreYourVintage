@@ -17,6 +17,7 @@ section{
     background-size: cover;
 }
 
+
 .contenedor{
     position: relative;
     width: 400px;
@@ -42,6 +43,8 @@ section{
     display: block;
     margin: 0 auto 16px;
 }
+
+
 
 .contenedor h2{
     font-size: 1.75rem;

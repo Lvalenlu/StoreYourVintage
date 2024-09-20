@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index(){
         $customers = Customer::all();
         return view('customers.customers', compact('customers'));

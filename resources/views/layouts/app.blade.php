@@ -33,7 +33,7 @@
                     <a href="#" id="productsButton">Productos</a>
                     <div id="productsDropdown" class="dropdown-content">
                         <a href="{{route('products.index')}}">Ver productos</a>
-                        <a href="{{--{{route('products.changes')}}--}}">Cambios a productos</a>
+                        <a href="{{route('audits.index')}}">Cambios a productos</a>
                     </div>
                 </li>
 
@@ -50,7 +50,7 @@
                         <a href="#" id="gestorButton">Gestor de Administradores</a>
                         <div id="gestorDropdown" class="dropdown-content">
                             <a href="{{ route('users.index') }}">Ver administradores</a>
-                            <a href="{{--{{ route('audit.index') }}--}}">Ver auditoría</a>
+                            <a href="{{ route('audits.index') }}">Ver auditoría</a>
                         </div>
                     @endif
                 </li>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="divider"></div>
                         <a href="{{ route('profile') }}">Ver perfil</a>
-                        <a href="{{ route('password.request') }}">Cambiar contraseña</a>
+                        <a href="{{ route('changes.password') }}">Cambiar contraseña</a>
                         <a onclick="openLogoutModal()">
                             Cerrar sesión
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

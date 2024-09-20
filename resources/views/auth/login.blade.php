@@ -48,6 +48,10 @@
                         <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
 
+                    <div>
+                        <a href="">Olvide mi contraseña</a>
+                    </div>
+
                     <button type="submit">Ingresar</button>
 
                 </form>

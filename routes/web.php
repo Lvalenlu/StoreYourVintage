@@ -17,7 +17,7 @@ Route::get('/changes/password', [AuthController::class,     'changes'])->name('c
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [ProductController::class,  'index'])->name('home');
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
-Route::get('/customers/audit',  [AuditController::class,    'index'])->name('audits.index');
+Route::get('/audit/audits',  [AuditController::class,    'index'])->name('audits.index');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
