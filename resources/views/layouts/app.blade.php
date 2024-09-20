@@ -99,22 +99,6 @@
         </main>
     </div>
 
-    <script>
-    // Función para abrir el modal
-    function openLogoutModal() {
-        document.getElementById('logoutModal').style.display = 'flex';
-    }
-
-    // Función para cerrar el modal
-    function closeLogoutModal() {
-        document.getElementById('logoutModal').style.display = 'none';
-    }
-
-    // Función para confirmar el cierre de sesión
-    function confirmLogout() {
-        document.getElementById('logout-form').submit();
-    }
-    </script>
 
     <script src="{{asset('js/gestor.js')}}"></script>
     <script src="{{asset('js/data_usuarios&user.js')}}"></script>
