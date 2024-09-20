@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Models\Audit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuditController extends Controller
 {
 
     public function index()
     {
-        $audits = Audit::All();
-        return view('audits.index', compact('audits'));
+        $user = Auth::user();
+        if ($user->is_manager == 1) {
+            $audits = Audit::All();
+        }else{
+            $audits = Audit::where('id_users', $user->id)->get();
+        }
+        return view('audits.index', compact('audits', 'user'));
     }
 
     /**

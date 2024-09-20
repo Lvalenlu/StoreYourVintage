@@ -11,6 +11,13 @@ class Audit extends Model
 
     protected $fillable = [
         'description',
+        'reason',
+        'type',
         'id_users'
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'id_users');
+    }
 }
