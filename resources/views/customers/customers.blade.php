@@ -2,15 +2,7 @@
 
 @section('content')
 <div class="vista">
-    <div class="contenedor">
-        <div class="contenedor-busqueda">
-            <input type="text" id="barra-busqueda" placeholder="Buscar...">
-            <button class="boton-busqueda" id="switch">Cambiar a vendedores</button>
-        </div>
-        <div id="contendor-tabla">
-            <!-- Aquí se inyectan las tablas -->
-        </div>
-    </div>
+
 
     <!-- Modal para restringir -->
     <div id="restricion-modal" class="modal">
@@ -22,7 +14,12 @@
         </div>
     </div>
 
+    <div>
+        <h2 class="subtitulo">Usuarios de la tienda</h2>
+    </div>
+
     <div class="table-responsive">
+
         <table  class="table table-primary" id="myTable">
             <thead>
                 <tr>

@@ -112,7 +112,7 @@
     <script src="{{asset('js/navbar_loader.js')}}"></script>
     <script src="{{asset('js/script_navbar.js')}}"></script>
     <script>
- 
+
         $(document).ready( function () {
     $('#myTable').DataTable();
 } );

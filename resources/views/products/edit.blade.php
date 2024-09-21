@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
-    
+
 
     <!-- Mostrar errores de validación -->
     @if ($errors->any())
@@ -19,10 +20,10 @@
         <div class="contenedor-perfil">
             <h2 class="titulo">Editar Producto</h2>
             <!-- Formulario para editar producto -->
-            <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+            <form class="edit_product" action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
-                
+
                 <!-- Nombre del producto -->
                 <div class="form-group">
                     <div class="columna">
@@ -38,10 +39,11 @@
                     <div class="columna">
                         <label for="description"><strong>Descripción</strong></label>
                         <div class="entrada">
-                            <textarea class="form-control" id="description" name="description" rows="3" required>{{ old('description', $product->description) }}</textarea>
+                            <textarea class="form-control" id="description" name="description" required>{{ old('description', $product->description) }}</textarea>
                         </div>
                     </div>
                 </div>
+
 
 
                 <!-- Precio del producto -->
@@ -99,9 +101,11 @@
                         </div>
                     </div>
                 </div>
+                <div class="update_product_button">
+                    <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+                </div>
 
-                <!-- Botón para enviar el formulario -->
-                <button type="submit" class="btn btn-primary">Actualizar Producto</button>
+
             </form>
         </div>
     </div>

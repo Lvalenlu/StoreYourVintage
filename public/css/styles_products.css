@@ -301,18 +301,12 @@
 }
 
 .modal-info {
-    display: flex;
+    display: block;
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 0.9em;
     color: var(--secondary-color);
 }
-
-.modal-info span {
-    display: block;
-    margin-bottom: 5px; 
-}
-
 .modal-description {
     margin-bottom: 15px;
     color: var(--secondary-color);
@@ -358,6 +352,11 @@
 .modal-actions .btn-eliminar {
     background-color: var(--primary-color);
     color: var(--color-white);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .modal-actions .btn-eliminar:hover {

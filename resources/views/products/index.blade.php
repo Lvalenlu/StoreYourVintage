@@ -1,5 +1,7 @@
 @extends('layouts.app')
+
 @section('content')
+
 <div class="search-bar">
 
     <input type="text" placeholder="Buscar producto..." id="search-input">
@@ -82,9 +84,9 @@
                 <h3 id="modalTitle">{{$product->name}}</h3>
 
                 <div class="modal-info">
-                    <span id="modalPrice">Precio: {{$product->price}}</span>
-                    <span id="modalLikes">Likes: {{$product->likes}}</span>
-                    <span id="modalSize">Talla: {{$product->size}}</span>
+                    <span id="modalPrice">Precio: {{$product->price}}</span><br>
+                    <span id="modalLikes">Likes: {{$product->likes}}</span><br>
+                    <span id="modalSize">Talla: {{$product->size}}</span><br>
                     <span id="modalSeller">Vendedor: {{$product->seller_id}}</span>
                 </div>
 
