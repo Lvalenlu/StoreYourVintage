@@ -3,7 +3,6 @@
 @section('content')
 <div class="vista">
 
-
     <!-- Modal para restringir -->
     <div id="restricion-modal" class="modal">
         <div class="contenido-modal">
@@ -19,8 +18,7 @@
     </div>
 
     <div class="table-responsive">
-
-        <table  class="table table-primary" id="myTable">
+        <table class="table table-primary" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
@@ -33,33 +31,32 @@
             </thead>
             <tbody>
                 @foreach ($customers as $customer)
-                <tr class="">
-                    <td scope="row">{{$customer->name . ' ' .  $customer->lastName}}</td>
-                    <td scope="row">{{$customer->document}}</td>
-                    <td scope="row">{{$customer->address}}</td>
-                    <td scope="row">{{$customer->email}}</td>
-                    <td scope="row">
+                <tr>
+                    <td>{{$customer->name . ' ' . $customer->lastName}}</td>
+                    <td>{{$customer->document}}</td>
+                    <td>{{$customer->address}}</td>
+                    <td>{{$customer->email}}</td>
+                    <td>
                         @if ($customer->status == 1)
                             Activo
                         @else
                             Desactivado
                         @endif
                     </td>
-                    <td><a onclick="openReasonsModal({{$customer->id}})">
-                            <button type="button" class="btn btn-danger show-delete-modal">Cambiar Estado</button>
-                    </a>
+                    <td>
+                        <button type="button" class="btn btn-danger" onclick="openReasonsModal({{$customer->id}})">Cambiar Estado</button>
                     </td>
                 </tr>
                 <div class="modal-overlay" id="reasonsModal{{$customer->id}}" style="display: none;">
                     <div class="modal-content">
-                        <form class="modal-details" method="POST" action="{{route('customers.destroy', $customer->id)}}">
-                            @csrf
-                            @method('DELETE')
-                            <h3>Razon de cambio: </j3>
+                        <form class="modal-reasons" method="POST" action="{{route('customers.destroy', $customer->id)}}">
+                            <h3>Razón de cambio:</h3>
                             <div class="modal-actions">
-                                <input type="text" name="reason">
+                                <input type="text" name="reason" required placeholder="Ingrese razón...">
                                 <button class="btn-eliminar" type="submit">Realizar cambio</button>
-                                <button onclick="closeReasonsModal({{$customer->id}})">Cancelar</button>
+                                <button type="button" onclick="closeReasonsModal({{$customer->id}})">Cancelar</button>
+                                @csrf
+                                @method('DELETE')
                             </div>
                         </form>
                     </div>
@@ -70,8 +67,6 @@
     </div>
 
 </div>
-
-
 
 <script src="{{asset('js/usuarios.js')}}"></script>
 <script src="{{asset('js/reasons.js')}}"></script>

@@ -145,7 +145,10 @@ button:hover{
     font-size: 1rem;
     color: var(--color-white);
     text-align: center;
-    margin: 20px 0 10px;
+}
+
+.link a:hover{
+    opacity: .7;
 }
 
 .link p a{
@@ -159,8 +162,11 @@ button:hover{
     opacity: .7;
 }
 
-.form-check{
+.link_content{
+    margin: 20px 0;
+}
 
+.form-check{
     margin:  20px 0;
     color: white;
 

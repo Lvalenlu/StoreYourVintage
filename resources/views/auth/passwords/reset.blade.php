@@ -22,7 +22,7 @@
 
 
                     <div class="input-contenedor">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-user"></i>
                         <input type="email" name="email" placeholder=" " class="form-control @error('email') is-invalid @enderror" required>
 
                         <label for="email">Email</label>

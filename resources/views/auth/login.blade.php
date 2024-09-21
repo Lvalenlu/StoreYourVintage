@@ -48,8 +48,8 @@
                         <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
 
-                    <div>
-                        <a href="{{route('reset.password')}}">Olvide mi contraseña</a>
+                    <div class="link_content">
+                        <a  class="link" href="{{route('reset.password')}}">Olvide mi contraseña</a>
                     </div>
 
                     <button type="submit">Ingresar</button>
