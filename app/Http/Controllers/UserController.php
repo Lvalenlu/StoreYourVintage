@@ -24,7 +24,16 @@ class UserController extends Controller
     }
 
     public function  update(Request $request, $id){
+        $user = User::find($id);
+        $validatedData = $request->validate([
+            'name'      => 'required|string|max:255',
+            'email'     => 'required|email|max:255',
+            'document'  => 'required|string|max:255',
+            'charge'    => 'required|string|max:255',
+        ]);
+        $user->update($validatedData);
 
+        return redirect()->route('profile')->with('success', 'Perfil actualizado exitosamente.');
 
     }
     public function show(){
