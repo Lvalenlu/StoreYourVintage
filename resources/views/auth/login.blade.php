@@ -49,7 +49,7 @@
                     </div>
 
                     <div>
-                        <a href="">Olvide mi contraseña</a>
+                        <a href="{{route('reset.password')}}">Olvide mi contraseña</a>
                     </div>
 
                     <button type="submit">Ingresar</button>

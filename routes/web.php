@@ -14,10 +14,13 @@ Route::get('/', function () {return redirect()->route('login');});
 
 Auth::routes();
 Route::get('/changes/password', [AuthController::class,     'changes'])->name('changes.password');
+Route::get('/reset/password', [AuthController::class,     'reset'])->name('reset.password');
+Route::post('/send/email', [AuthController::class,     'send'])->name('send.email');
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [ProductController::class,  'index'])->name('home');
 Route::get('/profile',          [UserController::class,     'show'])->name('profile');
-Route::get('/audit/audits',  [AuditController::class,    'index'])->name('audits.index');
+Route::get('/audits/{option}',  [AuditController::class,    'index'])->name('audits.index');
+Route::post('/product', [ProductController::class, 'filterProducts'])->name('product');
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');

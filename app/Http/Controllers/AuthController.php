@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ResetPassword;
 use App\Models\User;
 //use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -52,6 +54,28 @@ class AuthController extends Controller
     public function changes()
     {
         return view('auth.passwords.changePassword');
+    }
+    public function reset()
+    {
+        return view('auth.passwords.reset');
+    }
+
+    public function send(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        if (!empty($user)) {
+            $user->password = Hash::make($user->document);
+            $code = rand(100000,999999);
+            $user->code = $code;
+            $user->save();
+            Mail::to($user->email)->send(new ResetPassword($code));
+            $error = "Correo Enviado";
+            $message = "Se te envio un correo a la dirección de:".$request->email;
+        }else{
+            $error = "Correo no encontrado";
+            $message = "El correo ".$request->email.", no se encuentra registrado";
+        }
+        return view('error', compact('error', 'message'));
     }
 
     public function update(Request $request)

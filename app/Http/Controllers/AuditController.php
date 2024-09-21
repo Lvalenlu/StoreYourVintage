@@ -13,13 +13,27 @@ class AuditController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($option)
     {
         $user = Auth::user();
-        if ($user->is_manager == 1) {
-            $audits = Audit::All();
-        }else{
-            $audits = Audit::where('id_users', $user->id)->get();
+        switch ($option) {
+            case 'products':
+                $audits = Audit::where('id_users', $user->id)->where('type', '1')->get();
+                break;
+            case 'users':
+                $audits = Audit::where('id_users', $user->id)->where('type', '2')->get();
+                break;
+            case 'allProducts':
+                $audits = Audit::where('type', '1')->get();
+                break;
+            case 'allUsers':
+                $audits = Audit::where('type', '2')->get();
+                break;
+            default:
+            $error = 404;
+            $message="option not found";
+                return view('error', compact('error', 'message'));
+                break;
         }
         return view('audits.index', compact('audits', 'user'));
     }

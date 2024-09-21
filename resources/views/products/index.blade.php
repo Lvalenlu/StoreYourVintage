@@ -2,77 +2,71 @@
 @section('content')
 <div class="search-bar">
 
-    <input type="text" placeholder="Buscar producto...">
-    <button>Buscar</button>
+    <input type="text" placeholder="Buscar producto..." id="search-input">
+    <button id="search-button">Buscar</button>
     <button onclick=abrirFiltros()>Filtros</button>
 </div>
 
 <div id="filtro-ovl" class="filtro-ovl">
-        <div class="filter-content">
-            <h2>Filtrar productos</h2>
-
-            <div class="pack-filtros">
-                <h3>Categoría</h3>
-                <div class="columnas">
+    <div class="filter-content">
+        <h2>Filtrar productos</h2>
+        <form id="filtro-form" action="{{ route('product') }}" method="POST">
+            @csrf
+        <div class="pack-filtros">
+            <h3>Categoría</h3>
+            <div class="columnas">
+                @foreach($categories as $category)
                     <div class="opciones">
-                        <label><input type="checkbox" name="categoria" value="Camisetas"> Camisetas</label><br>
-                        <label><input type="checkbox" name="categoria" value="Zapatos"> Zapatos</label><br>
+                        <label>
+                            <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                            {{ $category->name }}
+                        </label>
                     </div>
-                    <div class="opciones">
-                        <label><input type="checkbox" name="categoria" value="Pantalones"> Pantalones</label><br>
-                        <label><input type="checkbox" name="categoria" value="Suéteres"> Suéteres</label><br>
-                </div>
+                @endforeach
             </div>
         </div>
 
         <div class="pack-filtros">
             <h3>Talla</h3>
             <div class="columnas">
-                <div class="opciones">
-                    <label><input type="checkbox" name="size" value="XS"> XS</label><br>
-                    <label><input type="checkbox" name="size" value="S"> S</label><br>
-                </div>
-                <div class="opciones">
-                    <label><input type="checkbox" name="size" value="M"> M</label><br>
-                    <label><input type="checkbox" name="size" value="L"> L</label><br>
-                </div>
-                <div class="opciones">
-                    <label><input type="checkbox" name="size" value="XL"> XL</label><br>
-                </div>
+                @foreach($sizes as $size)
+                    <div class="opciones">
+                        <label>
+                            <input type="checkbox" name="sizes[]" value="{{ $size->id }}">
+                            {{ $size->name }}
+                        </label>
+                    </div>
+                @endforeach
             </div>
         </div>
 
         <div class="pack-filtros">
             <h3>Color</h3>
             <div class="columnas">
-                <div class="opciones">
-                    <label><input type="checkbox" name="color" value="Rojo"> Rojo</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Verde</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Azul</label><br>
-                    <label><input type="checkbox" name="color" value="Rojo"> Negro</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Blanco</label><br>
-                </div>
-                <div class="opciones">
-                    <label><input type="checkbox" name="color" value="Rojo"> Amarillo</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Magenta</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Naranja</label><br>
-                    <label><input type="checkbox" name="color" value="Azul"> Gris</label><br>
-                </div>
+                @foreach($colors as $color)
+                    <div class="opciones">
+                        <label>
+                            <input type="checkbox" name="colors[]" value="{{ $color->id }}">
+                            {{ $color->name }}
+                        </label>
+                    </div>
+                @endforeach
             </div>
         </div>
 
         <div>
-            <button>Aplicar Filtros</button>
-            <button>Limpiar Filtros</button>
+            <button type="submit">Aplicar Filtros</button>
+            <button type="reset">Limpiar Filtros</button>
             <button onclick="cerrarFiltros()">Cerrar</button>
         </div>
-
+        </form>
     </div>
 </div>
 
+
 <section class="products-container" id="products-container">
     @foreach ($products as $product)
-    <div class="product-card" onclick="openModal('{{$product->id}}')">
+    <div class="product-card" onclick="openModal('{{$product->id}}')" data-name="{{ $product->name }}">
         <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
         <h3>{{$product->name}}</h3>
         <p>{{$product->description}}</p>
@@ -140,5 +134,43 @@ function closeModal(id) {document.getElementById('productModal'+id).style.displa
 // Función para cerrar el dropdown si se hace clic fuera de él
 
 </script>
+
 <script src="{{asset('js/products.js')}}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById('search-input');
+  const searchButton = document.getElementById('search-button');
+  const productsContainer = document.querySelector('.products-container');
+
+  searchButton.addEventListener('click', function() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const products = productsContainer.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+      const productName = product.getAttribute('data-name').toLowerCase();
+      if (productName.includes(searchTerm)) {
+        product.style.display = '';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
+
+  // Opción alternativa: Filtración en tiempo real
+  searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const products = productsContainer.querySelectorAll('.product-card');
+
+    products.forEach(product => {
+      const productName = product.getAttribute('data-name').toLowerCase();
+      if (productName.includes(searchTerm)) {
+        product.style.display = '';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  });
+});
+
+</script>
 @endsection

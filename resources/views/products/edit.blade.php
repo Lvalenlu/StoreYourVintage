@@ -43,22 +43,13 @@
                     </div>
                 </div>
 
-                <!-- Tamaño del producto -->
-                <div class="form-group">
-                    <div class="columna">
-                        <label for="size"><strong>Talla</strong></label>
-                        <div class="entrada">
-                            <input type="text" class="form-control" id="size" name="size" value="{{ old('size', $product->size) }}" required>
-                        </div> 
-                    </div>
-                </div>
 
                 <!-- Precio del producto -->
                 <div class="form-group">
                     <div class="columna">
-                        <label for="prices"><strong>Precio</strong></label>
+                        <label for="price"><strong>Precio</strong></label>
                         <div class="entrada">
-                            <input type="number" class="form-control" id="prices" name="prices" value="{{ old('prices', $product->prices) }}" step="0.01" required>
+                            <input type="number" class="form-control" id="price" name="price" value="{{ old('price', $product->price) }}" step="0.01" required>
                         </div>
                     </div>
                 </div>
@@ -72,6 +63,36 @@
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ old('id_categories', $product->id_categories) == $category->id ? 'selected' : '' }}>
                                         {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="columna">
+                        <label for="size_id"><strong>Talla</strong></label>
+                        <div class="entrada">
+                            <select class="form-control" id="size_id" name="size_id" required>
+                                @foreach($sizes as $size)
+                                    <option value="{{ $size->id }}" {{ old('size_id', $product->size_id) == $size->id ? 'selected' : '' }}>
+                                        {{ $size->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="columna">
+                        <label for="color_id"><strong>Color</strong></label>
+                        <div class="entrada">
+                            <select class="form-control" id="color_id" name="color_id" required>
+                                @foreach($colors as $color)
+                                    <option value="{{ $color->id }}" {{ old('color_id', $product->color_id) == $color->id ? 'selected' : '' }}>
+                                        {{ $color->name }}
                                     </option>
                                 @endforeach
                             </select>

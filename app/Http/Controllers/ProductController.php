@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Audit;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\Size;
 use App\Models\User;
-use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 use function PHPUnit\Framework\returnValue;
@@ -21,9 +24,12 @@ class ProductController extends Controller
 
     public function index()
     {
+        $categories = Category::all();
+        $sizes = Size::all();
+        $colors = Color::all();
         $products = Product::with('orders')->get();
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
     }
 
 
@@ -70,8 +76,10 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        $categories = Category::all(); // Obtener todas las categorías
-        return view('products.edit', compact('product', 'categories'));
+        $categories = Category::all();
+        $sizes = Size::all();
+        $colors = Color::all();
+        return view('products.edit', compact('product', 'categories', 'sizes', 'colors'));
     }
 
 
@@ -80,6 +88,7 @@ class ProductController extends Controller
     {
         // Validar los datos del producto
         $product = Product::find($id);
+        $oldProduct =$product;
         $validatedData = $request->validate([
                 'name' => [
                 'required',
@@ -90,12 +99,26 @@ class ProductController extends Controller
             'description'   => 'nullable|string|max:500',
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'size'          => 'nullable|string|max:50',
-            'prices'        => 'required|numeric|min:0',
+            'price'        => 'required|numeric|min:0',
             'id_categories' => 'required|integer|exists:categories,id',
         ]);
 
         // Actualizar los datos del producto
         $product->update($validatedData);
+
+        $audits = new Audit();
+        $audits->reason = $request->reason;
+        $audits->type = 1;
+        $audits->description = "
+        Se actualiza el producto de ID: $product->id en los valores:
+        $oldProduct->name = $product->name
+        $oldProduct->description = $product->description
+        $oldProduct->image = $product->image
+        $oldProduct->price = $product->price
+        ";
+        $audits->reason = "";
+        $audits->id_users = Auth::id();
+        $audits->save();
 
         // Retornar respuesta o redirección
         return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
@@ -113,5 +136,21 @@ class ProductController extends Controller
             return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
         }
 
+    }
+
+    public function filterProducts(Request $request)
+    {
+        $filters = $request->all();
+
+        $products = Product::query();
+
+        $filters = app(Product::class)->apply($products, $filters);
+
+        $categories = Category::all();
+        $sizes = Size::all();
+        $colors = Color::all();
+        $products = $products->get();
+
+        return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
     }
 }

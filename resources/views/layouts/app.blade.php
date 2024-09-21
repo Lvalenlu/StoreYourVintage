@@ -21,6 +21,10 @@
     <link rel="stylesheet" href="{{asset('css/styles_perfil.css')}}">
     <link rel="stylesheet" href="{{asset('css/styles_usuarios.css')}}">
     <link rel="stylesheet" href="{{asset('css/variables.css')}}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.7/css/dataTables.dataTables.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.7/js/dataTables.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -33,7 +37,7 @@
                     <a href="#" id="productsButton">Productos</a>
                     <div id="productsDropdown" class="dropdown-content">
                         <a href="{{route('products.index')}}">Ver productos</a>
-                        <a href="{{route('audits.index')}}">Cambios a productos</a>
+                        <a href="{{route('audits.index', 'products')}}">Cambios a productos</a>
                     </div>
                 </li>
 
@@ -41,7 +45,7 @@
                     <a href="#" id="usersButton">Usuarios</a>
                     <div id="usersDropdown" class="dropdown-content">
                         <a href="{{route('customers.index')}}">Ver usuarios</a>
-                        <a href="{{route('audits.index')}}">Restricciones a usuarios</a>
+                        <a href="{{route('audits.index', 'users')}}">Restricciones a usuarios</a>
                     </div>
                 </li>
 
@@ -50,7 +54,9 @@
                         <a href="#" id="gestorButton">Gestor de Administradores</a>
                         <div id="gestorDropdown" class="dropdown-content">
                             <a href="{{ route('users.index') }}">Ver administradores</a>
-                            <a href="{{ route('audits.index') }}">Ver auditoría</a>
+                            <a href="{{ route('audits.index', 'allProducts') }}">Ver cambios a productos</a>
+                            <a href="{{ route('audits.index', 'allUsers') }}">Ver cambios a usuarios</a>
+
                         </div>
                     @endif
                 </li>
@@ -105,5 +111,11 @@
     <script src="{{asset('js/data_usuarios&user.js')}}"></script>
     <script src="{{asset('js/navbar_loader.js')}}"></script>
     <script src="{{asset('js/script_navbar.js')}}"></script>
+    <script>
+ 
+        $(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+    </script>
 </body>
 </html>

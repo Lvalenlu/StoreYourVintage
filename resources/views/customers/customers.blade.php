@@ -23,7 +23,7 @@
     </div>
 
     <div class="table-responsive">
-        <table  class="table table-primary">
+        <table  class="table table-primary" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">Nombre</th>
