@@ -9,9 +9,9 @@
                 <div class="columna">
                     <p><strong>Nombre:</strong> {{ $user->name }}</p>
                     <p><strong>Documento:</strong> {{ $user->document ?? 'No disponible' }}</p>
-                    <p><strong>Correo:</strong> {{ $user->email }}</p>
                 </div>
                 <div class="columna">
+                    <p><strong>Correo:</strong> {{ $user->email }}</p>
                     <p><strong>Cargo:</strong> {{ $user->charge ?? 'No disponible' }}</p>
                 </div>
             </div>
@@ -23,13 +23,13 @@
         <!-- Modal -->
         <div id="modalEditarPerfil" class="modal">
             <div class="modal-contenido">
-                <span class="cerrar-modal">&times;</span>
+                <a class="cerrar-modal">&times;</a>
+                {{-- <span class="cerrar-modal">&times;</span> --}}
                 <h2 class="titulo">Editar Perfil</h2>
                 <form id="formularioEditarPerfil" action="{{route('users.update', $user->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-
-
+                    
                     <div class="entrada">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" class=" @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}">
@@ -71,6 +71,8 @@
                     </div>
 
                     <button type="submit" class="btn guardar">Guardar Cambios</button>
+
+
                 </form>
             </div>
         </div>

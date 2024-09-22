@@ -56,7 +56,6 @@
                     </div>
                 </div>
 
-                <!-- Categoría del producto -->
                 <div class="form-group">
                     <div class="columna">
                         <label for="id_categories"><strong>Categoría</strong></label>

@@ -25,10 +25,9 @@ class ProductController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $sizes = Size::all();
-        $colors = Color::all();
-        $products = Product::with('orders')->get();
-
+        $sizes      = Size::all();
+        $colors     = Color::all();
+        $products   = Product::with(['category', 'size', 'color', 'orders'])->get();
         return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
     }
 
@@ -86,9 +85,9 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validar los datos del producto
         $product = Product::find($id);
         $oldProduct =$product;
+
         $validatedData = $request->validate([
                 'name' => [
                 'required',
@@ -96,15 +95,21 @@ class ProductController extends Controller
                 'max:255',
                 Rule::unique('products')->ignore($product->id),
             ],
-            'description'   => 'nullable|string|max:500',
+            'description'   => 'required|string|max:1000',
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'size'          => 'nullable|string|max:50',
-            'price'        => 'required|numeric|min:0',
+            'price'         => 'required|numeric|min:0',
+            'size_id'       => 'required|string|exists:sizes,id',
+            'color_id'      => 'required|string|exists:sizes,id',
             'id_categories' => 'required|integer|exists:categories,id',
         ]);
 
-        // Actualizar los datos del producto
+        $product->category_id   = $request->input('id_categories');
+        $product->size_id       = $request->input('size_id');
+        $product->color_id      = $request->input('color_id');
+
         $product->update($validatedData);
+
+
 
         $audits = new Audit();
         $audits->reason = $request->reason;
@@ -120,22 +125,38 @@ class ProductController extends Controller
         $audits->id_users = Auth::id();
         $audits->save();
 
-        // Retornar respuesta o redirección
+        // Volver a la pagina de los productos
         return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
     }
 
 
-    public function destroy($id)
+    public function destroya($id)
     {
         $user = Product::find($id);
         if ($user) {
             $user->delete();
             return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
         } else {
-            // Redirige con un mensaje de error si no se encontró el producto
+            // Envia un mensaje de error si no se encontró el producto
             return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
         }
 
+    }
+
+    public function destroy($id){
+        $product = Product::find($id);
+        
+        if ($product) {
+            if ($product->orders()->exists()) {
+                return redirect()->route('products.index')
+                ->with('error', 'No se puede eliminar el producto porque tiene órdenes asociadas.');
+            }
+            $product->delete();
+            return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
+        } else {
+            return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
+        }
+        
     }
 
     public function filterProducts(Request $request)

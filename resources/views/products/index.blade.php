@@ -84,10 +84,18 @@
                 <h3 id="modalTitle">{{$product->name}}</h3>
 
                 <div class="modal-info">
-                    <span id="modalPrice">Precio: {{$product->price}}</span><br>
-                    <span id="modalLikes">Likes: {{$product->likes}}</span><br>
-                    <span id="modalSize">Talla: {{$product->size}}</span><br>
-                    <span id="modalSeller">Vendedor: {{$product->seller_id}}</span>
+
+                    <span id="modalPrice"><strong>Precio:</strong>  {{$product->price}}</span><br>
+                    <span id="modalLikes"><strong>Likes:</strong>   {{$product->likes}}</span><br>
+                    <span id="modalSize" ><strong>Talla:</strong>   {{$product->size->name}}</span><br>
+                    <span id="modalCategory"><strong>Categoría:</strong> 
+                        @if ($product->categories)
+                            {{ $product->categories->name}}
+                        @else
+                            Categoría no disponible
+                        @endif</span><br>
+                    <span id="modalColor"><strong>Color:</strong>   {{$product->color->name}}</span><br>
+                    <span id="modalSeller"><strong>Vendedor:</strong> {{$product->seller_id}}</span>
                 </div>
 
 
