@@ -3,7 +3,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
 }
 
 .contenedor-perfil {
@@ -125,7 +124,7 @@
     background-color: var(--color-white);
     color: var(--primary-color);
     border: solid var(--primary-color);
-    transform: scale(1.05); 
+    transform: scale(1.05);
 }
 
 .modal {
