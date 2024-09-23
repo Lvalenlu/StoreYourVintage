@@ -35,7 +35,7 @@ class CustomerController extends Controller
         $audits->reason = $request->reason;
         $audits->type = 2;
         $audits->description = 'Se '.$status.' al usuario #'. $id. '<br> Nombre: ' . $customers->name .  ' ' . $customers->lastname . '<br> Documento: ' . $customers->document;
-        $audits->user_id = Auth::id();
+        $audits->users_id = Auth::id();
         $audits->save();
         return redirect()->route('customers.index');
     }

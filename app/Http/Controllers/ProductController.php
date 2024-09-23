@@ -121,7 +121,7 @@ class ProductController extends Controller
         $oldProduct->price = $product->price
         ";
         $audits->reason = "";
-        $audits->user_id = Auth::id();
+        $audits->users_id = Auth::id();
         $audits->save();
 
         // Volver a la pagina de los productos
