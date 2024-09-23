@@ -10,13 +10,13 @@
 </div>
 
 <div id="filtro-ovl" class="filtro-ovl">
-    <div class="filter-content">
+    <div class="filter-contenedor">
         <h2>Filtrar productos</h2>
-        <form id="filtro-form" action="{{ route('product') }}" method="POST">
+        <form id="filtro-form" class="filter-form" action="{{ route('product') }}" method="POST">
             @csrf
         <div class="pack-filtros">
             <h3>Categoría</h3>
-            <div class="columnas">
+            <div class="columnas_filtros">
                 @foreach($categories as $category)
                     <div class="opciones">
                         <label>
@@ -30,7 +30,7 @@
 
         <div class="pack-filtros">
             <h3>Talla</h3>
-            <div class="columnas">
+            <div class="columnas_filtros">
                 @foreach($sizes as $size)
                     <div class="opciones">
                         <label>
@@ -44,7 +44,7 @@
 
         <div class="pack-filtros">
             <h3>Color</h3>
-            <div class="columnas">
+            <div class="columnas_filtros">
                 @foreach($colors as $color)
                     <div class="opciones">
                         <label>
@@ -56,11 +56,14 @@
             </div>
         </div>
 
-        <div>
+        <div class="filter_buttons">
             <button type="submit">Aplicar Filtros</button>
-            <button type="reset">Limpiar Filtros</button>
-            <button onclick="cerrarFiltros()">Cerrar</button>
+            <div class="secondary-buttons">
+                <button type="reset">Limpiar Filtros</button>
+                <button onclick="cerrarFiltros()">Cerrar</button>
+            </div>
         </div>
+
         </form>
     </div>
 </div>
@@ -88,7 +91,7 @@
                     <span id="modalPrice"><strong>Precio:</strong>  {{$product->price}}</span><br>
                     <span id="modalLikes"><strong>Likes:</strong>   {{$product->likes}}</span><br>
                     <span id="modalSize" ><strong>Talla:</strong>   {{$product->size->name}}</span><br>
-                    <span id="modalCategory"><strong>Categoría:</strong> 
+                    <span id="modalCategory"><strong>Categoría:</strong>
                         @if ($product->categories)
                             {{ $product->categories->name}}
                         @else
