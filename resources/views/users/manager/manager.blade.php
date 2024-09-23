@@ -1,63 +1,105 @@
-@extends('layouts.app')
-@section('content')
+@extends('layouts.app') <!-- Asegúrate de que extiendes del layout correcto -->
 
+@section('content')
 <div class="vista">
+
+    <!-- Modal para restringir -->
+    <div id="restricion-modal" class="modal">
+        <div class="contenido-modal">
+            <span id="cerrar-modal" class="cerrar">&times;</span>
+            <p id="mensaje">¿Estás seguro que deseas restringir este usuario?</p>
+            <button id="confirmar-restricion" class="boton">Aceptar</button>
+            <button id="cancelar-restricion" class="boton">Cancelar</button>
+        </div>
+    </div>
     <div class="contenedor">
-        <div class="user-container">
-            <div class="contenedor-busqueda">
-                <input type="text" id="barra-busqueda" placeholder="Buscar...">
-                <button id="add-user-btn" class="add-user-btn">Añadir Administrador</button>
-            </div>
-            <table class="user-table">
+        <div>
+            <h2 class="subtitulo" >Gestor administradores</h2>
+
+        </div>
+        <div class="manager_button">
+            <form action="{{route('register')}}" method="GET">
+                <button type="submit" class="button_manager btn-register">Registrar nuevo administrador</button>
+            </form>
+        </div>
+
+
+        <div class="table-responsive">
+            <table class="table table-primary" id="myTable">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Cargo</th>
-                        <th>Cuenta</th>
-                        <th>Acciones</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Documento</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
-                <tbody id="user-table-body">
-                    <!-- Aquí se inyectan las filas -->
+                <tbody>
+                    @foreach ($users as $user)
+                    <tr>
+                        <td>{{$user->id}}</td>
+                        <td>{{$user->name . ' ' . $user->lastName}}</td>
+                        <td>{{$user->document}}</td>
+                        <td>{{$user->email}}</td>
+                        <td class="manager_buttons">
+                            <button type="button" class="buttons_manager" onclick="openEditModal({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}', '{{ $user->document }}', '{{ $user->charge }}')">Editar</button>
+                            <button type="button" class="buttons_manager" onclick="openDeleteModal({{$user->id}})">Eliminar</button>
+                        </td>
+                    </tr>
+                    <div class="modal-overlay" id="deleteModal{{$user->id}}" style="display: none;">
+                        <div class="modal-content">
+                            <form class="modal-reasons" method="POST" action="{{route('users.destroy', $user->id)}}">
+                                <h3>¿Seguro de que deseas eliminar este usuario?</h3>
+                                <div class="modal-actions">
+                                    <button class="btn-eliminar" type="submit">Eliminar</button>
+                                    <button type="button" onclick="closeDeleteModal({{$user->id}})">Cancelar</button>
+                                    @csrf
+                                    @method('DELETE')
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="editModal" class="modal">
+                        <div class="modal-contenido">
+                            <a class="cerrar-modal">&times;</a>
+                            <h2 class="titulo">Editar Usuario</h2>
+                            <form id="formularioEditarUsuario" method="POST">
+                                @csrf
+                                @method('PUT')
+
+                                <div class="entrada">
+                                    <label for="editName">Nombre:</label>
+                                    <input type="text" id="editName" name="name" required>
+                                </div>
+
+                                <div class="entrada">
+                                    <label for="editEmail">Correo:</label>
+                                    <input type="email" id="editEmail" name="email" required>
+                                </div>
+
+                                <div class="entrada">
+                                    <label for="editDocument">Documento:</label>
+                                    <input type="text" id="editDocument" name="document" required readonly>
+                                </div>
+
+                                <div class="entrada">
+                                    <label for="editCharge">Cargo:</label>
+                                    <input type="text" id="editCharge" name="charge" required>
+                                </div>
+
+                                <button type="submit" class="btn guardar">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    @endforeach
                 </tbody>
             </table>
         </div>
-
-        <!-- Modal para Editar/Agregar user -->
-        <div id="user-modal" class="modal">
-            <div class="modal-content">
-                <span id="close-modal" class="close">&times;</span>
-                <h2 id="modal-title" class="titulo_modal">Editar Administrador</h2>
-                <form id="user-form" class="formulario">
-                    <div class="entrada">
-                        <label for="name">Nombre:</label>
-                        <input type="text" id="name" name="name">
-                    </div>
-                    <div class="entrada">
-                        <label for="position">Cargo:</label>
-                        <input type="text" id="position" name="position">
-                    </div>
-                    <div class="entrada">
-                        <label for="state">Estado:</label>
-                        <input type="text" id="state" name="state">
-                    </div>
-
-                    <button type="submit" id="save-btn" class="save-btn">Guardar</button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Modal de confirmación de eliminación -->
-        <div id="confirm-delete-modal" class="modal">
-            <div class="modal-content">
-                <span id="close-delete-modal" class="close">&times;</span>
-                <h2 class="titulo_modal">Confirmar Eliminación</h2>
-                <p>¿Estás seguro que deseas eliminar este Administrador?</p>
-                <button id="confirm-delete-btn" class="btn-modal">Eliminar</button>
-                <button id="cancel-delete-btn" class="btn-modal">Cancelar</button>
-            </div>
-        </div>
     </div>
-</div>
 
+</div>
+<script src="{{asset('js/usuarios.js')}}"></script>
+<script src="{{asset('js/modals.js')}}"></script>
 @endsection

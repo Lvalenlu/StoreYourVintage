@@ -12,10 +12,10 @@ body {
 nav {
     background-color: var(--primary-color);
     box-shadow: 3px 3px 5px rgba(0, 0, 0, .1);
-    height: 60px; /* Ajuste de altura del navbar */
+    height: 60px;
     display: flex;
-    align-items: center; /* Alinea el contenido verticalmente */
-    padding: 0 20px; /* Asegura espacio alrededor del contenido */
+    align-items: center;
+    padding: 0 20px;
 }
 
 nav ul {
@@ -23,13 +23,13 @@ nav ul {
     list-style: none;
     display: flex;
     justify-content: flex-end;
-    align-items: center; /* Alinea los elementos dentro del ul */
+    align-items: center;
     margin: 0;
     padding: 0;
 }
 
 nav li {
-    height: 60px; /* Ajusta la altura para ser igual que el navbar */
+    height: 60px;
     display: flex;
     align-items: center;
 }
@@ -97,8 +97,8 @@ nav li:first-child {
     justify-content: center;
     align-items: center;
     margin-right: 20px;
-    padding-top: 5px; /* Ajuste el espaciado superior */
-    margin-top: 5px; /* Alternativa si prefieres usar margin */
+    padding-top: 5px;
+    margin-top: 5px; 
 }
 
 

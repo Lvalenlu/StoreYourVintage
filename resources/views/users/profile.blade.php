@@ -5,19 +5,21 @@
     <div class="contenedor-principal">
         <div class="contenedor-perfil">
             <h2 class="titulo">Información de tu Perfil</h2>
-            <div class="columnas">
-                <div class="columna">
-                    <p><strong>Nombre:</strong> {{ $user->name }}</p>
-                    <p><strong>Documento:</strong> {{ $user->document ?? 'No disponible' }}</p>
-                </div>
-                <div class="columna">
-                    <p><strong>Correo:</strong> {{ $user->email }}</p>
-                    <p><strong>Cargo:</strong> {{ $user->charge ?? 'No disponible' }}</p>
-                </div>
+            <div class="profile-data">
+                    <p><strong>Nombre:</strong></p>
+                    <p>{{ $user->name }}</p>
+                    <p><strong>Documento:</strong></p>
+                    <p>{{ $user->document ?? 'No disponible' }}</p>
+                    <p><strong>Correo:</strong></p>
+                    <p>{{ $user->email }}</p>
+                    <p><strong>Cargo:</strong></p>
+                    <p>{{ $user->charge ?? 'No disponible' }}</p>
             </div>
+            @if (Auth::user()->is_manager == 1)
             <div class="botones">
                 <button id="editarPerfilBtn" class="btn">Editar Perfil</button>
             </div>
+            @endif
         </div>
 
         <!-- Modal -->
@@ -29,7 +31,7 @@
                 <form id="formularioEditarPerfil" action="{{route('users.update', $user->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    
+
                     <div class="entrada">
                         <label for="name">Nombre:</label>
                         <input type="text" id="name" class=" @error('name') is-invalid @enderror" name="name" value="{{ $user->name }}">

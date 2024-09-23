@@ -34,7 +34,7 @@ class LoginController extends Controller
             return redirect()->route('home');
         }
 
-        return redirect()->route('changes.password');
+        return redirect()->route('create.password');
     }
 
     public function username()

@@ -12,29 +12,35 @@ use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
-
-    
+    // Mostrar pantalla de inicio de sesión
     public function indexLogin(){
         return view('login');
     }
 
+    // Muestra pantalla de registro de usuarios
     public function indexRegister()
     {
-        $users = User::all();
-        return view('register', compact('users'));
+        if (Auth::user()->is_manager == 1){
+            $users = User::all();
+        return view('auth.register', compact('users'));
+        }else{
+            $error = "Página no encontrada";
+            $message = "No tiene acceso a este sitio";
+            return view('error', compact('error', 'message'));
+        }
     }
 
+    // Almacenar un nuevo registro de usuario
     public function storeRegister(Request $request)
     {
-
         $user = new User();
 
         $user->name         =  $request->name;
         $user->document     =  $request->document;
         $user->email        =  $request->email;;
-        $user->password     =  "";
+        $user->password     =  "";// La contraseña se dejará vacía inicialmente
         $user->charge       =  $request->charge;
-        $user->is_manager   =  0;
+        $user->is_manager   =  0; // Por defecto, no es manager
 
         if(!$validEmail = User::where('email', $user->email )
                     ->first()){
@@ -45,21 +51,24 @@ class AuthController extends Controller
         }
     }
 
-
-    public function createLogin()
+    // Mostar pantallas de creación, cambio y restablecimiento de contraseña
+    public function create()
     {
-        return view('login');
+        return view('auth.passwords.createPassword');
     }
 
-    public function changes()
+    public function change()
     {
         return view('auth.passwords.changePassword');
     }
+
+
     public function reset()
     {
         return view('auth.passwords.reset');
     }
 
+    // Envíar correo de restablecimiento de contraseña
     public function send(Request $request)
     {
         $user = User::where('email', $request->email)->first();
@@ -78,14 +87,17 @@ class AuthController extends Controller
         return view('error', compact('error', 'message'));
     }
 
+     // Actualizar la contraseña del usuario
     public function update(Request $request)
     {
+
         $user = Auth::user();
         $validatedData = $request->validate([
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'code' => ['required', 'integer', 'min:100000', 'max:999999'],
         ]);
 
+        // Verifica si el código proporcionado coincide
         if ($user->code == $validatedData['code']) {
             $user->update([
                 'password' => Hash::make($validatedData['password']),
@@ -98,10 +110,27 @@ class AuthController extends Controller
             return view('error', compact('error', 'message'));
         }
     }
+    // Actualiza la contraseña actual del usuario
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
 
+        $user = Auth::user();
 
+        if (!Hash::check($request->current_password, $user->password)) {
+            return back()->withErrors(['current_password' => 'La contraseña actual es incorrecta.']);
+        }
 
-    public function logout($users){
-        return "aqui se mostrara el admin $users";
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        Auth::logout();
+
+        return redirect()->route('login');
     }
+
 }

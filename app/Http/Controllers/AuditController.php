@@ -8,20 +8,22 @@ use Illuminate\Support\Facades\Auth;
 
 class AuditController extends Controller
 {
+    // Verificar autenticación de usuario
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    // Mostrar auditorías según la opción seleccionada
     public function index($option)
     {
         $user = Auth::user();
         switch ($option) {
             case 'products':
-                $audits = Audit::where('id_users', $user->id)->where('type', '1')->get();
+                $audits = Audit::where('user_id', $user->id)->where('type', '1')->get();
                 break;
             case 'users':
-                $audits = Audit::where('id_users', $user->id)->where('type', '2')->get();
+                $audits = Audit::where('user_id', $user->id)->where('type', '2')->get();
                 break;
             case 'allProducts':
                 $audits = Audit::where('type', '1')->get();

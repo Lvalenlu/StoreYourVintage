@@ -32,6 +32,8 @@ class ConfirmPasswordController extends Controller
      *
      * @return void
      */
+    
+    // Verificar autenticación de usuario
     public function __construct()
     {
         $this->middleware('auth');

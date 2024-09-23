@@ -9,9 +9,9 @@
     <title>Inicio de sesión</title>
 </head>
 <body>
-
     <section>
         <div class="contenedor">
+            <!-- Formulario de inicio de sesión -->
             <div class="formulario">
                 <form action="{{ route('login') }}" method="POST">
                     @csrf
@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="input-contenedor">
-                        <i class="fa-solid fa-lock"></i>
+                        <i class="fa-solid fa-key"></i>
                         <input type="password" name="password" placeholder=" " class="form-control @error('password') is-invalid @enderror" required>
 
                         <label for="password">Contraseña</label>
@@ -43,11 +43,13 @@
 
                     </div>
 
+                    <!--Opción para recordar sesión -->
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                         <label class="form-check-label" for="remember">Recordarme</label>
                     </div>
 
+                    <!--Opción de recuperar contraseña en caso de olvido contraseña-->
                     <div class="link_content">
                         <a  class="link" href="{{route('reset.password')}}">Olvide mi contraseña</a>
                     </div>

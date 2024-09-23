@@ -8,9 +8,13 @@
     <title>Registro</title>
 </head>
 <body>
-
     <section>
+        <!-- Enlace para volver a la página anterior -->
+        <a href="{{ url()->previous() }}" class="back-link">
+            <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
+        </a>
         <div class="contenedor">
+            <!-- Formulario de registro -->
             <div class="formulario">
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
@@ -18,7 +22,6 @@
 
                     <h2>Registro</h2>
 
-                    <!-- Nombre Completo -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>
                         <input type="text" id="name" name="name" placeholder=" " class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required autocomplete="name">
@@ -31,7 +34,6 @@
 
                     </div>
 
-                    <!-- Número de documento -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-id-card"></i>
                         <input type="text" id="identity_document" name="document"  placeholder=" " class="form-control @error('document') is-invalid @enderror" value="{{ old('document') }}" required>
@@ -44,7 +46,6 @@
 
                     </div>
 
-                    <!-- Correo electrónico -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-envelope"></i>
                         <input type="email" id="email" name="email"  placeholder=" " class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required>
@@ -57,7 +58,6 @@
 
                     </div>
 
-                    <!-- Cargo -->
                     <div class="input-contenedor">
                         <i class="fa-solid fa-circle-info"></i>
                         <input type="text" id="charge" name="charge"  placeholder=" " class="form-control @error('charge') is-invalid @enderror" value="{{ old('charge') }}" required>
@@ -78,5 +78,6 @@
     </section>
 
     <script src="/assets/js/script_form.js"></script>
+    
 </body>
 </html>

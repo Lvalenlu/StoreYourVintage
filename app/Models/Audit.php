@@ -13,11 +13,11 @@ class Audit extends Model
         'description',
         'reason',
         'type',
-        'id_users'
+        'user_id'
     ];
 
     public function users()
     {
-        return $this->belongsTo(User::class, 'id_users');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

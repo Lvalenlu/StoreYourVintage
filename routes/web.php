@@ -13,20 +13,29 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {return redirect()->route('login');});
 
 Auth::routes();
-Route::get('/changes/password', [AuthController::class,     'changes'])->name('changes.password');
+Route::get('/register', [AuthController::class,     'indexRegister'])->name('register');
+Route::get('/create', [AuthController::class,     'create'])->name('create.password');
+Route::get('/change/password', [AuthController::class, 'change'])->name('change.password');
 Route::get('/reset/password', [AuthController::class,     'reset'])->name('reset.password');
 Route::post('/send/email', [AuthController::class,     'send'])->name('send.email');
+Route::post('/change/password', [AuthController::class, 'updatePassword'])->name('change.password');
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [ProductController::class,  'index'])->name('home');
-Route::get('/profile',          [UserController::class,     'show'])->name('profile');
+Route::middleware('auth')->group(function() {
+    Route::get('/profile', [UserController::class, 'show'])->name('profile');
+});
+
 Route::get('/audits/{option}',  [AuditController::class,    'index'])->name('audits.index');
 Route::post('/product', [ProductController::class, 'filterProducts'])->name('product');
+
+
 
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
 Route::resource('users',        UserController::class)->names('users');
 Route::resource('customers',    CustomerController::class)->names('customers');
 Route::get('/change', function(){return view('auth.passwords.changePassword');})->name('change');
+Route::get('/create', function(){return view('auth.passwords.createPassword');})->name('create');
 Route::get('/prueba', function(){
     //Crear un User
     // $user = new User;

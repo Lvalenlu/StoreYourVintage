@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+    //Lista pedidos de productos
     public function index()
     {
         $products = Order::all();

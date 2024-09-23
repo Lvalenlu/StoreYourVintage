@@ -17,11 +17,13 @@ use function PHPUnit\Framework\returnValue;
 
 class ProductController extends Controller
 {
+    // Verificar autenticación de usuario
     public function __construct()
     {
         $this->middleware('auth');
     }
 
+    // Mostrar lista de productos con categorías, tamaños y colores
     public function index()
     {
         $categories = Category::all();
@@ -31,21 +33,20 @@ class ProductController extends Controller
         return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
     }
 
-
+    // Crear un nuevo producto
     public function create()
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
 
-
+    // Agregar un nuevo producto en la base de datos
     public function store(Request $request)
     {
-        // Validar los datos ingresados
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:products,name',
             'description' => 'required|string|max:1000',
-            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'size' => 'required|string|max:50',
             'prices' => 'required|numeric|min:0',
             'id_categories' => 'required|integer|exists:categories,id',
@@ -58,7 +59,7 @@ class ProductController extends Controller
             'image'             => '/productos.jpeg',
             'size'              => $validatedData['size'],
             'prices'            => $validatedData['prices'],
-            // 'publicationDate'   => $validatedData['publicationDate'],
+            'publicationDate'   => $validatedData['publicationDate'],
             'id_categories' => $validatedData['id_categories'],
         ]);
 
@@ -72,7 +73,7 @@ class ProductController extends Controller
         //
     }
 
-
+    // Editar un producto
     public function edit(Product $product)
     {
         $categories = Category::all();
@@ -81,8 +82,7 @@ class ProductController extends Controller
         return view('products.edit', compact('product', 'categories', 'sizes', 'colors'));
     }
 
-
-
+    // Actualizar datos de un producto
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
@@ -109,8 +109,7 @@ class ProductController extends Controller
 
         $product->update($validatedData);
 
-
-
+        // Registrar auditoría de cambios
         $audits = new Audit();
         $audits->reason = $request->reason;
         $audits->type = 1;
@@ -122,30 +121,17 @@ class ProductController extends Controller
         $oldProduct->price = $product->price
         ";
         $audits->reason = "";
-        $audits->id_users = Auth::id();
+        $audits->user_id = Auth::id();
         $audits->save();
 
         // Volver a la pagina de los productos
         return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
     }
 
-
-    public function destroya($id)
-    {
-        $user = Product::find($id);
-        if ($user) {
-            $user->delete();
-            return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
-        } else {
-            // Envia un mensaje de error si no se encontró el producto
-            return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
-        }
-
-    }
-
+    // Eliminar un producto si no tiene órdenes asociadas
     public function destroy($id){
         $product = Product::find($id);
-        
+
         if ($product) {
             if ($product->orders()->exists()) {
                 return redirect()->route('products.index')
@@ -156,9 +142,9 @@ class ProductController extends Controller
         } else {
             return redirect()->route('products.index')->with('error', 'El producto no fue encontrado.');
         }
-        
     }
 
+    // Filtrar productos según lo seleccionado por el usuario
     public function filterProducts(Request $request)
     {
         $filters = $request->all();

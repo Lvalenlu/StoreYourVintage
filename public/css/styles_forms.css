@@ -51,6 +51,10 @@ section{
     color: var(--color-white);
     text-align: center;
 }
+.card h4{
+    color: var(--color-white);
+    text-align: center;
+}
 
 .input-contenedor {
     position: relative;

@@ -11,15 +11,17 @@
 <body>
 
     <section>
+        <a href="{{ url()->previous() }}" class="back-link">
+            <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
+        </a>
         <div class="contenedor">
+
             <div class="formulario">
                 <form action="{{ route('send.email') }}" method="POST">
                     @csrf
                     <img src="{{ asset('img/logo.png') }}" alt="Logo">
 
                     <h2>Recuperar contraseña</h2>
-
-
 
                     <div class="input-contenedor">
                         <i class="fa-solid fa-user"></i>

@@ -29,7 +29,7 @@
 <body>
     <div id="app">
         <!-- Barra de navegación -->
-        <nav>
+        <nav class="nav_principal">
             <ul>
                 <li><a href="{{route('products.index')}}"><img src="{{asset('img/logo.png')}}" alt="Logo"></a></li>
 
@@ -73,7 +73,7 @@
                         </div>
                         <div class="divider"></div>
                         <a href="{{ route('profile') }}">Ver perfil</a>
-                        <a href="{{ route('changes.password') }}">Cambiar contraseña</a>
+                        <a href="{{ route('change.password') }}">Cambiar contraseña</a>
                         <a onclick="openLogoutModal()">
                             Cerrar sesión
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

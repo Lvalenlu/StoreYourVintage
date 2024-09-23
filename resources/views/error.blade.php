@@ -16,11 +16,11 @@
                     class="card text-white bg-primary"
                 >
                     <div class="card-body">
-                        <h4 class="card-title">{{$error}}</h4>
-                        <p class="card-text">{{$message}}</p>
+                        <h2 >{{$error}}</h2>
+                        <h4>{{$message}}</h4>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>

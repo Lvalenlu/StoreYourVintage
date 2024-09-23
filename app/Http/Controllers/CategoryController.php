@@ -8,6 +8,7 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
+    // Verificar autenticación de usuario
     public function __construct()
     {
         $this->middleware('auth');
