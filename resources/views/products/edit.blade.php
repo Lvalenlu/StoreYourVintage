@@ -61,8 +61,9 @@
                             <label for="id_categories"><strong>Categoría</strong></label>
                             <div class="entrada">
                                 <select class="form-control" id="id_categories" name="id_categories" required>
+                                    <option value="{{$product->id_categories}}">{{$product->categories->name}}</option>
                                     @foreach($categories as $category)
-                                        <option value="{{ $category->id }}" {{ old('id_categories', $product->id_categories) == $category->id ? 'selected' : '' }}>
+                                        <option value="{{ $category->id }}">
                                             {{ $category->name }}
                                         </option>
                                     @endforeach

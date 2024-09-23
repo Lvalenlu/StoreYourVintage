@@ -17,9 +17,13 @@ class Product extends Model
         'price',
         'description',
         'image',
-        'size',
         'likes',
         'publicationDate',
+        'seller_id',
+        'category_id',
+        'color_id',
+        'size_id',
+        'state_id',
     ];
 
     protected $hidden = [
@@ -50,6 +54,11 @@ class Product extends Model
     public function orders()
     {
         return $this->hasMany(Order::class, 'product_id');
+    }
+
+    public function categories()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public $timestamps = false;

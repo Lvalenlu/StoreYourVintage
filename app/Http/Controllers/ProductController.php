@@ -106,7 +106,6 @@ class ProductController extends Controller
         $product->category_id   = $request->input('id_categories');
         $product->size_id       = $request->input('size_id');
         $product->color_id      = $request->input('color_id');
-
         $product->update($validatedData);
 
         // Registrar auditoría de cambios
