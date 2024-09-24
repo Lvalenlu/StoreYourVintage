@@ -13,6 +13,11 @@ body{
     height: 100vh;
 }
 
+.container{
+    display: flex;
+    justify-content: center;
+}
+
 .contenedor {
     max-width: 1200px;
     width: 100%;

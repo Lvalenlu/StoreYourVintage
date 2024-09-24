@@ -27,11 +27,18 @@ class ProductController extends Controller
     // Mostrar lista de productos con categorías, tamaños y colores
     public function index()
     {
-        $categories = Category::all();
-        $sizes      = Size::all();
-        $colors     = Color::all();
-        $products   = Product::with(['category', 'size', 'color', 'orders'])->get();
-        return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
+        if ($user = Auth::user()->code == 0) {
+            $categories = Category::all();
+            $sizes      = Size::all();
+            $colors     = Color::all();
+            $products   = Product::with(['category', 'size', 'color', 'orders'])->get();
+            return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
+        } else {
+            Auth::logout($user);
+            return redirect('/');
+        }
+
+
     }
 
     // Crear un nuevo producto

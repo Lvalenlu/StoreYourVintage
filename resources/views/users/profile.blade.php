@@ -2,6 +2,8 @@
 
 @section('content')
 
+<div class="container">
+
     <div class="contenedor-principal">
         <div class="contenedor-perfil">
             <h2 class="titulo">Información de tu Perfil</h2>
@@ -14,7 +16,7 @@
                     <p>{{ $user->email }}</p>
                     <p><strong>Cargo:</strong></p>
                     <p>{{ $user->charge ?? 'No disponible' }}</p>
-            </div>
+            </div>          
             @if (Auth::user()->is_manager == 1)
             <div class="botones">
                 <button id="editarPerfilBtn" class="btn">Editar Perfil</button>
@@ -81,4 +83,6 @@
 
         <script src="{{asset('js/perfil.js')}}"></script>
     </div>
+</div>
+
 @endsection

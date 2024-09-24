@@ -12,7 +12,7 @@
         <section>
             <!-- Enlace para volver a la página anterior -->
             <a href="{{ url()->previous() }}" class="back-link">
-                <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
+                  <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
             </a>
             <div class="contenedor">
                 <!-- Formulario para crear la contraseña -->

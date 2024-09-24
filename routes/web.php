@@ -39,6 +39,7 @@ Route::resource('customers',    CustomerController::class)->names('customers');
 Route::get('/change', function(){return view('auth.passwords.changePassword');})->name('change');
 Route::get('/create', function(){return view('auth.passwords.createPassword');})->name('create');
 Route::get('/prueba', function(){
+    return "hola";
     //Crear un User
     // $user = new User;
 
