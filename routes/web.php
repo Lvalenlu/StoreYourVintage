@@ -19,7 +19,7 @@ Route::get('/change/password', [AuthController::class, 'change'])->name('change.
 Route::get('/changes/password', [AuthController::class, 'changes'])->name('changes.password');
 Route::get('/reset/password', [AuthController::class,     'reset'])->name('reset.password');
 Route::post('/send/email', [AuthController::class,     'send'])->name('send.email');
-Route::post('/change/password', [AuthController::class, 'updatePassword'])->name('change.password');
+Route::put('/change/password', [AuthController::class, 'updatePassword'])->name('change.password');
 Route::post('/changes/password', [AuthController::class, 'changesPassword'])->name('changes.password');
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [ProductController::class,  'index'])->name('home');

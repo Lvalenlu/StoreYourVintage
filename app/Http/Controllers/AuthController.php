@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Mail\ResetPassword;
 use App\Models\User;
+use Illuminate\Contracts\Session\Session;
 //use Illuminate\Container\Attributes\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller
 {
@@ -65,8 +67,15 @@ class AuthController extends Controller
 
     public function changes()
     {
-        //cambiar contraseña sin codigo
-        return view('auth.passwords.changePassword');
+
+        if ($user = Auth::user()) {
+            return view('auth.passwords.changePassword');
+        } else {
+            return redirect()->route('login');
+
+        }
+
+
     }
 
 
@@ -100,7 +109,7 @@ class AuthController extends Controller
 
         $user = Auth::user();
         $validatedData = $request->validate([
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^', 'confirmed'],
             'code' => ['required', 'integer', 'min:100000', 'max:999999'],
         ]);
 
@@ -120,12 +129,19 @@ class AuthController extends Controller
     // Actualiza la contraseña actual del usuario
     public function updatePassword(Request $request)
     {
+        $user = Auth::user();
+
+        if (!$user) {
+            $error = "Error";
+            $message ="Usuario no autenticado. Volver a ingresar a: ";
+            $link = "<a href='" . route('login') . "' target='_blank'>http://syv.test/login</a>";
+            return view('error', compact('error', 'message', 'link'));
+        }
+
         $request->validate([
             'current_password' => 'required',
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^', 'confirmed'],
         ]);
-
-        $user = Auth::user();
 
         if (!Hash::check($request->current_password, $user->password)) {
             return back()->withErrors(['current_password' => 'La contraseña actual es incorrecta.']);

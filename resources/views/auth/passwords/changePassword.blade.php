@@ -11,14 +11,15 @@
 <body>
     <section>
         <!-- Enlace para volver a la página anterior -->
-        <a href="{{ url()->previous() }}" class="back-link">
+        <a href="{{ 'url()->previous()' }}" class="back-link">
             <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
         </a>
         <div class="contenedor">
             <!-- Formulario para cambiar la contraseña -->
             <div class="formulario">
-                <form method="POST" action="a{{route('change.password')}}">
+                <form method="POST" action="{{route('change.password')}}">
                     @csrf
+                    @method('PUT')
                     <img src="{{asset('img/logo.png')}}" alt="Logo">
 
                     <h2>Cambiar Contraseña</h2>
