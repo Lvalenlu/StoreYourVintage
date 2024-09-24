@@ -65,9 +65,9 @@
 
                 <div class="form-group">
                     <div class="columna">
-                        <label for="id_categories"><strong>Categoría</strong></label>
+                        <label for="category_id"><strong>Categoría</strong></label>
                         <div class="entrada">
-                            <select name="id_categories">
+                            <select name="category_id">
                                 @foreach($categories as $category)
                                     <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
                                         {{ $category->name }}

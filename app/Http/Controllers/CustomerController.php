@@ -34,7 +34,7 @@ class CustomerController extends Controller
         $status = ($newStatus == 0) ? 'desactivó' : 'activó';
         $audits->reason = $request->reason;
         $audits->type = 2;
-        $audits->description = 'Se '.$status.' al usuario #'. $id. '<br> Nombre: ' . $customers->name .  ' ' . $customers->lastname . '<br> Documento: ' . $customers->document;
+        $audits->description = 'Se '.$status.' al usuario #'. $id. '<br> Nombre: ' . $customers->name .  ' ' . $customers->lastName . '<br> Documento: ' . $customers->document;
         $audits->users_id = Auth::id();
         $audits->save();
         return redirect()->route('customers.index');

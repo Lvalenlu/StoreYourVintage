@@ -50,7 +50,7 @@ class ProductController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'size' => 'required|string|max:50',
             'prices' => 'required|numeric|min:0',
-            'id_categories' => 'required|integer|exists:categories,id',
+            'category_id' => 'required|integer|exists:categories,id',
         ]);
 
         // Crear el nuevo producto
@@ -61,7 +61,7 @@ class ProductController extends Controller
             'size'              => $validatedData['size'],
             'prices'            => $validatedData['prices'],
             'publicationDate'   => $validatedData['publicationDate'],
-            'id_categories' => $validatedData['id_categories'],
+            'category_id' => $validatedData['category_id'],
         ]);
 
         // Retornar respuesta o redirección
@@ -87,8 +87,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $oldProduct =$product;
-
+        $oldProduct =Product::find($id);
         $validatedData = $request->validate([
                 'name' => [
                 'required',
@@ -101,7 +100,7 @@ class ProductController extends Controller
             'price'         => 'required|numeric|min:0',
             'size_id'       => 'required|string|exists:sizes,id',
             'color_id'      => 'required|string|exists:sizes,id',
-            'id_categories' => 'required|integer|exists:categories,id',
+            'category_id' => 'required|integer|exists:categories,id',
         ]);
         // return $request;
         if ($request->hasFile('image')) {
@@ -110,7 +109,7 @@ class ProductController extends Controller
             $validatedData['image'] = str_replace("http://localhost/storage/images", "", $url);
             $product->image      = $url;
         }
-        $product->category_id   = $request->input('id_categories');
+        $product->category_id   = $request->input('category_id');
         $product->size_id       = $request->input('size_id');
         $product->color_id      = $request->input('color_id');
         // return $product;
@@ -120,13 +119,16 @@ class ProductController extends Controller
         $audits = new Audit();
         $audits->reason = $request->reason;
         $audits->type = 1;
-        $audits->description = "
-        Se actualiza el producto de ID: $product->id en los valores:
-        $oldProduct->name = $product->name
-        $oldProduct->description = $product->description
-        $oldProduct->image = $product->image
-        $oldProduct->price = $product->price
-        ";
+        $audits->description = " Se actualiza el producto ID " .
+        $product->id . ": <br>
+         1. " .
+        $oldProduct->name . " = " . $product->name . " <br> 2. " .
+        $oldProduct->description . " = " . $product->description . " <br> 3. " .
+        $oldProduct->image . " = " . $product->image . " <br> 4. " .
+        $oldProduct->price . " = " . $product->price . " <br> 5. " .
+        $oldProduct->category->name . " = " . $product->category->name . " <br> 6. " .
+        $oldProduct->size->name . " = " . $product->size->name . " <br> 7. " .
+        $oldProduct->color->name . " = " . $product->color->name;
         $audits->reason = "";
         $audits->users_id = Auth::id();
         $audits->save();
