@@ -59,6 +59,13 @@ class AuthController extends Controller
 
     public function change()
     {
+        //cambiar contraseña con codigo
+        return view('auth.verificacionCode');
+    }
+
+    public function changes()
+    {
+        //cambiar contraseña sin codigo
         return view('auth.passwords.changePassword');
     }
 
