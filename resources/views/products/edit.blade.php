@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <div class="columna">
                         <label for="name"><strong>Imagen del producto</strong></label>
-                        <img src="{{asset('img').$product->image}}" alt="">
+                        <img src="{{asset('storage/images').$product->image}}" alt="">
                         <div class="entrada">
                             <input type="file" class="form-control" id="name" name="image" accept="image/*">
                         </div>
@@ -67,14 +67,13 @@
                     <div class="columna">
                         <label for="id_categories"><strong>Categoría</strong></label>
                         <div class="entrada">
-                            <select class="form-control" id="id_categories" name="id_categories">
-                                <option value="{{$product->id_categories}}">{{$product->categories->name}}</option>
+                            <select name="id_categories">
                                 @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">
+                                    <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
-                            </select>
+                            </select>                            
                         </div>
                     </div>
                 </div>
