@@ -16,7 +16,7 @@
             </div>
         @endif
 
-        <div class="contenedor-principal">
+        <div class="contenedor-principala">
             <div class="contenedor-perfil">
                 <h2 class="titulo">Editar Producto</h2>
                 <!-- Formulario para editar producto -->
@@ -44,7 +44,15 @@
                         </div>
                     </div>
 
-
+                    <div class="form-group">
+                        <div class="columna">
+                            <label for="name"><strong>Imagen del producto</strong></label>
+                            <img src="{{asset('img').$product->image}}" alt="">
+                            <div class="entrada">
+                                <input type="file" class="form-control" id="name" name="image" accept="image/*">
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Precio del producto -->
                     <div class="form-group">

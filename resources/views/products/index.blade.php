@@ -72,7 +72,7 @@
 <section class="products-container" id="products-container">
     @foreach ($products as $product)
     <div class="product-card" onclick="openModal('{{$product->id}}')" data-name="{{ $product->name }}">
-        <img src="{{asset('img').$product->image}}" alt="{{$product->name}}">
+        <img src="{{asset('storage/images').$product->image}}" alt="{{$product->name}}">
         <h3>{{$product->name}}</h3>
         <p>{{$product->description}}</p>
         {{-- <button onclick="openModal('{{$product->id}}')">Más información</button> --}}
@@ -80,7 +80,7 @@
     <div class="modal-overlay" id="productModal{{$product->id}}" style="display: none;">
         <div class="modal-content">
 
-            <img id="modalImage" src="{{asset('img').$product->image}}" alt="{{$product->name}}">
+            <img id="modalImage" src="{{asset('storage/images').$product->image}}" alt="{{$product->name}}">
 
 
             <div class="modal-details">

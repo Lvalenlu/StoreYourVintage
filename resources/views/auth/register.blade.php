@@ -16,7 +16,7 @@
         <div class="contenedor">
             <!-- Formulario de registro -->
             <div class="formulario">
-                <form action="{{ route('register') }}" method="POST">
+                <form action="{{ route('users.store') }}" method="POST">
                     @csrf
                     <img src="{{ asset('img/Logo.png') }}" alt="Logo">
 

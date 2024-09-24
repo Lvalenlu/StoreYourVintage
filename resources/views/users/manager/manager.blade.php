@@ -18,7 +18,7 @@
 
         </div>
         <div class="manager_button">
-            <form action="{{route('register')}}" method="GET">
+            <form action="{{route('users.create')}}" method="GET">
                 <button type="submit" class="button_manager btn-register">Registrar nuevo administrador</button>
             </form>
         </div>
