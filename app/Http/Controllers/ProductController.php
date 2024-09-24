@@ -11,6 +11,7 @@ use App\Models\Size;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 use function PHPUnit\Framework\returnValue;
@@ -102,10 +103,17 @@ class ProductController extends Controller
             'color_id'      => 'required|string|exists:sizes,id',
             'id_categories' => 'required|integer|exists:categories,id',
         ]);
-
+        // return $request;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image')->store('/images');
+            $url = Storage::url($image);
+            $validatedData['image'] = str_replace("http://localhost/storage/images", "", $url);
+            $product->image      = $url;
+        }
         $product->category_id   = $request->input('id_categories');
         $product->size_id       = $request->input('size_id');
         $product->color_id      = $request->input('color_id');
+        // return $product;
         $product->update($validatedData);
 
         // Registrar auditoría de cambios

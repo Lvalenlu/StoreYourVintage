@@ -22,7 +22,7 @@
                         @method('PUT')
                         <img src="{{asset('img/logo.png')}}" alt="Logo">
 
-                        <h2>Cambiar Contraseña</h2>
+                        <h2>Crear Contraseña</h2>
 
                         <!-- Campo para la nueva contraseña -->
                         <div class="input-contenedor">
