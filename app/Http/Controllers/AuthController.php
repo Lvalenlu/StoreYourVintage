@@ -61,15 +61,11 @@ class AuthController extends Controller
 
     public function changes()
     {
-
         if ($user = Auth::user()) {
             return view('auth.passwords.changePassword');
         } else {
             return redirect()->route('login');
-
         }
-
-
     }
 
 
@@ -98,13 +94,17 @@ class AuthController extends Controller
         return view('error', compact('error', 'message'));
     }
 
-     // Actualizar la contraseña del usuario
+     // Actualizar la contraseña del usuario cuando se olvida la contraseña
     public function update(Request $request)
     {
-
         $user = Auth::user();
         $validatedData = $request->validate([
-            'password' => ['required', 'string', 'regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^', 'confirmed'],
+            'password' => ['required', 'string', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', 'confirmed',
+            function($attribute, $value, $fail) use ($request){
+                if ($value === $request->current_password) {
+                    $fail ('La nueva contraseña no puede ser igual a la contraseña actual.');
+                }
+            }],
             'code' => ['required', 'integer', 'min:100000', 'max:999999'],
         ]);
 
@@ -121,6 +121,7 @@ class AuthController extends Controller
             return view('error', compact('error', 'message'));
         }
     }
+
     // Actualiza la contraseña actual del usuario
     public function updatePassword(Request $request)
     {
@@ -135,7 +136,12 @@ class AuthController extends Controller
 
         $request->validate([
             'current_password' => 'required',
-            'password' => ['required', 'string', 'regex:^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$^', 'confirmed'],
+            'password' => ['required', 'string', 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', 'confirmed',
+            function($attribute,$value, $fail) use ($request){
+                if ($value === $request->current_password) {
+                    $fail('La nueva contraseña no puede ser igual a la contraseña actual.');
+                }
+            }],
         ]);
 
         if (!Hash::check($request->current_password, $user->password)) {

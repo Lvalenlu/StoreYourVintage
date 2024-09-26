@@ -30,13 +30,12 @@ Route::get('/audits/{option}',  [AuditController::class,    'index'])->name('aud
 Route::post('/product', [ProductController::class, 'filterProducts'])->name('product');
 
 
-
 Route::resource('products',     ProductController::class)->names('products');
 Route::resource('categories',   CategoryController::class)->names('categories');
 Route::resource('users',        UserController::class)->names('users');
 Route::resource('customers',    CustomerController::class)->names('customers');
-Route::get('/change', function(){return view('auth.passwords.changePassword');})->name('change');
-Route::get('/create', function(){return view('auth.passwords.createPassword');})->name('create');
+// Route::get('/change', function(){return view('auth.passwords.changePassword');})->name('change');
+// Route::get('/create', function(){return view('auth.passwords.createPassword');})->name('create');
 Route::get('/prueba', function(){
     return "hola";
     //Crear un User
