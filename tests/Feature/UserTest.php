@@ -35,7 +35,7 @@ class UserTest extends TestCase{
         //     "charge"   =>"gerente", 
         //     "code"     =>"0",
         //     "is_manager"=>"1"       
-        // ]);          
+        // ]);            
         
         // Intenta iniciar sesión con los datos válidos        
         $response = $this->post('/login', 
