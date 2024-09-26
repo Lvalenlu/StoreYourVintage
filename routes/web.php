@@ -15,7 +15,6 @@ Route::get('/', function () {return redirect()->route('login');});
 Auth::routes();
 Route::get('/register', [AuthController::class,     'indexRegister'])->name('register');
 Route::get('/create/password', [AuthController::class,     'create'])->name('create.password');
-Route::get('/change/password', [AuthController::class, 'change'])->name('change.password');
 Route::get('/changes/password', [AuthController::class, 'changes'])->name('changes.password');
 Route::get('/reset/password', [AuthController::class,     'reset'])->name('reset.password');
 Route::post('/send/email', [AuthController::class,     'send'])->name('send.email');

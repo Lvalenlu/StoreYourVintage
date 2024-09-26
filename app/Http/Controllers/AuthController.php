@@ -59,12 +59,6 @@ class AuthController extends Controller
         return view('auth.passwords.createPassword');
     }
 
-    public function change()
-    {
-        //cambiar contraseña con codigo
-        return view('auth.verificacionCode');
-    }
-
     public function changes()
     {
 
@@ -95,7 +89,8 @@ class AuthController extends Controller
             $user->save();
             Mail::to($user->email)->send(new ResetPassword($code));
             $error = "Correo Enviado";
-            $message = "Se te envio un correo a la dirección de:".$request->email;
+            $message = "Se te envio un correo a la dirección de: ".$request->email;
+            $link = null;
         }else{
             $error = "Correo no encontrado";
             $message = "El correo ".$request->email.", no se encuentra registrado";

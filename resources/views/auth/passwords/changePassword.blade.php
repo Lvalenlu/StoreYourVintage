@@ -11,7 +11,7 @@
 <body>
     <section>
         <!-- Enlace para volver a la página anterior -->
-        <a href="{{ 'url()->previous()' }}" class="back-link">
+        <a href="{{route('home')}}" class="back-link">
             <img src="{{ asset('img/back_icon.png') }}" alt="Volver">
         </a>
         <div class="contenedor">

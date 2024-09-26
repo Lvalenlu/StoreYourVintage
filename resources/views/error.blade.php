@@ -17,8 +17,7 @@
                 >
                     <div class="card-body">
                         <h2 >{{$error}}</h2>
-                        <h4>{{$message}} @if($link) {!! $link !!} @endif</h4>
-                    </div>
+                        <h4>{{$message}} @if(isset($link)) {!! $link !!} @endif</h4>                    </div>
                 </div>
 
             </div>
