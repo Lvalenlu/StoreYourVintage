@@ -94,6 +94,7 @@ class AuthController extends Controller
         }else{
             $error = "Correo no encontrado";
             $message = "El correo ".$request->email.", no se encuentra registrado";
+            $link = "<a href='" . route('login') . "' target='_blank'>http://syv.test/login</a>";
         }
         return view('error', compact('error', 'message', 'link'));
     }
