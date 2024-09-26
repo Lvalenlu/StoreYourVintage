@@ -88,13 +88,14 @@ class AuthController extends Controller
             $user->save();
             Mail::to($user->email)->send(new ResetPassword($code));
             $error = "Correo Enviado";
-            $message = "Se te envio un correo a la dirección de: ".$request->email;
-            $link = null;
+            $message = " <br> Se te envio un correo a la dirección de: " . $request->email . ". <br> <br> Por favor revisa tu correo para restablecer tu contraseña <br> <br>";
+            $link = "<a href='" . route('login') . "' target='_blank'>http://syv.test/login</a>";
+
         }else{
             $error = "Correo no encontrado";
             $message = "El correo ".$request->email.", no se encuentra registrado";
         }
-        return view('error', compact('error', 'message'));
+        return view('error', compact('error', 'message', 'link'));
     }
 
      // Actualizar la contraseña del usuario cuando se olvida la contraseña

@@ -1,40 +1,28 @@
 document.addEventListener("DOMContentLoaded", initializeDropdown);
 
+function initializeDropdown() {
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        dropdown.addEventListener('click', function () {
+            this.classList.toggle('is-active');
+        });
+    });
+}
+
 function openReasonsModal(id) {
-    document.getElementById('reasonsModal'+id).style.display = 'flex';
+    document.getElementById('reasonsModal' + id).style.display = 'flex';
 }
 
 function closeReasonsModal(id) {
-    document.getElementById('reasonsModal'+id).style.display = 'none';
+    document.getElementById('reasonsModal' + id).style.display = 'none';
 }
 
-
-function confirmReasons() {
-    document.getElementById('logout-form').submit();
-}
-
-function openDeleteModal(id) {
-    document.getElementById('deleteModal'+id).style.display = 'flex';
-}
-
-function closeDeleteModal(id) {
-    document.getElementById('deleteModal'+id).style.display = 'none';
-}
-
-
-function confirmDelete() {
-    document.getElementById('logout-form').submit();
-}
 function openEditModal(userId, name, email, document, charge) {
     // Rellenar los campos del modal con los valores proporcionados
     document.getElementById('editName').value = name;
     document.getElementById('editEmail').value = email;
     document.getElementById('editDocument').value = document;
     document.getElementById('editCharge').value = charge;
-
-    // Configurar el formulario para apuntar a la URL correcta
-    const form = document.getElementById('formularioEditarUsuario');
-    form.action = `/users/${userId}`; // Asegúrate de que esta es la ruta correcta para actualizar
 
     // Mostrar el modal
     document.getElementById('editModal').style.display = 'block';
@@ -51,9 +39,4 @@ window.onclick = function(event) {
     if (event.target == modal) {
         closeEditModal();
     }
-}
-
-
-function confirmEdit() {
-    document.getElementById('logout-form').submit();
 }

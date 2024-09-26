@@ -100,6 +100,5 @@
     </div>
 
 </div>
-<script src="{{asset('js/usuarios.js')}}"></script>
 <script src="{{asset('js/modals.js')}}"></script>
 @endsection

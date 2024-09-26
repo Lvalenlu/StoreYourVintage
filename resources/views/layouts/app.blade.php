@@ -108,7 +108,6 @@
 
 
     <script src="{{asset('js/gestor.js')}}"></script>
-    <script src="{{asset('js/data_usuarios&user.js')}}"></script>
     <script src="{{asset('js/navbar_loader.js')}}"></script>
     <script src="{{asset('js/script_navbar.js')}}"></script>
     <script>
