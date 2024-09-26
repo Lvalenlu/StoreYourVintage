@@ -23,7 +23,7 @@ Route::post('/changes/password', [AuthController::class, 'changesPassword'])->na
 Route::put('/update/password',  [AuthController::class,     'update'])->name('update.password');
 Route::get('/home',             [ProductController::class,  'index'])->name('home');
 Route::middleware('auth')->group(function() {
-    Route::get('/profile', [UserController::class, 'show'])->name('profile');
+Route::get('/profile', [UserController::class, 'show'])->name('profile');
 });
 
 Route::get('/audits/{option}',  [AuditController::class,    'index'])->name('audits.index');

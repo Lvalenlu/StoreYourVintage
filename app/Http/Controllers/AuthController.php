@@ -22,9 +22,12 @@ class AuthController extends Controller
     // Muestra pantalla de registro de usuarios
     public function indexRegister()
     {
-        if (Auth::user()->is_manager == 1){
+        // Para que $isManager no devuelva null
+        $isManager = Auth::user() ? Auth::user()->is_manager == 1 : false;
+
+        if ($isManager){
             $users = User::all();
-        return view('auth.register', compact('users'));
+            return view('auth.register', compact('users'));
         }else{
             $error = "Página no encontrada";
             $message = "No tiene acceso a este sitio";
