@@ -1,0 +1,195 @@
+Date : 2024-09-26 21:37:27
+Directory : c:\xampp\htdocs\laravel\StoreYourVintage
+Total : 121 files,  27570 codes, 1277 comments, 6924 blanks, all 35771 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |         26 |     13,702 |        101 |      6,003 |     19,806 |
+| JSON       |          4 |     10,081 |          0 |          4 |     10,085 |
+| PHP        |         75 |      2,878 |        879 |        695 |      4,452 |
+| MS SQL     |          1 |        588 |        249 |        131 |        968 |
+| JavaScript |         11 |        236 |         43 |         63 |        342 |
+| Markdown   |          1 |         45 |          0 |         22 |         67 |
+| XML        |          1 |         33 |          0 |          1 |         34 |
+| SCSS       |          2 |          7 |          5 |          5 |         17 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                   | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                      |        121 |     27,570 |      1,277 |      6,924 |     35,771 |
+| . (Files)                                                                                              |          7 |     10,172 |          0 |         29 |     10,201 |
+| app                                                                                                    |         28 |        904 |        230 |        244 |      1,378 |
+| app\Http                                                                                               |         15 |        611 |        165 |        151 |        927 |
+| app\Http\Controllers                                                                                   |         15 |        611 |        165 |        151 |        927 |
+| app\Http\Controllers (Files)                                                                           |          9 |        497 |         66 |        104 |        667 |
+| app\Http\Controllers\Auth                                                                              |          6 |        114 |         99 |         47 |        260 |
+| app\Mail                                                                                               |          2 |         68 |         40 |         18 |        126 |
+| app\Models                                                                                             |         10 |        213 |         15 |         70 |        298 |
+| app\Providers                                                                                          |          1 |         12 |         10 |          5 |         27 |
+| bootstrap                                                                                              |          2 |         18 |          2 |          5 |         25 |
+| config                                                                                                 |         10 |        477 |        552 |        190 |      1,219 |
+| database                                                                                               |          7 |        762 |        292 |        163 |      1,217 |
+| database (Files)                                                                                       |          1 |        588 |        249 |        131 |        968 |
+| database\factories                                                                                     |          1 |         25 |         14 |          6 |         45 |
+| database\migrations                                                                                    |          4 |        135 |         24 |         21 |        180 |
+| database\seeders                                                                                       |          1 |         14 |          5 |          5 |         24 |
+| public                                                                                                 |         37 |     13,934 |        147 |      6,070 |     20,151 |
+| public (Files)                                                                                         |          1 |          9 |          3 |          6 |         18 |
+| public\css                                                                                             |          8 |      1,101 |          7 |        199 |      1,307 |
+| public\fontsawesome                                                                                    |         18 |     12,601 |         94 |      5,804 |     18,499 |
+| public\fontsawesome\css                                                                                |         18 |     12,601 |         94 |      5,804 |     18,499 |
+| public\js                                                                                              |         10 |        223 |         43 |         61 |        327 |
+| resources                                                                                              |         25 |      1,247 |         13 |        197 |      1,457 |
+| resources\lang                                                                                         |          2 |         17 |          0 |          7 |         24 |
+| resources\sass                                                                                         |          2 |          7 |          5 |          5 |         17 |
+| resources\views                                                                                        |         21 |      1,223 |          8 |        185 |      1,416 |
+| resources\views (Files)                                                                                |          2 |         48 |          0 |          7 |         55 |
+| resources\views\audits                                                                                 |          1 |         40 |          0 |          6 |         46 |
+| resources\views\auth                                                                                   |          6 |        338 |          0 |         62 |        400 |
+| resources\views\auth (Files)                                                                           |          2 |        129 |          0 |         25 |        154 |
+| resources\views\auth\passwords                                                                         |          4 |        209 |          0 |         37 |        246 |
+| resources\views\categories                                                                             |          3 |         97 |          0 |         19 |        116 |
+| resources\views\customers                                                                              |          1 |         65 |          0 |          4 |         69 |
+| resources\views\emails                                                                                 |          2 |         28 |          0 |          2 |         30 |
+| resources\views\layouts                                                                                |          1 |        102 |          0 |         15 |        117 |
+| resources\views\products                                                                               |          2 |        274 |          8 |         38 |        320 |
+| resources\views\users                                                                                  |          3 |        231 |          0 |         32 |        263 |
+| resources\views\users (Files)                                                                          |          1 |         80 |          0 |         12 |         92 |
+| resources\views\users\manager                                                                          |          2 |        151 |          0 |         20 |        171 |
+| routes                                                                                                 |          2 |         37 |          8 |         13 |         58 |
+| tests                                                                                                  |          3 |         19 |         33 |         13 |         65 |
+| tests (Files)                                                                                          |          2 |         15 |         33 |         11 |         59 |
+| tests\Unit                                                                                             |          1 |          4 |          0 |          2 |          6 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                               | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\xampp\htdocs\laravel\StoreYourVintage\README.md                                                     | Markdown   |         45 |          0 |         22 |         67 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\AuditController.php                      | PHP        |         36 |          3 |          6 |         45 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\AuthController.php                       | PHP        |        130 |         15 |         27 |        172 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\ConfirmPasswordController.php       | PHP        |         13 |         11 |          8 |         32 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\ForgotPasswordController.php        | PHP        |          8 |          6 |          6 |         20 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\LoginController.php                 | PHP        |         26 |         18 |          9 |         53 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\RegisterController.php              | PHP        |         43 |         33 |         11 |         87 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\ResetPasswordController.php         | PHP        |          9 |         10 |          6 |         25 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Auth\VerificationController.php          | PHP        |         15 |         21 |          7 |         43 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\CategoryController.php                   | PHP        |         46 |          7 |         10 |         63 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\Controller.php                           | PHP        |          9 |          0 |          4 |         13 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\CustomerController.php                   | PHP        |         32 |          4 |          7 |         43 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\HomeController.php                       | PHP        |         14 |         10 |          5 |         29 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\OrderController.php                      | PHP        |         12 |          1 |          4 |         17 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\ProductController.php                    | PHP        |        131 |         13 |         22 |        166 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Http\Controllers\UserController.php                       | PHP        |         87 |         13 |         19 |        119 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Mail\ResetPassword.php                                    | PHP        |         33 |         18 |          9 |         60 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Mail\UsersCreateMail.php                                  | PHP        |         35 |         22 |          9 |         66 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Audit.php                                          | PHP        |         18 |          0 |          6 |         24 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Category.php                                       | PHP        |         14 |          0 |          6 |         20 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Color.php                                          | PHP        |         14 |          0 |          6 |         20 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Customer.php                                       | PHP        |         23 |          0 |          8 |         31 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Order.php                                          | PHP        |          8 |          0 |          5 |         13 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Product.php                                        | PHP        |         71 |          0 |         17 |         88 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\ReturnOrder.php                                    | PHP        |          8 |          0 |          4 |         12 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\Size.php                                           | PHP        |         15 |          0 |          6 |         21 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\State.php                                          | PHP        |         12 |          0 |          5 |         17 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Models\User.php                                           | PHP        |         30 |         15 |          7 |         52 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\app\Providers\AppServiceProvider.php                          | PHP        |         12 |         10 |          5 |         27 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\bootstrap\app.php                                             | PHP        |         14 |          2 |          3 |         19 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\bootstrap\providers.php                                       | PHP        |          4 |          0 |          2 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\composer.json                                                 | JSON       |         67 |          0 |          1 |         68 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\composer.lock                                                 | JSON       |      8,763 |          0 |          1 |      8,764 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\app.php                                                | PHP        |         22 |         82 |         23 |        127 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\auth.php                                               | PHP        |         28 |         70 |         13 |        111 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\cache.php                                              | PHP        |         57 |         34 |         18 |        109 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\database.php                                           | PHP        |        108 |         43 |         23 |        174 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\filesystems.php                                        | PHP        |         33 |         32 |         13 |         78 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\logging.php                                            | PHP        |         79 |         33 |         21 |        133 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\mail.php                                               | PHP        |         55 |         43 |         19 |        117 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\queue.php                                              | PHP        |         52 |         44 |         17 |        113 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\services.php                                           | PHP        |         20 |         11 |          8 |         39 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\config\session.php                                            | PHP        |         23 |        160 |         35 |        218 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\factories\UserFactory.php                            | PHP        |         25 |         14 |          6 |         45 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\migrations\0001_01_01_000000_create_users_table.php  | PHP        |         42 |          6 |          6 |         54 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\migrations\0001_01_01_000001_create_cache_table.php  | PHP        |         25 |          6 |          5 |         36 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\migrations\0001_01_01_000002_create_jobs_table.php   | PHP        |         46 |          6 |          6 |         58 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\migrations\2024_09_19_204205_create_audits_table.php | PHP        |         22 |          6 |          4 |         32 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\seeders\DatabaseSeeder.php                           | PHP        |         14 |          5 |          5 |         24 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\database\vintagestore.sql                                     | MS SQL     |        588 |        249 |        131 |        968 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\package-lock.json                                             | JSON       |      1,235 |          0 |          1 |      1,236 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\package.json                                                  | JSON       |         16 |          0 |          1 |         17 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\phpunit.xml                                                   | XML        |         33 |          0 |          1 |         34 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\app.css                                            | CSS        |          5 |          0 |          1 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_forms.css                                   | CSS        |        150 |          0 |         29 |        179 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_gestor.css                                  | CSS        |         88 |          2 |         18 |        108 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_navbar.css                                  | CSS        |        149 |          0 |         30 |        179 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_perfil.css                                  | CSS        |        186 |          1 |         33 |        220 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_products.css                                | CSS        |        337 |          4 |         57 |        398 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\styles_usuarios.css                                | CSS        |        178 |          0 |         31 |        209 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\css\variables.css                                      | CSS        |          8 |          0 |          0 |          8 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\all.css                               | CSS        |      5,319 |          7 |      2,551 |      7,877 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\all.min.css                           | CSS        |          3 |          5 |          1 |          9 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\brands.css                            | CSS        |      1,066 |          5 |        530 |      1,601 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\brands.min.css                        | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\fontawesome.css                       | CSS        |      4,196 |          7 |      2,013 |      6,216 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\fontawesome.min.css                   | CSS        |          3 |          5 |          1 |          9 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\regular.css                           | CSS        |         12 |          5 |          3 |         20 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\regular.min.css                       | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\solid.css                             | CSS        |         12 |          5 |          3 |         20 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\solid.min.css                         | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\svg-with-js.css                       | CSS        |        384 |          5 |         71 |        460 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\svg-with-js.min.css                   | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v4-font-face.css                      | CSS        |         18 |          5 |          4 |         27 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v4-font-face.min.css                  | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v4-shims.css                          | CSS        |      1,566 |          5 |        624 |      2,195 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v4-shims.min.css                      | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v5-font-face.css                      | CSS        |         15 |          5 |          3 |         23 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\fontsawesome\css\v5-font-face.min.css                  | CSS        |          1 |          5 |          0 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\index.php                                              | PHP        |          9 |          3 |          6 |         18 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\app.js                                              | JavaScript |          1 |          0 |          1 |          2 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\bootstrap.js                                        | JavaScript |          3 |          0 |          2 |          5 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\gestor.js                                           | JavaScript |         71 |         14 |         17 |        102 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\modals.js                                           | JavaScript |         31 |          7 |          9 |         47 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\navbar_loader.js                                    | JavaScript |         60 |          9 |         16 |         85 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\perfil.js                                           | JavaScript |         14 |          4 |          4 |         22 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\products.js                                         | JavaScript |          8 |          2 |          2 |         12 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\reasons.js                                          | JavaScript |         14 |          3 |          5 |         22 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\script_form.js                                      | JavaScript |         13 |          2 |          3 |         18 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\public\js\script_navbar.js                                    | JavaScript |          8 |          2 |          2 |         12 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\lang\auth.php                                       | PHP        |          5 |          0 |          3 |          8 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\lang\validation.php                                 | PHP        |         12 |          0 |          4 |         16 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\sass\_variables.scss                                | SCSS       |          4 |          2 |          2 |          8 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\sass\app.scss                                       | SCSS       |          3 |          3 |          3 |          9 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\audits\index.blade.php                        | PHP        |         40 |          0 |          6 |         46 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\login.blade.php                          | PHP        |         57 |          0 |         12 |         69 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\passwords\changePassword.blade.php       | PHP        |         66 |          0 |         10 |         76 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\passwords\createPassword.blade.php       | PHP        |         58 |          0 |          9 |         67 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\passwords\email.blade.php                | PHP        |         45 |          0 |          8 |         53 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\passwords\reset.blade.php                | PHP        |         40 |          0 |         10 |         50 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\auth\register.blade.php                       | PHP        |         72 |          0 |         13 |         85 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\categories\create.blade.php                   | PHP        |         26 |          0 |          6 |         32 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\categories\edit.blade.php                     | PHP        |         27 |          0 |          6 |         33 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\categories\index.blade.php                    | PHP        |         44 |          0 |          7 |         51 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\customers\customers.blade.php                 | PHP        |         65 |          0 |          4 |         69 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\emails\createUsers.blade.php                  | PHP        |         14 |          0 |          1 |         15 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\emails\resetPassword.blade.php                | PHP        |         14 |          0 |          1 |         15 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\error.blade.php                               | PHP        |         26 |          0 |          5 |         31 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\home.blade.php                                | PHP        |         22 |          0 |          2 |         24 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\layouts\app.blade.php                         | PHP        |        102 |          0 |         15 |        117 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\products\edit.blade.php                       | PHP        |        114 |          0 |         14 |        128 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\products\index.blade.php                      | PHP        |        160 |          8 |         24 |        192 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\users\manager\edit.blade.php                  | PHP        |         53 |          0 |          7 |         60 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\users\manager\manager.blade.php               | PHP        |         98 |          0 |         13 |        111 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\resources\views\users\profile.blade.php                       | PHP        |         80 |          0 |         12 |         92 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\routes\console.php                                            | PHP        |          6 |          0 |          3 |          9 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\routes\web.php                                                | PHP        |         31 |          8 |         10 |         49 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\tests\Pest.php                                                | PHP        |          9 |         32 |          7 |         48 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\tests\TestCase.php                                            | PHP        |          6 |          1 |          4 |         11 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\tests\Unit\ExampleTest.php                                    | PHP        |          4 |          0 |          2 |          6 |
+| c:\xampp\htdocs\laravel\StoreYourVintage\vite.config.js                                                | JavaScript |         13 |          0 |          2 |         15 |
+| Total                                                                                                  |            |     27,570 |      1,277 |      6,924 |     35,771 |
++--------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
