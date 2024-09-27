@@ -42,10 +42,10 @@
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" id="usersButton">Usuarios</a>
+                    <a href="#" id="usersButton">Clientes</a>
                     <div id="usersDropdown" class="dropdown-content">
-                        <a href="{{route('customers.index')}}">Ver usuarios</a>
-                        <a href="{{route('audits.index', 'users')}}">Restricciones a usuarios</a>
+                        <a href="{{route('customers.index')}}">Ver clientes</a>
+                        <a href="{{route('audits.index', 'users')}}">Restricciones a clientes</a>
                     </div>
                 </li>
 
@@ -55,7 +55,7 @@
                         <div id="gestorDropdown" class="dropdown-content">
                             <a href="{{ route('users.index') }}">Ver administradores</a>
                             <a href="{{ route('audits.index', 'allProducts') }}">Ver cambios a productos</a>
-                            <a href="{{ route('audits.index', 'allUsers') }}">Ver cambios a usuarios</a>
+                            <a href="{{ route('audits.index', 'allUsers') }}">Ver cambios a Clientes</a>
 
                         </div>
                     @endif

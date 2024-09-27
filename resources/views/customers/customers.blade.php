@@ -4,7 +4,7 @@
 <div class="vista">
     <div class="contenedor">
         <div>
-            <h2 class="subtitulo">Usuarios de la tienda</h2>
+            <h2 class="subtitulo">Clientes de la tienda</h2>
         </div>
         <div class="table-responsive">
             <table class="table table-primary" id="myTable">
