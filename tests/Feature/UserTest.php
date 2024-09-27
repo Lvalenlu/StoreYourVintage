@@ -41,7 +41,7 @@ class UserTest extends TestCase{
         $response = $this->post('/login', 
         [            
             'document' => '1044458714',            
-            'password' => 'Abril123*',        
+            'password' => 'Abril1234*',        
         ]);      
         // $this->assertTrue(Auth::check());
         $response->assertRedirect('/home');   $this->assertAuthenticated();
