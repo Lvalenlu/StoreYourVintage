@@ -50,7 +50,8 @@ class ProductControllerTest extends TestCase
         $this->assertDatabaseHas('audits', [
             'reason' => 'Actualización por prueba',
             'type' => 1,
-            'description' => " Se actualiza el producto ID " . $product->id . ": <br> 1. " .
+            'description'=> " Se actualiza el producto ID " . 
+                $product->id . ": <br> 1. " .
                 $product->name . " = Producto kaka <br> 2. " .
                 $product->description . " = Descripción kaka <br> 3. " .
                 $product->image . " = " . $product->image . " <br> 4. " .
@@ -58,7 +59,7 @@ class ProductControllerTest extends TestCase
                 $product->category->name . " = " . $product->category->name . " <br> 6. " .
                 $product->size->name . " = " . $product->size->name . " <br> 7. " .
                 $product->color->name . " = " . $product->color->name,
-            'users_id' => $user->id,
+                'users_id' => $user->id,
         ]);
     }
 
@@ -67,12 +68,12 @@ class ProductControllerTest extends TestCase
     public function test_productDel(){
         $user = User::find(7);  
         $this->actingAs($user);
-        $product = Product::find(32);
+        $product = Product::find(33);
 
-        if ($product) { //valida si existe el producto o no
+        if ($product) { 
             $response = $this->delete(route('products.destroy', $product->id)); 
-            // Verifica que la eliminación redirija a la ruta esperada
             $response->assertRedirect(route('products.index'));
+
             // Verifica que el producto ya no exista en la base de datos
             $this->assertDatabaseMissing('products', ['id' => $product->id]);
         }
