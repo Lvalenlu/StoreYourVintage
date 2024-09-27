@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>Prueba de correo</h1>
+    {{-- Mensaje que muestra el código de validación de reseteo, que es pasado como variable desde el backend --}}
     <p><b>codigo de validacion de reseteo:</b> {{$code}}</p>
 </body>
 </html>

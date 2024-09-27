@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
+    <link href="{{ asset('fontsawesome/css/fontawesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('fontsawesome/css/brands.css' ) }}" rel="stylesheet" />
+    <link href="{{ asset('fontsawesome/css/solid.css' ) }}" rel="stylesheet" />
     <link rel="stylesheet" href="{{ asset('css/styles_forms.css') }}">
 
     <title>Inicio de sesión</title>

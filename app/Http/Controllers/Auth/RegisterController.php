@@ -13,37 +13,39 @@ use Illuminate\Support\Facades\Validator;
 class RegisterController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
+    | Controlador de Registro
+    | Este controlador gestiona el registro, validación y creación de nuevos
+    | usuarios. Utiliza un trait para proporcionar esta funcionalidad sin
+    | requerir código adicional.
     */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Redirigir a los usuarios después del registro.
      *
      * @var string
      */
     protected $redirectTo = '/products';
 
     /**
-     * Create a new controller instance.
+     * Máxima longitud de los campos de texto.
+     */
+    private const MAX_STRING_LENGTH = 255;
+
+    /**
+     * Crear una nueva instancia del controlador.
      *
      * @return void
      */
     public function __construct()
     {
+        // Aplicar middleware para usuarios invitados
         $this->middleware('guest');
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Validar los datos del formulario de registro.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -51,24 +53,26 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name'      => ['required', 'string', 'max:255'],
-            'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name'      => ['required', 'string', 'max:' . self::MAX_STRING_LENGTH],
+            'email'     => ['required', 'string', 'email', 'max:' . self::MAX_STRING_LENGTH, 'unique:users'],
             'document'  => ['required', 'integer', 'max:10000000000', 'min:10000000'],
-            'charge'    => ['required', 'string', 'max:255'],
+            'charge'    => ['required', 'string', 'max:' . self::MAX_STRING_LENGTH],
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Crear una nueva instancia de usuario después de una validación exitosa.
      *
      * @param  array  $data
      * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        $code = rand(100000,999999);
+        $code = random_int(100000,999999);
         $email = $data['email'];
+        // Enviar un correo con el código de activación
         Mail::to($email)->send(new UsersCreateMail($code, $email));
+
         return User::create([
             'name'      => $data['name'],
             'email'     => $data['email'],
@@ -76,7 +80,7 @@ class RegisterController extends Controller
             'document'  => $data['document'],
             'charge'    => $data['charge'],
             'is_manager'=> 0,
-            'code'=> $code,
+            'code'      => $code,
         ]);
     }
 }

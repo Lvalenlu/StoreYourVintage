@@ -14,42 +14,46 @@ class ResetPassword extends Mailable
     use Queueable, SerializesModels;
 
     /**
-     * Create a new message instance.
+     * Crea una nueva instancia del mensaje.
      */
+    public $code;
 
-     public $code;
     public function __construct($code)
     {
+        // Asigna el código proporcionado al atributo público $code
         $this->code = $code;
     }
 
     /**
-     * Get the message envelope.
+     * Obtiene el sobre (envelope) del mensaje.
      */
     public function envelope(): Envelope
     {
+        // Retorna un nuevo sobre con el asunto 'Reset Password'
         return new Envelope(
             subject: 'Reset Password',
         );
     }
 
     /**
-     * Get the message content definition.
+     * Obtiene la definición del contenido del mensaje.
      */
     public function content(): Content
     {
+        // Retorna el contenido utilizando la vista 'emails.resetPassword'
         return new Content(
             view: 'emails.resetPassword',
         );
     }
 
     /**
-     * Get the attachments for the message.
+     * Obtiene los archivos adjuntos del mensaje.
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
     {
+        // No se adjuntan archivos, retorna un array vacío
         return [];
     }
 }

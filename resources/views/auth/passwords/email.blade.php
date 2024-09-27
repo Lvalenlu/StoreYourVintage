@@ -8,12 +8,14 @@
                 <div class="card-header">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
+                    {{-- Verifica si hay un estado de sesión, indicando un mensaje de éxito --}}
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
+                    {{-- Formulario para enviar el enlace de restablecimiento de contraseña --}}
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
@@ -21,8 +23,10 @@
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                       name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+                                {{-- Muestra un mensaje de error si hay un problema con la validación del correo electrónico --}}
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -33,6 +37,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
+                                {{-- Botón para enviar el formulario y solicitar el enlace de restablecimiento de contraseña --}}
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Send Password Reset Link') }}
                                 </button>

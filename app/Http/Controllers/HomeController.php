@@ -7,22 +7,22 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * Crea una nueva instancia del controlador.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); // Verifica que el usuario esté autenticado
     }
 
     /**
-     * Show the application dashboard.
+     * Muestra el panel de control de la aplicación.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('home');
+        return view('home'); // Retorna la vista del dashboard
     }
 }

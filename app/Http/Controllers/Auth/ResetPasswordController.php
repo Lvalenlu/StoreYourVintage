@@ -8,20 +8,15 @@ use Illuminate\Foundation\Auth\ResetsPasswords;
 class ResetPasswordController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
-    |
+    | Controlador de Restablecimiento de Contraseña
+    | Este controlador gestiona las solicitudes de restablecimiento de
+    | contraseña utilizando un trait para incluir esta funcionalidad.
     */
 
     use ResetsPasswords;
 
     /**
-     * Where to redirect users after resetting their password.
+     * Redirigir a los usuarios después de restablecer su contraseña.
      *
      * @var string
      */

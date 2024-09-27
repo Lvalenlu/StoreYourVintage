@@ -1,4 +1,4 @@
-@extends('layouts.app') <!-- Asegúrate de que extiendes del layout correcto -->
+@extends('layouts.app')
 
 @section('content')
 <div class="vista">
@@ -12,17 +12,18 @@
             <button id="cancelar-restricion" class="boton">Cancelar</button>
         </div>
     </div>
+
     <div class="contenedor">
         <div>
-            <h2 class="subtitulo" >Gestor administradores</h2>
-
+            <h2 class="subtitulo">Gestor administradores</h2>
         </div>
+
+        <!-- Botón para registrar un nuevo administrador -->
         <div class="manager_button">
-            <form action="{{route('users.create')}}" method="GET">
+            <form action="{{ route('users.create') }}" method="GET">
                 <button type="submit" class="button_manager btn-register">Registrar nuevo administrador</button>
             </form>
         </div>
-
 
         <div class="table-responsive">
             <table class="table table-primary" id="myTable">
@@ -31,7 +32,6 @@
                         <th scope="col">ID</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Documento</th>
-                        <th scope="col">Estado</th>
                         <th scope="col">Email</th>
                         <th scope="col">Acción</th>
                     </tr>
@@ -39,55 +39,58 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td>{{$user->id}}</td>
-                        <td>{{$user->name . ' ' . $user->lastName}}</td>
-                        <td>{{$user->document}}</td>
-                        <td>{{ $user->status == 0 ? 'Desactivo' : 'Activo' }}</td>
-                        <td>{{$user->email}}</td>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->name . ' ' . $user->lastName }}</td>
+                        <td>{{ $user->document }}</td>
+                        <td>{{ $user->email }}</td>
                         <td class="manager_buttons">
-                            <button type="button" class="buttons_manager" onclick="openEditModal({{ $user->id }})">Editar</button>
-                            <button type="button" class="buttons_manager" onclick="openReasonsModal({{$user->id}})">{{ $user->status == 0 ? 'Activar' : 'Desactivar' }}</button>
+                            <!-- Botón para abrir el modal de edición -->
+                            <button type="button" class="buttons_manager" onclick="openEditModal({{ $user->id }}, '{{ $user->name }}', '{{ $user->email }}', '{{ $user->document }}', '{{ $user->charge }}')">Editar</button>
+                            <!-- Botón para abrir el modal de eliminación -->
+                            <button type="button" class="buttons_manager" onclick="openDeleteModal({{ $user->id }})">Eliminar</button>
                         </td>
                     </tr>
-                    <div class="modal-overlay" id="reasonsModal{{$user->id}}" style="display: none;">
+                    <!-- Modal para confirmar eliminación -->
+                    <div class="modal-overlay" id="deleteModal{{ $user->id }}" style="display: none;">
                         <div class="modal-content">
-                            <form class="modal-reasons" method="POST" action="{{route('users.destroy', $user->id)}}">
-                                <input type="text" placeholder="¿Por qué deseas hacer esta acción?" name="reason">
+                            <form class="modal-reasons" method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                <h3>¿Seguro de que deseas eliminar este usuario?</h3>
                                 <div class="modal-actions">
                                     <button class="btn-eliminar" type="submit">Eliminar</button>
-                                    <button type="button" onclick="closeReasonsModal({{$user->id}})">Cancelar</button>
+                                    <button type="button" onclick="closeDeleteModal({{ $user->id }})">Cancelar</button>
                                     @csrf
                                     @method('DELETE')
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div id="editModal{{$user->id}}" class="modal">
+                    <!-- Modal para editar usuario -->
+                    <div id="editModal" class="modal">
                         <div class="modal-contenido">
-                            <a class="cerrar-modal" onclick="closeEditModal({{$user->id}})">&times;</a>
+                            <a class="cerrar-modal">&times;</a>
                             <h2 class="titulo">Editar Usuario</h2>
-                            <form id="formularioEditarUsuario" action="{{route('users.update', $user->id)}}" method="POST">
+                            <form id="formularioEditarUsuario" method="POST">
                                 @csrf
                                 @method('PUT')
 
                                 <div class="entrada">
                                     <label for="editName">Nombre:</label>
-                                    <input type="text" id="editName" name="name" value="{{$user->name}}" required>
+                                    <input type="text" id="editName" name="name" required>
                                 </div>
 
                                 <div class="entrada">
                                     <label for="editEmail">Correo:</label>
-                                    <input type="email" id="editEmail" name="email" value="{{$user->email}}" required>
+                                    <input type="email" id="editEmail" name="email" required>
                                 </div>
 
                                 <div class="entrada">
                                     <label for="editDocument">Documento:</label>
-                                    <input type="text" id="editDocument" name="document" value="{{$user->document}}" required readonly>
+                                    <input type="text" id="editDocument" name="document" required readonly>
                                 </div>
 
                                 <div class="entrada">
                                     <label for="editCharge">Cargo:</label>
-                                    <input type="text" id="editCharge" name="charge" value="{{$user->charge}}" required>
+                                    <input type="text" id="editCharge" name="charge" required>
                                 </div>
 
                                 <button type="submit" class="btn guardar">Guardar Cambios</button>
@@ -102,5 +105,6 @@
     </div>
 
 </div>
-<script src="{{asset('js/modals.js')}}"></script>
+<!-- Script para manejar los modales -->
+<script src="{{ asset('js/modals.js') }}"></script>
 @endsection
