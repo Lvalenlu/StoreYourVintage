@@ -27,7 +27,7 @@ class EditTest extends TestCase{
         $response->assertStatus(302)->assertRedirect(route('login'));
 
         // Verifica que la contraseña del usuario haya cambiado en la base de datos
-        $this->assertTrue(Hash::check('Abril1234*', $user->fresh()->password));
+        $this->assertTrue(Hash::check('Abril123*', $user->fresh()->password));
     }
 
     public function test_editInfo(){

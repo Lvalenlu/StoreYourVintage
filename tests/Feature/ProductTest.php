@@ -13,13 +13,9 @@ class ProductControllerTest extends TestCase
     public function test_productUpdate(){
         $user = User::find(7); 
         $this->actingAs($user); 
-        
-        // Buscar un producto en la base de datos existente
         $product = Product::find(50);
 
-        if (!$product) { // Valida si existe el producto o no
-            $this->fail('No se encontró el producto');
-        }
+        if (!$product) {$this->fail('No se encontró el producto');}
 
         // Datos para actualizar el producto
         $updatedProduct = [
@@ -31,14 +27,10 @@ class ProductControllerTest extends TestCase
             'color_id'      => (string) $product->color_id,  
             'reason'        => 'Actualización por prueba', // Razón para la auditoría
         ];
-
-        // Realizar la petición de actualización
         $response = $this->put(route('products.update', $product->id), $updatedProduct);
-
-        // Verificar que se redirige a la ruta correcta
         $response->assertRedirect(route('products.index'));
 
-        // Verificar que el producto fue actualizado en la base de datos
+        // Verificar que el producto fue actualizado en la db
         $this->assertDatabaseHas('products', [
             'id' => $product->id,
             'name' => 'Producto kaka',
@@ -46,7 +38,7 @@ class ProductControllerTest extends TestCase
             'price' => 200,
         ]);
 
-        // Verificar que se creó la auditoría con la descripción y la razón correctas
+        // Verificar la auditoria
         $this->assertDatabaseHas('audits', [
             'reason' => 'Actualización por prueba',
             'type' => 1,

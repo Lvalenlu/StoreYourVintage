@@ -25,19 +25,7 @@ class UserTest extends TestCase{
         $carga->assertStatus(200)->assertSee('Ingreso');
     }
 
-    public function test_loginValid(){        
-        // Crea un usuario válido       
-        // $user = User::factory()->create([    
-        //     "name"     =>"SITVEMNMSDAFAS Ventina", 
-        //     "email"    =>"bernal0755@gmail.com",
-        //     'document' => '1014658715',            
-        //     'password' => bcrypt('Abril124*'), 
-        //     "charge"   =>"gerente", 
-        //     "code"     =>"0",
-        //     "is_manager"=>"1"       
-        // ]);            
-        
-        // Intenta iniciar sesión con los datos válidos        
+    public function test_loginValid(){                  
         $response = $this->post('/login', 
         [            
             'document' => '1044458714',            
