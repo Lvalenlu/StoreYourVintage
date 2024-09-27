@@ -21,7 +21,7 @@ class CustomerTest extends TestCase{
         }
 
         // Realiza la petición de eliminación (que en tu controlador cambia el estado)
-        $response = $this->delete(route('customers.destroy', $customer->id, $customer->status = 1), $data= ['reason' => 'Me encanta Laura']);
+        $response = $this->delete(route('customers.destroy', $customer->id, $customer->status = 1), $data= ['reason' => 'aaa']);
         $response->assertRedirect(route('customers.index'));
 
 
@@ -30,7 +30,7 @@ class CustomerTest extends TestCase{
     
         // Verificar la auditoria
         $this->assertDatabaseHas('audits', [
-            'reason' => 'Me encanta Laura',
+            'reason' => 'aaa',
             'type' => 2,
             'description' => 'Se activó al usuario #' . $customer->id . '<br> Nombre: ' . $customer->name . ' ' . $customer->lastName . '<br> Documento: ' . $customer->document,
             'users_id' => $user->id,
