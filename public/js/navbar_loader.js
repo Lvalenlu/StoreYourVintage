@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const userMenu = document.getElementById('userDropdownContent');
     const managerMenu = document.getElementById('managerDropdownContent');
 
-    // Eventos para abrir los dropdowns si los elementos existen
+    // Listado de eventos para abrir los dropdowns
     if (userIcon && userDropdown) {
         userIcon.addEventListener('click', (event) => toggleDropdown(event, userDropdown));
     }
@@ -54,29 +54,26 @@ document.addEventListener("DOMContentLoaded", function() {
         confirmLogoutButton.addEventListener('click', confirmLogout);
     }
 
-    // Abre el modal de logout
     function openLogoutModal() {
         logoutModal.style.display = 'flex';
     }
 
-    // Cierra el modal de logout
     function closeLogoutModal() {
         logoutModal.style.display = 'none';
     }
 
-    // Envía el formulario de logout
     function confirmLogout() {
         logoutForm.submit();
     }
 });
 
-// Alterna la visibilidad del dropdown
+// Función para alternar la visibilidad del dropdown
 function toggleDropdown(event, dropdownMenu) {
     event.stopPropagation();  // Evita que el clic se propague al window
     dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
 }
 
-// Cierra el dropdown si se hace clic fuera
+// Función para cerrar el dropdown si se hace clic fuera de él
 function closeDropdownIfClickedOutside(event, triggerElement, dropdownMenu) {
     if (triggerElement && dropdownMenu && !triggerElement.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.style.display = 'none';

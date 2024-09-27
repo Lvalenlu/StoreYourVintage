@@ -14,15 +14,17 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
+use function PHPUnit\Framework\returnValue;
+
 class ProductController extends Controller
 {
-    // Verificar autenticación de usuario en todas las acciones de este controlador
+    // Verificar autenticación de usuario
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    // Mostrar lista de productos con sus categorías, tamaños y colores relacionados
+    // Mostrar lista de productos con categorías, tamaños y colores
     public function index()
     {
         if ($user = Auth::user()->code == 0) {
@@ -32,23 +34,23 @@ class ProductController extends Controller
             $products   = Product::with(['category', 'size', 'color', 'orders'])->get();
             return view('products.index', compact('products', 'sizes', 'colors', 'categories'));
         } else {
-            // Si el código es inválido, cerrar sesión
             Auth::logout($user);
             return redirect('/');
         }
+
+
     }
 
-    // Mostrar formulario para crear un nuevo producto
+    // Crear un nuevo producto
     public function create()
     {
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
 
-    // Almacenar un nuevo producto en la base de datos
+    // Agregar un nuevo producto en la base de datos
     public function store(Request $request)
     {
-        // Validar datos del formulario
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:products,name',
             'description' => 'required|string|max:1000',
@@ -58,20 +60,28 @@ class ProductController extends Controller
             'category_id' => 'required|integer|exists:categories,id',
         ]);
 
-        // Crear y almacenar el producto en la base de datos
+        // Crear el nuevo producto
         Product::create([
             'name'              => $validatedData['name'],
             'description'       => $validatedData['description'],
             'image'             => '/productos.jpeg',
             'size'              => $validatedData['size'],
             'prices'            => $validatedData['prices'],
+            'publicationDate'   => $validatedData['publicationDate'],
             'category_id' => $validatedData['category_id'],
         ]);
 
+        // Retornar respuesta o redirección
         return redirect()->route('products.index')->with('success', 'Producto creado exitosamente.');
     }
 
-    // Mostrar formulario de edición de un producto
+
+    public function show(Product $product)
+    {
+        //
+    }
+
+    // Editar un producto
     public function edit(Product $product)
     {
         $categories = Category::all();
@@ -80,14 +90,13 @@ class ProductController extends Controller
         return view('products.edit', compact('product', 'categories', 'sizes', 'colors'));
     }
 
-    // Actualizar los datos de un producto existente
+    // Actualizar datos de un producto
     public function update(Request $request, $id)
     {
         $product = Product::find($id);
-        $oldProduct = Product::find($id);
-
+        $oldProduct =Product::find($id);
         $validatedData = $request->validate([
-            'name' => [
+                'name' => [
                 'required',
                 'string',
                 'max:255',
@@ -97,26 +106,29 @@ class ProductController extends Controller
             'image'         => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price'         => 'required|numeric|min:0',
             'size_id'       => 'required|string|exists:sizes,id',
-            'color_id'      => 'required|string|exists:colors,id',
+            'color_id'      => 'required|string|exists:sizes,id',
             'category_id' => 'required|integer|exists:categories,id',
         ]);
-
-        // Verificar si hay nueva imagen cargada
+        // return $request;
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('/images');
             $url = Storage::url($image);
             $validatedData['image'] = str_replace("http://localhost/storage/images", "", $url);
-            $product->image = $url;
+            $product->image      = $url;
         }
-
+        $product->category_id   = $request->input('category_id');
+        $product->size_id       = $request->input('size_id');
+        $product->color_id      = $request->input('color_id');
+        // return $product;
         $product->update($validatedData);
 
-        // Registrar auditoría de los cambios realizados en el producto
+        // Registrar auditoría de cambios
         $audits = new Audit();
         $audits->reason = $request->reason;
         $audits->type = 1;
         $audits->description = " Se actualiza el producto ID " .
-        $product->id . ": <br> 1. " .
+        $product->id . ": <br>
+         1. " .
         $oldProduct->name . " = " . $product->name . " <br> 2. " .
         $oldProduct->description . " = " . $product->description . " <br> 3. " .
         $oldProduct->image . " = " . $product->image . " <br> 4. " .
@@ -124,21 +136,22 @@ class ProductController extends Controller
         $oldProduct->category->name . " = " . $product->category->name . " <br> 6. " .
         $oldProduct->size->name . " = " . $product->size->name . " <br> 7. " .
         $oldProduct->color->name . " = " . $product->color->name;
+        $audits->reason = $request->reason;
         $audits->users_id = Auth::id();
         $audits->save();
 
+        // Volver a la pagina de los productos
         return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
     }
 
     // Eliminar un producto si no tiene órdenes asociadas
-    public function destroy($id)
-    {
+    public function destroy($id){
         $product = Product::find($id);
 
         if ($product) {
             if ($product->orders()->exists()) {
                 return redirect()->route('products.index')
-                    ->with('error', 'No se puede eliminar el producto porque tiene órdenes asociadas.');
+                ->with('error', 'No se puede eliminar el producto porque tiene órdenes asociadas.');
             }
             $product->delete();
             return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
@@ -151,6 +164,7 @@ class ProductController extends Controller
     public function filterProducts(Request $request)
     {
         $filters = $request->all();
+
         $products = Product::query();
 
         $filters = app(Product::class)->apply($products, $filters);

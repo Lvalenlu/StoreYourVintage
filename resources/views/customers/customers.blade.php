@@ -7,7 +7,6 @@
             <h2 class="subtitulo">Usuarios de la tienda</h2>
         </div>
         <div class="table-responsive">
-            {{-- Tabla que muestra la lista de usuarios --}}
             <table class="table table-primary" id="myTable">
                 <thead>
                     <tr>
@@ -20,7 +19,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {{-- Itera sobre cada cliente y muestra sus detalles --}}
                     @foreach ($customers as $customer)
                     <tr>
                         <td>{{ $customer->name . ' ' . $customer->lastName }}</td>
@@ -28,7 +26,6 @@
                         <td>{{ $customer->address }}</td>
                         <td>{{ $customer->email }}</td>
                         <td>
-                            {{-- Verifica el estado del cliente y muestra "Activo" o "Desactivado" --}}
                             @if ($customer->status == 1)
                                 Activo
                             @else
@@ -36,12 +33,11 @@
                             @endif
                         </td>
                         <td>
-                            {{-- Botón para abrir el modal para cambiar el estado del cliente --}}
                             <button type="button" class="btn btn-danger" onclick="openReasonsModal({{ $customer->id }})">Cambiar Estado</button>
                         </td>
                     </tr>
 
-                    {{-- Modal para ingresar la razón de cambio de estado --}}
+                    <!-- Modal para ingresar la razón de cambio -->
                     <div class="modal-overlay" id="reasonsModal{{ $customer->id }}" style="display: none;">
                         <div class="modal-content">
                             <form class="modal-reasons" method="POST" action="{{ route('customers.destroy', $customer->id) }}">
@@ -63,6 +59,5 @@
     </div>
 </div>
 
-{{-- Archivo JavaScript para manejar la lógica de los modales --}}
 <script src="{{ asset('js/modals.js') }}"></script>
 @endsection

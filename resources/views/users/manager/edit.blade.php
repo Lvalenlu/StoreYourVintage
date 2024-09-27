@@ -3,56 +3,50 @@
 @section('content')
 <div class="container">
     <h2>Editar Usuario</h2>
-    <!-- Formulario para editar un usuario existente -->
     <form action="{{ route('users.update', $user->id) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <!-- Campo para el nombre del usuario -->
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" name="name" value="{{ $user->name }}" class="form-control @error('name') is-invalid @enderror">
-            @error('name') 
+            @error('name')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
 
-        <!-- Campo para el correo electrónico del usuario -->
         <div class="form-group">
             <label for="email">Correo electrónico</label>
             <input type="email" name="email" value="{{ $user->email }}" class="form-control @error('email') is-invalid @enderror">
-            @error('email') 
+            @error('email')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
 
-        <!-- Campo para el documento del usuario (solo lectura) -->
         <div class="form-group">
             <label for="document">Documento</label>
             <input type="text" name="document" value="{{ $user->document }}" class="form-control @error('document') is-invalid @enderror" readonly>
-            @error('document') 
+            @error('document')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
 
-        <!-- Campo para el cargo del usuario -->
         <div class="form-group">
             <label for="charge">Cargo</label>
             <input type="text" name="charge" value="{{ $user->charge }}" class="form-control @error('charge') is-invalid @enderror">
-            @error('charge') 
+            @error('charge')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
 
-        <!-- Botón para guardar los cambios -->
         <button type="submit" class="btn btn-primary">Guardar Cambios</button>
     </form>
 </div>
