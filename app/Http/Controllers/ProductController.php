@@ -136,7 +136,7 @@ class ProductController extends Controller
         $oldProduct->category->name . " = " . $product->category->name . " <br> 6. " .
         $oldProduct->size->name . " = " . $product->size->name . " <br> 7. " .
         $oldProduct->color->name . " = " . $product->color->name;
-        $audits->reason = "";
+        $audits->reason = $request->reason;
         $audits->users_id = Auth::id();
         $audits->save();
 

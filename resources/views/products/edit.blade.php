@@ -107,6 +107,15 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="form-group">
+                    <div class="columna">
+                        <label for="price"><strong>Razón</strong></label>
+                        <div class="entrada">
+                            <input type="text" class="form-control" id="reason" name="reason" value="{{ old('reason', $product->reason) }}" required>
+                        </div>
+                    </div>
+                </div>
                 <div class="update_product_button">
                     <button type="submit" class="btn btn-primary">Actualizar Producto</button>
                 </div>

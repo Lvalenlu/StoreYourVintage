@@ -17,20 +17,15 @@ function closeReasonsModal(id) {
     document.getElementById('reasonsModal' + id).style.display = 'none';
 }
 
-function openEditModal(userId, name, email, document, charge) {
-    // Rellenar los campos del modal con los valores proporcionados
-    document.getElementById('editName').value = name;
-    document.getElementById('editEmail').value = email;
-    document.getElementById('editDocument').value = document;
-    document.getElementById('editCharge').value = charge;
+function openEditModal(userId) {
 
     // Mostrar el modal
-    document.getElementById('editModal').style.display = 'block';
+    document.getElementById('editModal'+userId).style.display = 'block';
 }
 
-function closeEditModal() {
+function closeEditModal(userId) {
     // Ocultar el modal
-    document.getElementById('editModal').style.display = 'none';
+    document.getElementById('editModal'+userId).style.display = 'none';
 }
 
 // Cerrar el modal cuando se hace clic fuera de él

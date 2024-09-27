@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\UsersCreateMail;
+use App\Models\Audit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -104,13 +105,21 @@ class UserController extends Controller
     }
 
     // Método para eliminar un usuario
-    public function destroy($id){
-        $user = User::find($id);
-        if (!$user) {
-            return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
-        }
-        $user->delete();
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado exitosamente.');
+    public function destroy($id, Request $request){
+        $users = User::find($id);
+        $newStatus = ($users->status == 0) ? 1 : 0;
+        $users->status = $newStatus;
+        $users->save();
+
+        //Crear Auditoria
+        $audits = new Audit();
+        $status = ($newStatus == 0) ? 'desactivó' : 'activó';
+        $audits->reason = $request->reason;
+        $audits->type = 2;
+        $audits->description = 'Se '.$status.' al usuario #'. $id. '<br> Nombre: ' . $users->name .  ' ' . $users->lastName . '<br> Documento: ' . $users->document;
+        $audits->users_id = Auth::id();
+        $audits->save();
+        return redirect()->route('users.index');
     }
 }
 
