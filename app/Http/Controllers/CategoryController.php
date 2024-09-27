@@ -8,64 +8,46 @@ use Illuminate\Validation\Rule;
 
 class CategoryController extends Controller
 {
-    // Verificar autenticación de usuario
+    // Verificar que el usuario esté autenticado antes de acceder a las acciones del controlador
     public function __construct()
     {
         $this->middleware('auth');
     }
-    /**
-     * Display a listing of the resource.
-     */
+
+    // Mostrar la lista de categorías.
     public function index()
     {
         $categories = Category::all();
         return view('categories.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    // Mostrar el formulario para crear una nueva categoría.
+
     public function create()
     {
         return view('categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Guardar una nueva categoría en la base de datos.
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255|unique:categories,name',
         ]);
-
         Category::create($validatedData);
-
         return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
+    // Mostrar el formulario para editar una categoría existente.
     public function edit(Category $category)
     {
         return view('categories.edit', compact('category'));
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
+    // Actualizar una categoría existente en la base de datos.
     public function update(Request $request, Category $category)
     {
+        // Validar los datos, ignorando la categoría actual para evitar conflictos de nombre
         $validatedData = $request->validate([
             'name' => [
                 'required',
@@ -76,14 +58,5 @@ class CategoryController extends Controller
         ]);
         $category->update($validatedData);
         return redirect()->route('categories.index')->with('success', 'Categoría actualizada exitosamente.');
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Category $category)
-    {
-        //
     }
 }

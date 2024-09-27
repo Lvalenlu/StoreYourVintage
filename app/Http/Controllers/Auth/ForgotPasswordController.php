@@ -8,15 +8,12 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 class ForgotPasswordController extends Controller
 {
     /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
+    | Controlador de Restablecimiento de Contraseña    |
+    | Este controlador gestiona el envío de correos para restablecer contraseñas
+    | utilizando un trait para enviar notificaciones a los usuarios.
     |
     */
 
     use SendsPasswordResetEmails;
 }
+
