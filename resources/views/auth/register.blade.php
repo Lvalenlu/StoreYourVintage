@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/15e7ed816c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/styles_forms.css') }}">
-    <title>Registro</title>
+    <title>StoreYourVintage</title>
 </head>
 <body>
     <section>
@@ -58,7 +58,7 @@
 
                     </div>
 
-                    <div class="input-contenedor">
+                    {{-- <div class="input-contenedor">
                         <i class="fa-solid fa-circle-info"></i>
                         <input type="text" id="charge" name="charge"  placeholder=" " class="form-control @error('charge') is-invalid @enderror" value="{{ old('charge') }}" required>
                         <label for="cargo">Cargo</label>
@@ -67,7 +67,17 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div> --}}
 
+                    <div class="input-contenedor">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <input type="text" id="password" name="password"  placeholder=" " class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required>
+                        <label for="password">contraseña</label>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
 
                     <!-- Botón de registro -->

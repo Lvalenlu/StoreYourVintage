@@ -32,20 +32,20 @@ class UserController extends Controller
             'name'      => ['required', 'string', 'max:255'],
             'email'     => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'document'  => ['required', 'integer', 'max:10000000000', 'min:10000000'],
-            'charge'    => ['required', 'string', 'max:255'],
+            'password'  => ['required', 'string', 'max:20'],
         ]);
 
         $code = rand(100000,999999);
-        $email = $validatedData['email'];
-        Mail::to($email)->send(new UsersCreateMail($code, $email));
+        // $email = $validatedData['email'];
+        // Mail::to($email)->send(new UsersCreateMail($code, $email));
 
         $user = new User();
 
         $user->name = $validatedData['name'];
         $user->email = $validatedData['email'];
         $user->document = $validatedData['document'];
-        $user->password = Hash::make($validatedData['document']);
-        $user->charge = $validatedData['charge'];
+        $user->password = Hash::make($validatedData['password']);
+        $user->charge = "por ahora no hay mas cargos";
         $user->is_manager = 0;
         $user->code = $code;
 

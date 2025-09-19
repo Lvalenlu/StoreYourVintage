@@ -52,6 +52,8 @@
                     <!--Opción de recuperar contraseña en caso de olvido contraseña-->
                     <div class="link_content">
                         <a  class="link" href="{{route('reset.password')}}">Olvide mi contraseña</a>
+                        <br>
+                        <a  class="link" href="{{route('register')}}">Registrarme</a>
                     </div>
 
                     <button type="submit">Ingresar</button>

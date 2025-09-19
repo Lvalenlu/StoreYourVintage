@@ -23,16 +23,16 @@ class AuthController extends Controller
     public function indexRegister()
     {
         // Para que $isManager no devuelva null
-        $isManager = Auth::user() ? Auth::user()->is_manager == 1 : false;
+        // $isManager = Auth::user() ? Auth::user()->is_manager == 1 : false;
 
-        if ($isManager){
+        // if ($isManager){
             $users = User::all();
             return view('auth.register', compact('users'));
-        }else{
-            $error = "Página no encontrada";
-            $message = "No tiene acceso a este sitio";
-            return view('error', compact('error', 'message'));
-        }
+        // }else{
+        //     $error = "Página no encontrada";
+        //     $message = "No tiene acceso a este sitio";
+        //     return view('error', compact('error', 'message'));
+        // }
     }
 
     // Almacenar un nuevo registro de usuario
